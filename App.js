@@ -1,14 +1,15 @@
 'use strict';
 import React from 'react';
-import './fixtimerbug';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
 const Stack = createStackNavigator();
 
-import HomeScreen from './src/screens/Home/homescreen'
-import Onboarding from './src/screens/Onboarding'
+import HomeScreen from './screens/Home/homescreen.js'
+import Onboarding from './screens/Home/homescreen.js'
+import stepOne from './screens/Invest/stepOne.js'
+
 
 // ONLY STORE NAVIGATION HERE
 
@@ -26,6 +27,7 @@ function App() {
 
 <Stack.Screen name="HomeScreen" component={HomeScreen} />
 <Stack.Screen name="Onboarding" component={Onboarding} />
+<Stack.Screen name="stepOne" component={stepOne} />
 
 </Stack.Navigator>
     </NavigationContainer>
