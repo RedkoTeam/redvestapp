@@ -24,7 +24,7 @@ function NavBar({}){
               <Image source={navbarcont} style={{ position: 'absolute', bottom: heightPercentageToDP(-3), width: widthPercentageToDP('100')}} />
             <View style={{flexDirection:'row', width:'100%', justifyContent: 'center', paddingBottom:10}}>
             <TouchableOpacity onPress={() => { 
-                    navigation.navigate('Homescreen')
+                    navigation.navigate('HomeScreen')
                 }}>
                     <Image source={homeg} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15) }} />
                 </TouchableOpacity>
