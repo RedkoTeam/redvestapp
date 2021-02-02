@@ -21,7 +21,15 @@ function stepFour() {
   return (
       <View style={{flex: 1}}>  
       <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>
-      <Image source={title} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(15), marginTop: 20, marginLeft:'10%'}} />
+      <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 10, marginTop: 5 }}>
+                        <TouchableOpacity onPress={()=>navigation.navigate('stepThreea')} style={{
+                                    left:widthPercentageToDP(3),
+                                    top:heightPercentageToDP(3),
+                                }}>
+                                        <Image source={back} style={{width :widthPercentageToDP('3'), height :heightPercentageToDP('3'), resizeMode:'contain'}} />
+                        </TouchableOpacity>
+                        <Image source={title} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(15), marginTop: '10%', left:'-20%'}} />
+                    </View>
         <ScrollView style={{height:'200%'}}>
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
               <View>
