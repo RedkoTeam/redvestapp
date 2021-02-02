@@ -2,18 +2,21 @@ import {useNavigation} from "@react-navigation/native";
 import React, {useEffect} from "react";
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
 import back from "../../assets/images/Invest/step4/back.png"
-import Amounttra from "../../assets/images/Invest/step4/Amounttra.png"
-import AccountTotal from "../../assets/images/Invest/step4/AccountTotal.png"
-import title from "../../assets/images/Invest/step4/title.png"
-import Stoploss from "../../assets/images/Invest/step4/Stoploss.png" 
-import next from "../../assets/images/Invest/step4/next.png"
+import amount from "../../assets/images/Invest/step5/Amount.png"
+import freq from "../../assets/images/Invest/step5/Frequency.png"
+import con from "../../assets/images/Invest/step5/Con.png"
+import Stoploss from "../../assets/images/Invest/step5/Stoploss.png" 
+import primary from "../../assets/images/Invest/step5/primary.png"
+import stra from "../../assets/images/Invest/step5/strategy.png"
+import port from "../../assets/images/Invest/step5/port.png"
+import line from "../../assets/images/Invest/step5/Line1.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
 import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
 
-function stepFour() {
+function stepFiveA() {
   const navigation = useNavigation();
   useEffect(()=>{
       let mounted = true;
@@ -28,29 +31,38 @@ function stepFour() {
                                 }}>
                                         <Image source={back} style={{width :widthPercentageToDP('3'), height :heightPercentageToDP('3'), resizeMode:'contain'}} />
                         </TouchableOpacity>
-                        <Image source={title} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(15), marginTop: '10%', left:'-20%'}} />
+                        <Image source={con} style={{resizeMode:'contain',width:widthPercentageToDP(50), height:heightPercentageToDP(15), marginTop: '0%', left:'-70%'}} />
                     </View>
         <ScrollView style={{height:'200%'}}>
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={AccountTotal} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(10), marginLeft:"20%"}} />
+                  <Image source={stra} style={{resizeMode:'contain',width:widthPercentageToDP(23), height:heightPercentageToDP(5)}} />
                 </TouchableOpacity>
                 </View>
+                <Image source={line} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(1)}} />
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={Amounttra} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(5)}}/>
+                  <Image source={port} style={{resizeMode:'contain',width:widthPercentageToDP(23), height:heightPercentageToDP(5)}}/>
                 </TouchableOpacity>
                 </View>
+                <Image source={line} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(1)}} />
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={Stoploss} style={{resizeMode:'contain',width:widthPercentageToDP(20), height:heightPercentageToDP(3)}} />
+                  <Image source={freq} style={{resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(5)}}/>
                 </TouchableOpacity>
                 </View>
+                <Image source={line} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(1)}} />
+                <View>
+                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                  <Image source={Stoploss} style={{resizeMode:'contain',width:widthPercentageToDP(23), height:heightPercentageToDP(3)}} />
+                </TouchableOpacity>
+                </View>
+                
 
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('stepFive')}>
-                  <Image source={next} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
+                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                  <Image source={primary} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),marginTop:'10%'}}/>
                 </TouchableOpacity>
                 </View>
               </View>
@@ -65,4 +77,4 @@ function stepFour() {
   )
 }
 
-export default stepFour
+export default stepFiveA
