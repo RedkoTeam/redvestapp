@@ -18,6 +18,11 @@ import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
+import {enableScreens} from "react-native-screens";
+
+
+enableScreens(false)
+
 
 function stepOne() {
   const navigation = useNavigation();

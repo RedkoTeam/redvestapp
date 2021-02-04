@@ -12,7 +12,9 @@ import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar from "../Navbar/Navbar.js";
 
+
 function HomeScreen() {
+    
     const navigation = useNavigation();
     useEffect(()=>{
         let mounted = true;

@@ -14,6 +14,7 @@ import getStarted from "../../assets/images/onboarding/Get-Started.png";
 
 import {widthPercentageToDP,heightPercentageToDP} from '../../util/scaler';
 
+
 function Onboarding({}){
     const navigation = useNavigation();
     const pagerRef = useRef(null);

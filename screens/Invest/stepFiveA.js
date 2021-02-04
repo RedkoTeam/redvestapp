@@ -4,7 +4,7 @@ import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from
 import back from "../../assets/images/Invest/step4/back.png"
 import amount from "../../assets/images/Invest/step5/Amount.png"
 import freq from "../../assets/images/Invest/step5/Frequency.png"
-import con from "../../assets/images/Invest/step5/Con.png"
+import con from "../../assets/images/Invest/step5/Conta.png"
 import Stoploss from "../../assets/images/Invest/step5/Stoploss.png" 
 import primary from "../../assets/images/Invest/step5/primary.png"
 import stra from "../../assets/images/Invest/step5/strategy.png"
@@ -15,6 +15,12 @@ import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
+import {enableScreens} from "react-native-screens";
+
+
+enableScreens(false)git add 
+
+
 
 function stepFiveA() {
   const navigation = useNavigation();
