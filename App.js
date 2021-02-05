@@ -17,6 +17,7 @@ import stepFive from './screens/Invest/stepFive.js'
 import stepFiveA from './screens/Invest/stepFiveA.js'
 import main from './screens/Invest/main.js'
 import Profile from './screens/Invest/Profile.js'
+import Invest from './screens/Invest/Invest.js'
 
 
 // ONLY STORE NAVIGATION HERE
@@ -44,6 +45,7 @@ function App() {
 <Stack.Screen name="stepFiveA" component={stepFiveA} /> 
 <Stack.Screen name="main" component={main} /> 
 <Stack.Screen name="Profile" component={Profile} /> 
+<Stack.Screen name="Invest" component={Invest} /> 
 
 
 </Stack.Navigator>

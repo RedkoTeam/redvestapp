@@ -82,7 +82,7 @@ function stepOne() {
       </ImageBackground>
       <NavBar_game/>
      </View>
-    git
+
   )
 }
 

@@ -46,7 +46,7 @@ function main() {
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Invest')}>
                   <Image source={as} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(20)}}/>
                 </TouchableOpacity>
                 </View>
