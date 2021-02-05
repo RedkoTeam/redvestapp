@@ -39,7 +39,7 @@ function NavBar_pro({}){
                     <Image source={investt} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('')
+                    navigation.navigate('Profile')
                     }}>
                     <Image source={profileg} style={{ bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}/>
                 </TouchableOpacity>

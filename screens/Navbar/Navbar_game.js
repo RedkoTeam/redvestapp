@@ -39,7 +39,7 @@ function NavBar_game({}){
                     <Image source={investt} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('')
+                    navigation.navigate('Profile')
                     }}>
                     <Image source={profile} style={{ bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}/>
                 </TouchableOpacity>

@@ -15,6 +15,8 @@ import stepThreea from './screens/Invest/stepThreea.js'
 import stepFour from './screens/Invest/stepFour.js'
 import stepFive from './screens/Invest/stepFive.js'
 import stepFiveA from './screens/Invest/stepFiveA.js'
+import main from './screens/Invest/main.js'
+import Profile from './screens/Invest/Profile.js'
 
 
 // ONLY STORE NAVIGATION HERE
@@ -40,6 +42,8 @@ function App() {
 <Stack.Screen name="stepFour" component={stepFour} /> 
 <Stack.Screen name="stepFive" component={stepFive} /> 
 <Stack.Screen name="stepFiveA" component={stepFiveA} /> 
+<Stack.Screen name="main" component={main} /> 
+<Stack.Screen name="Profile" component={Profile} /> 
 
 
 </Stack.Navigator>

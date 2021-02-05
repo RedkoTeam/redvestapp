@@ -18,7 +18,7 @@ import NavBar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
 
 
-enableScreens(false)git add 
+enableScreens(false)
 
 
 

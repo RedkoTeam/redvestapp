@@ -9,7 +9,12 @@ import AItwo from "../../assets/images/Invest/step1/AItwo.png"
 import MACD from "../../assets/images/Invest/step1/MACD.png"
 import RSI from "../../assets/images/Invest/step1/RSI.png"
 import DUAL from "../../assets/images/Invest/step1/DualMa.png"
-import pickStra from "../../assets/images/Invest/step1/pickStra.png"
+import pickStra from "../../assets/images/profile/TotalBalance.png"
+import settings from "../../assets/images/profile/settings.png"
+import cash from "../../assets/images/profile/Cashbalance.png"
+import as from "../../assets/images/profile/activestrat.png"
+import orders from "../../assets/images/profile/orders.png"
+import hist from "../../assets/images/profile/history.png"
 import Threema from "../../assets/images/Invest/step1/Threema.png" 
 import bg from "../../assets/images/HomeScreen/bg.png"
 import loginbtn from "../../assets/images/HomeScreen/login.png"
@@ -19,61 +24,50 @@ import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
-import back from "../../assets/images/Invest/step3a/back.png"
 
 
 enableScreens(false)
 
 
-function stepOne() {
+function Profile() {
   const navigation = useNavigation();
   useEffect(()=>{
       let mounted = true;
   })
   return (
       <View style={{flex: 1}}>  
-      <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>
-      <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 10, marginTop: 5 }}>
-                        <TouchableOpacity onPress={()=>navigation.navigate('main')} style={{
-                                    left:widthPercentageToDP(3),
-                                    top:heightPercentageToDP(3),
-                                }}>
-                                        <Image source={back} style={{width :widthPercentageToDP('3'), height :heightPercentageToDP('3'), resizeMode:'contain'}} />
-                        </TouchableOpacity>
-                        <Image source={pickStra} style={{resizeMode:'contain',width:widthPercentageToDP(75), height:heightPercentageToDP(25), marginBottom: '-20%', left:'-20%'}} />
-                    </View>
-        <ScrollView style={{height:'100%'}}>
+      <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
+      <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 25, marginTop: 5,marginBottom:'-15%' }}>
+      <Image source={pickStra} style={{resizeMode:'contain',width:widthPercentageToDP(50), height:heightPercentageToDP(10), marginTop: 20, marginLeft:'10%'}} />
+              <TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>
+              <Image source={settings} style={{resizeMode: 'contain',width: widthPercentageToDP(7),height: heightPercentageToDP(16)}} />
+              </TouchableOpacity>
+          </View>
+
+
+        <ScrollView style={{height:'200%'}}>
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('stepTwo')}>
-                  <Image source={MACD} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}} />
+                  <Image source={cash} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(8)}} />
                 </TouchableOpacity>
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={DUAL} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
+                  <Image source={as} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={RSI} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}} />
+                  <Image source={orders} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7)}} />
                 </TouchableOpacity>
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={Threema} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
+                  <Image source={hist} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 </View>
-                <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={AIone} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}} />
-                </TouchableOpacity>
-                </View>
-                <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={AItwo} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
-                </TouchableOpacity>
-                </View>
+        
               </View>
               </ScrollView>
 
@@ -82,8 +76,8 @@ function stepOne() {
       </ImageBackground>
       <NavBar_game/>
      </View>
-    git
+    
   )
 }
 
-export default stepOne
+export default Profile

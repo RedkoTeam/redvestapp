@@ -36,7 +36,7 @@ function HomeScreen() {
                   </TouchableOpacity>
                 </View>
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between',padding: 15, marginTop: "10%" }}>
-                <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
+                <TouchableOpacity onPress={() => navigation.navigate('main')}>
                     <Image source={playbtn} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(40)}} />
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
