@@ -45,7 +45,7 @@ function stepOne() {
         <ScrollView style={{height:'100%'}}>
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
               <View>
-                <TouchableOpacity onPress={() => navigation.navigate('stepTwo')}>
+                <TouchableOpacity onPress={() => navigation.navigate('macd')}>
                   <Image source={MACD} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}} />
                 </TouchableOpacity>
                 </View>

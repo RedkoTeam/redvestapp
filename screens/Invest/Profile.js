@@ -53,17 +53,17 @@ function Profile() {
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('ActiveStrategies')}>
                   <Image source={as} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('orders')}>
                   <Image source={orders} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7)}} />
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('history')}>
                   <Image source={hist} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 </View>

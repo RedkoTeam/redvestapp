@@ -6,6 +6,8 @@ import playbtn from "../../assets/images/HomeScreen/playbtn.png"
 import cont from "../../assets/images/HomeScreen/reddollarcon.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
 import loginbtn from "../../assets/images/HomeScreen/login.png"
+import hometxt from "../../assets/images/HomeScreen/hometxt.png"
+import premium from "../../assets/images/HomeScreen/premium.png"
 import signupbtn from "../../assets/images/HomeScreen/signup.png"
 import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
@@ -22,6 +24,7 @@ function HomeScreen() {
     return (
         <View style={{flex: 1}}>  
         <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>
+        <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'space-between', padding: 15, marginTop: 18 }}>
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 15, marginTop: 18 }}>
                   <TouchableOpacity onPress={() => navigation.navigate('')}>
                     <Image source={signupbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}} />
@@ -30,7 +33,7 @@ function HomeScreen() {
                     <Image source={loginbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}}/>
                   </TouchableOpacity>
                 </View>
-                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "5%"  }}>
+                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "5%", marginTop:'5%'  }}>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
                     <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(90), height:heightPercentageToDP(20)}}/>
                   </TouchableOpacity>
@@ -43,7 +46,15 @@ function HomeScreen() {
                     <Image source={investbtn} style={{resizeMode:'contain', width:widthPercentageToDP(45), height:heightPercentageToDP(40)}}/>
                   </TouchableOpacity>
                 </View>
-
+                <View>
+                <Image source={hometxt} style={{resizeMode:'contain', width:widthPercentageToDP(80), height:heightPercentageToDP(40), marginTop:'40%',left:'10%'}}/>
+                <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
+                <Image source={premium} style={{resizeMode:'contain', width:widthPercentageToDP(80), height:heightPercentageToDP(20), marginTop:'-30%',left:'10%'}}/>
+                </TouchableOpacity>
+                </View>
+                </View>
+      
+            
                 
         </ImageBackground>
         <NavBar />

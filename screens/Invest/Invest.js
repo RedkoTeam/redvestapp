@@ -44,7 +44,7 @@ function Invest() {
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
                 
               <View>
-                <TouchableOpacity onPress={() => navigation.navigate('stepTwo')}>
+                <TouchableOpacity onPress={() => navigation.navigate('tickerInfo')}>
                   <Image source={ticker} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(8)}} />
                 </TouchableOpacity>
                 <RNPickerSelect
@@ -76,7 +76,7 @@ function Invest() {
         />
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('typeInfo')}>
                   <Image source={type} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 <RNPickerSelect
@@ -89,7 +89,7 @@ function Invest() {
         />
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('tfInfo')}>
                   <Image source={time} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 <RNPickerSelect
@@ -102,7 +102,7 @@ function Invest() {
         />
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('slInfo')}>
                   <Image source={stoploss} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 <Slider
@@ -119,7 +119,7 @@ function Invest() {
               </View>
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
-                  <Image source={primary} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),marginTop:'10%',left:'5%'}}/>
+                  <Image source={primary} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),marginTop:'10%',left:'7%'}}/>
                 </TouchableOpacity>
                 </View>
        
