@@ -9,6 +9,8 @@ import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_pro from "../Navbar/Navbar_pro.js";
 import {enableScreens} from "react-native-screens";
+import next from "../../assets/images/Invest/step4/next.png"
+import NavBar_game from "../Navbar/Navbar_game";
 
 
 enableScreens(false)
@@ -34,6 +36,11 @@ function threema() {
                   <Image source={hist} style={{resizeMode:'contain',width:widthPercentageToDP(100), height:heightPercentageToDP(7),marginTop:'5%'}}/>
                 </TouchableOpacity>
                 </View>
+                <View>
+                <TouchableOpacity onPress={() => navigation.navigate('stepFive')}>
+                  <Image source={next} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
+                </TouchableOpacity>
+                </View>
      
        
 
@@ -49,7 +56,7 @@ function threema() {
 
               
       </ImageBackground>
-      <NavBar_pro/>
+      <NavBar_game/>
      </View>
     
   )

@@ -50,17 +50,17 @@ function stepOne() {
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('dualma')}>
                   <Image source={DUAL} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('rsi')}>
                   <Image source={RSI} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}} />
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <TouchableOpacity onPress={() => navigation.navigate('threema')}>
                   <Image source={Threema} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
                 </TouchableOpacity>
                 </View>
