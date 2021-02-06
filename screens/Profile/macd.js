@@ -36,7 +36,7 @@ function macd() {
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('stepFive')}>
+                <TouchableOpacity onPress={() => navigation.navigate('stepTwo')}>
                   <Image source={next} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),left:'8%'}}/>
                 </TouchableOpacity>
                 </View>

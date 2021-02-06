@@ -1,5 +1,5 @@
 import {useNavigation} from "@react-navigation/native";
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
 import back from "../../assets/images/Invest/step4/back.png"
 import Amounttra from "../../assets/images/Invest/step4/Amounttra.png"
@@ -13,13 +13,15 @@ import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
-
+import Slider from '@react-native-community/slider';
 
 enableScreens(false)
 
 
 function stepFour() {
   const navigation = useNavigation();
+  const [sliderValue1, setSliderValue1] = useState(15);
+  const [sliderValue2, setSliderValue2] = useState(15);
   useEffect(()=>{
       let mounted = true;
   })
@@ -46,11 +48,29 @@ function stepFour() {
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
                   <Image source={Amounttra} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(5)}}/>
                 </TouchableOpacity>
+                <Slider
+          maximumValue={100}
+          minimumValue={0}
+          minimumTrackTintColor="#78AC43"
+          maximumTrackTintColor="#000000"
+          step={1}
+          value={sliderValue1}
+          onValueChange={(sliderValue1) => setSliderValue1(sliderValue1)}
+        />
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
                   <Image source={Stoploss} style={{resizeMode:'contain',width:widthPercentageToDP(20), height:heightPercentageToDP(3)}} />
                 </TouchableOpacity>
+                <Slider
+          maximumValue={100}
+          minimumValue={0}
+          minimumTrackTintColor="#EB5757"
+          maximumTrackTintColor="#000000"
+          step={1}
+          value={sliderValue2}
+          onValueChange={(sliderValue2) => setSliderValue2(sliderValue2)}
+        />
                 </View>
 
                 <View>

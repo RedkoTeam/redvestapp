@@ -19,18 +19,42 @@ import Threema from "../../assets/images/Invest/step1/Threema.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
 import loginbtn from "../../assets/images/HomeScreen/login.png"
 import signupbtn from "../../assets/images/HomeScreen/signup.png"
-import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
+import { Dimensions } from "react-native";
+import {LineChart} from "react-native-chart-kit";
 
+const chartConfig = {
+  backgroundGradientFrom: "#1E2923",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#08130D",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(118, 159, 35,  ${opacity})`,
+  strokeWidth: 2, // optional, default 3
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false // optional
+};
+
+const screenWidth = Dimensions.get("window").width;
 
 enableScreens(false)
 
 
 function Profile() {
   const navigation = useNavigation();
+  const data = {
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 123],
+        color: (opacity = 1) => `rgba(118, 159, 35, ${opacity})`, // optional
+        strokeWidth: 4 // optional
+      }
+    ],
+    //legend: [""] // optional
+  };
   useEffect(()=>{
       let mounted = true;
   })
@@ -39,6 +63,16 @@ function Profile() {
       <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
       <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 25, marginTop: 5,marginBottom:'-15%' }}>
       <Image source={pickStra} style={{resizeMode:'contain',width:widthPercentageToDP(50), height:heightPercentageToDP(10), marginTop: 20, marginLeft:'10%'}} />
+      <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 25, marginTop: '20%',marginBottom:'10%', right:'80%' }}>
+      <LineChart
+  data={data}
+  width={screenWidth}
+  height={256}
+  verticalLabelRotation={30}
+  chartConfig={chartConfig}
+  bezier
+/>
+</View>
               <TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>
               <Image source={settings} style={{resizeMode: 'contain',width: widthPercentageToDP(7),height: heightPercentageToDP(16)}} />
               </TouchableOpacity>

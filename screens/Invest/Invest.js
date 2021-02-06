@@ -68,7 +68,7 @@ function Invest() {
                 <Slider
           maximumValue={100}
           minimumValue={0}
-          minimumTrackTintColor="#307ecc"
+          minimumTrackTintColor="#78AC43"
           maximumTrackTintColor="#000000"
           step={1}
           value={sliderValue1}
@@ -108,7 +108,7 @@ function Invest() {
                 <Slider
           maximumValue={100}
           minimumValue={0}
-          minimumTrackTintColor="#307ecc"
+          minimumTrackTintColor="#EB5757"
           maximumTrackTintColor="#000000"
           step={1}
           value={sliderValue2}

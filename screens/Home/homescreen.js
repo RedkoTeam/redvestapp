@@ -10,9 +10,11 @@ import hometxt from "../../assets/images/HomeScreen/hometxt.png"
 import premium from "../../assets/images/HomeScreen/premium.png"
 import signupbtn from "../../assets/images/HomeScreen/signup.png"
 import { Dimensions } from 'react-native';
+import { ProgressBar, Colors } from 'react-native-paper';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar from "../Navbar/Navbar.js";
+
 
 
 function HomeScreen() {
@@ -20,6 +22,7 @@ function HomeScreen() {
     const navigation = useNavigation();
     useEffect(()=>{
         let mounted = true;
+        
     })
     return (
         <View style={{flex: 1}}>  
@@ -36,7 +39,14 @@ function HomeScreen() {
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "5%", marginTop:'5%'  }}>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
                     <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(90), height:heightPercentageToDP(20)}}/>
+            
                   </TouchableOpacity>
+                  <ProgressBar
+          fillStyle={{}}
+          backgroundStyle={{backgroundColor: '#cccccc', borderRadius: 2}}
+          style={{marginTop: 10, width: 300}}
+          progress={0.5}
+        />
                 </View>
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between',padding: 15, marginTop: "10%" }}>
                 <TouchableOpacity onPress={() => navigation.navigate('main')}>
