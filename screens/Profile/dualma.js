@@ -2,12 +2,12 @@ import {useNavigation} from "@react-navigation/native";
 import React, {useEffect} from "react";
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
 import back from "../../assets/images/Invest/step4/back.png"
-import hist from "../../assets/images/info/dualma.png"
+import hist from "../../assets/images/Info/dualma.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
 import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
-import NavBar_pro from "../Navbar/Navbar_pro.js";
+import NavBar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
 import next from "../../assets/images/Invest/step4/next.png"
 
@@ -22,7 +22,7 @@ function dualma() {
   })
   return (
       <View style={{flex: 1}}>  
-      <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
+       <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
       
       <View style={{ padding:18,marginTop:'15%', justifyContent:'center', right:'5%'}}>
       <TouchableOpacity onPress={()=>navigation.navigate('Profile')} style={{
@@ -31,13 +31,13 @@ function dualma() {
                                 }}>
                                         <Image source={back} style={{width :widthPercentageToDP('3'), height :heightPercentageToDP('3'), resizeMode:'contain'}} />
                         </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('orders')}>
-                  <Image source={hist} style={{resizeMode:'contain',width:widthPercentageToDP(100), height:heightPercentageToDP(7),marginTop:'5%'}}/>
-                </TouchableOpacity>
+               ]
+                  <Image source={hist} style={{resizeMode:'contain',width:widthPercentageToDP(70), height:heightPercentageToDP(70),marginTop:'-35%',left:'20%'}}/>
+               
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('stepFive')}>
-                  <Image source={next} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11)}}/>
+                <TouchableOpacity onPress={() => navigation.navigate('stepTwo')}>
+                  <Image source={next} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),left:'8%'}}/>
                 </TouchableOpacity>
                 </View>
      
