@@ -19,6 +19,7 @@ import {enableScreens} from "react-native-screens";
 import RNPickerSelect from 'react-native-picker-select';
 import Slider from '@react-native-community/slider';
 import primary from "../../assets/images/Invest/step5/investbtn.png"
+import * as firebase from "firebase";
 
 
 
@@ -26,13 +27,36 @@ import primary from "../../assets/images/Invest/step5/investbtn.png"
 enableScreens(false)
 
 
-function Invest() {
+function Invest({route}) {
   const navigation = useNavigation();
   const [sliderValue1, setSliderValue1] = useState(15);
   const [sliderValue2, setSliderValue2] = useState(15);
+  const [sTicker, setsTicker] = useState('')
+  const [sPrice, setsPrice] = useState('')
+  const [sQty, setsQty] = useState('')
+  const [oType, setoType] = useState('')
+  const [tForce, settForce] = useState('')
+  const [sLoss, setsLoss] = useState('')
   useEffect(()=>{
       let mounted = true;
   })
+
+
+  const profileUpload = () => {
+    db.collection('users').doc(firebase.auth().currentUser.uid).set({
+        stockTicker: sTicker,
+        stockPrice: sPrice,
+        stockQty: sQty,
+        orderType: oType,
+        timeForce: tForce,
+        stopLoss: sLoss,
+    }, {merge: true})
+        .then(() => {
+            navigation.navigate('')
+        })
+}
+
+
   return (
       <View style={{flex: 1}}>  
       <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
@@ -47,8 +71,9 @@ function Invest() {
                 <TouchableOpacity onPress={() => navigation.navigate('tickerInfo')}>
                   <Image source={ticker} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(8)}} />
                 </TouchableOpacity>
+                {/*stock ticker should show after being selected , values should be taken from an equation */}
                 <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={sTicker => setsTicker(sTicker)}
             items={[
                 { label: 'Apple', value: 'APPL' },
                 { label: 'Baseball', value: 'baseball' },
@@ -71,8 +96,8 @@ function Invest() {
           minimumTrackTintColor="#78AC43"
           maximumTrackTintColor="#000000"
           step={1}
-          value={sliderValue1}
-          onValueChange={(sliderValue1) => setSliderValue1(sliderValue1)}
+          value={sQty}
+          onValueChange={(sQty) => setsQty(sQty)}
         />
                 </View>
                 <View>
@@ -80,7 +105,7 @@ function Invest() {
                   <Image source={type} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={(oType) => setoType(oType)}
             items={[
                 { label: 'Apple', value: 'APPL' },
                 { label: 'Baseball', value: 'baseball' },
@@ -93,7 +118,7 @@ function Invest() {
                   <Image source={time} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(7)}}/>
                 </TouchableOpacity>
                 <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={(tForce) => settForce(tForce)}
             items={[
                 { label: 'Apple', value: 'APPL' },
                 { label: 'Baseball', value: 'baseball' },
@@ -111,8 +136,8 @@ function Invest() {
           minimumTrackTintColor="#EB5757"
           maximumTrackTintColor="#000000"
           step={1}
-          value={sliderValue2}
-          onValueChange={(sliderValue2) => setSliderValue2(sliderValue2)}
+          value={sLoss}
+          onValueChange={(sLoss) => setsLoss(sLoss)}
         />
                 </View>
         
