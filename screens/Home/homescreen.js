@@ -36,17 +36,20 @@ function HomeScreen() {
                     <Image source={loginbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}}/>
                   </TouchableOpacity>
                 </View>
+                <ProgressBar
+                color={Colors.green500}
+          fillStyle={{}}
+          backgroundStyle={{backgroundColor: '#78AC43', borderRadius: 2}}
+          style={{ width: 300, height:1, position: 'absolute', marginTop:'35%', marginBottom:  "3%", marginLeft:'10%',backgroundColor: '#'}}
+          progress={0.5}
+        />
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "5%", marginTop:'5%'  }}>
+      
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
                     <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(90), height:heightPercentageToDP(20)}}/>
             
                   </TouchableOpacity>
-                  <ProgressBar
-          fillStyle={{}}
-          backgroundStyle={{backgroundColor: '#cccccc', borderRadius: 2}}
-          style={{marginTop: 10, width: 300}}
-          progress={0.5}
-        />
+               
                 </View>
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between',padding: 15, marginTop: "10%" }}>
                 <TouchableOpacity onPress={() => navigation.navigate('main')}>
