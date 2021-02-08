@@ -25,7 +25,7 @@ function threema() {
      <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
       
       <View style={{ padding:18,marginTop:'15%', justifyContent:'center', right:'5%'}}>
-      <TouchableOpacity onPress={()=>navigation.navigate('Profile')} style={{
+      <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')} style={{
                                     left:widthPercentageToDP(3),
                                     top:heightPercentageToDP(0),
                                 }}>

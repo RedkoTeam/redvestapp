@@ -24,12 +24,12 @@ function NavBar_pro({}){
               <Image source={navbarcont} style={{ position: 'absolute', bottom: heightPercentageToDP(-3), width: widthPercentageToDP('100')}} />
             <View style={{flexDirection:'row', width:'100%', justifyContent: 'center', paddingBottom:10}}>
             <TouchableOpacity onPress={() => { 
-                    navigation.navigate('Homecreen')
+                    navigation.navigate('HomeScreen')
                 }}>
                     <Image source={home} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15) }} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => { 
-                    navigation.navigate('stepOne')
+                    navigation.navigate('Invest')
                 }}>
                     <Image source={game} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}} />
                 </TouchableOpacity>

@@ -14,7 +14,7 @@ import bg from "../../assets/images/HomeScreen/bg.png"
 import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
-import NavBar_game from "../Navbar/Navbar_game.js";
+import Navbar_invest from "../Navbar/Navbar_invest.js";
 import {enableScreens} from "react-native-screens";
 
 
@@ -76,7 +76,7 @@ function stepFive() {
 
               
       </ImageBackground>
-      <NavBar_game/>
+      <Navbar_invest/>
      </View>
     
   )

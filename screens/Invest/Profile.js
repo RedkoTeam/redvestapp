@@ -21,10 +21,60 @@ import loginbtn from "../../assets/images/HomeScreen/login.png"
 import signupbtn from "../../assets/images/HomeScreen/signup.png"
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
-import NavBar_game from "../Navbar/Navbar_game.js";
+import NavBar_pro from "../Navbar/Navbar_pro.js";
 import {enableScreens} from "react-native-screens";
 import { Dimensions } from "react-native";
+//import alpacaApi from '../services/alpaca'
 import {LineChart} from "react-native-chart-kit";
+
+{/*class DashboardScreen extends React.Component {
+
+  static navigationOptions = {
+      title: 'Dashboard'
+  }
+
+  constructor(props) {
+      super(props)
+
+      this.state = {
+          buying_power: 0,
+          cash: 0,
+          long_market_value: 0,
+          portfolio_value: 0,
+      }
+  }
+
+  componentDidMount() {
+      console.log('fetch data from alpaca')
+
+      const api = alpacaApi()
+
+      api.getAccount().then((response) => {
+          console.log(response)
+
+          if (response.ok) {
+              this.setState({
+                  buying_power: response.data.buying_power,
+                  long_market_value: response.data.long_market_value,
+                  portfolio_value: response.data.portfolio_value,
+                  cash: response.data.cash
+              })
+          }
+      })
+  }            <View>
+                <Text>Buying Power</Text>
+                <Text>{this.state.buying_power}</Text>
+                <Text>Long Market Value</Text>
+                <Text>{this.state.long_market_value}</Text>
+                <Text>Portfolio Value</Text>
+                <Text>{this.state.portfolio_value}</Text>
+                <Text>Cash</Text>
+                <Text>{this.state.cash}</Text>
+            </View>
+
+
+
+*/}
 
 const chartConfig = {
   backgroundGradientFrom: "#1E2923",
@@ -108,7 +158,7 @@ function Profile() {
 
               
       </ImageBackground>
-      <NavBar_game/>
+      <NavBar_pro/>
      </View>
     
   )

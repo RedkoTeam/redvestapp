@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "651982342789",
+    "project_id": "redvest-48588",
+    "storage_bucket": "redvest-48588.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651982342789:android:ec1141b1b3f1ec030c37ec",
+        "android_client_info": {
+          "package_name": "com.redko.redvest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651982342789-fs3i0adj2hi07d1veqtg2sbk70kakgfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHFbaAJXBKo-goNiVCmE3IFwig0SfQ8cs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651982342789-fs3i0adj2hi07d1veqtg2sbk70kakgfa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651982342789-tvffhtjargpiv5kn1a1sq4pt0iun08sj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.redko.redvest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -29,12 +29,12 @@ function NavBar_game({}){
                     <Image source={home} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain', width:widthPercentageToDP(27), height:heightPercentageToDP(15) }} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => { 
-                    navigation.navigate('')
+                    navigation.navigate('stepOne')
                 }}>
                     <Image source={gameg} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() =>{
-                    navigation.navigate('')
+                    navigation.navigate('Invest')
                 }}>
                     <Image source={investt} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
                 </TouchableOpacity>

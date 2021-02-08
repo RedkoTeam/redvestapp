@@ -26,7 +26,7 @@ function ActiveStrategies() {
     
     <View style={{ padding:18,marginTop:'15%', justifyContent:'center', right:'5%'}}>
     <TouchableOpacity onPress={()=>navigation.navigate('Profile')} style={{
-                                  left:widthPercentageToDP(3),
+                                  left:widthPercentageToDP(6),
                                   top:heightPercentageToDP(0),
                               }}>
                                       <Image source={back} style={{width :widthPercentageToDP('3'), height :heightPercentageToDP('3'), resizeMode:'contain'}} />

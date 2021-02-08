@@ -2,6 +2,7 @@ import {useNavigation} from "@react-navigation/native";
 import React, {useEffect,useState} from "react";
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView,} from "react-native";
 import price from "../../assets/images/manual/price.png"
+import db from "../../util/firestore/firestore";
 import qty from "../../assets/images/manual/qty.png"
 import stoploss from "../../assets/images/manual/stoploss.png"
 import ticker from "../../assets/images/manual/ticker.png"
@@ -20,6 +21,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import Slider from '@react-native-community/slider';
 import primary from "../../assets/images/Invest/step5/investbtn.png"
 import * as firebase from "firebase";
+//import alpacaApi from '../services/alpaca';
 
 
 
@@ -29,8 +31,6 @@ enableScreens(false)
 
 function Invest({route}) {
   const navigation = useNavigation();
-  const [sliderValue1, setSliderValue1] = useState(15);
-  const [sliderValue2, setSliderValue2] = useState(15);
   const [sTicker, setsTicker] = useState('')
   const [sPrice, setsPrice] = useState('')
   const [sQty, setsQty] = useState('')
@@ -143,11 +143,12 @@ function Invest({route}) {
         
               </View>
               <View>
-                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                <TouchableOpacity onPress={() => profileUpload()}>
                   <Image source={primary} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),marginTop:'10%',left:'7%'}}/>
                 </TouchableOpacity>
                 </View>
        
+
               </ScrollView>
 
               
