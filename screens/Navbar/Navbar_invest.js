@@ -8,8 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useRoute} from '@react-navigation/native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler'
 import home from "../../assets/images/Navbar/Tab1.png"
-import game from "../../assets/images/Navbar/Tab2.png"
-import investtg from "../../assets/images/Navbar/Tab4g.png"
+import investtg from "../../assets/images/Navbar/Tab2g.png"
+import game from "../../assets/images/Navbar/Tab4.png"
 import profile from "../../assets/images/Navbar/Tab3.png"
 import navbarcont from "../../assets/images/Navbar/Home.png"
 
@@ -21,7 +21,7 @@ function NavBar_invest({}){
     
     return(
         <View style={{ backgroundColor:'#070631',  alignItems:'center', alignContent:'center',width: widthPercentageToDP('100') }}>
-              <Image source={navbarcont} style={{ position: 'absolute', bottom: heightPercentageToDP(-3), width: widthPercentageToDP('100')}} />
+              <Image source={navbarcont} style={{ position: 'absolute', bottom: heightPercentageToDP(4), width: widthPercentageToDP('100')}} />
             <View style={{flexDirection:'row', width:'100%', justifyContent: 'center', paddingBottom:10}}>
             <TouchableOpacity onPress={() => { 
                     navigation.navigate('HomeScreen')
@@ -31,12 +31,12 @@ function NavBar_invest({}){
                 <TouchableOpacity onPress={() => { 
                     navigation.navigate('Invest')
                 }}>
-                    <Image source={game} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}} />
+                    <Image source={investtg} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() =>{
                     navigation.navigate('stepOne')
                 }}>
-                    <Image source={investtg} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
+                    <Image source={game} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')

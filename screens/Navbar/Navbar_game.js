@@ -7,10 +7,10 @@ import { Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useRoute} from '@react-navigation/native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler'
-import home from "../../assets/images/Navbar/Tab1.png"
-import gameg from "../../assets/images/Navbar/Tab2g.png"
-import investt from "../../assets/images/Navbar/Tab4.png"
+import investt from "../../assets/images/Navbar/Tab2.png"
+import gameg from "../../assets/images/Navbar/Tab4g.png"
 import profile from "../../assets/images/Navbar/Tab3.png"
+import home from "../../assets/images/Navbar/Tab1.png"
 import navbarcont from "../../assets/images/Navbar/Home.png"
 
 
@@ -29,14 +29,14 @@ function NavBar_game({}){
                     <Image source={home} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain', width:widthPercentageToDP(27), height:heightPercentageToDP(15) }} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => { 
-                    navigation.navigate('stepOne')
-                }}>
-                    <Image source={gameg} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() =>{
                     navigation.navigate('Invest')
                 }}>
-                    <Image source={investt} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
+                    <Image source={investt} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() =>{
+                    navigation.navigate('stepOne')
+                }}>
+                    <Image source={gameg} style={{bottom: heightPercentageToDP('13'),resizeMode:'contain',width:widthPercentageToDP(27), height:heightPercentageToDP(15)}}  />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')

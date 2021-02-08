@@ -21,6 +21,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import Slider from '@react-native-community/slider';
 import primary from "../../assets/images/Invest/step5/investbtn.png"
 import * as firebase from "firebase";
+import NavBar_invest from "../Navbar/Navbar_invest";
 //import alpacaApi from '../services/alpaca';
 
 
@@ -153,7 +154,7 @@ function Invest({route}) {
 
               
       </ImageBackground>
-      <NavBar_game/>
+      <NavBar_invest/>
      </View>
     
   )

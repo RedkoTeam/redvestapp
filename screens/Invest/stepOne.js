@@ -17,9 +17,10 @@ import signupbtn from "../../assets/images/HomeScreen/signup.png"
 import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
-import Navbar_invest from "../Navbar/Navbar_invest.js";
+import Navbar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
 import back from "../../assets/images/Invest/step3a/back.png"
+import NavBar_game from "../Navbar/Navbar_game";
 
 
 enableScreens(false)
@@ -80,7 +81,7 @@ function stepOne() {
 
               
       </ImageBackground>
-      <Navbar_invest/>
+      <NavBar_game/>
      </View>
 
   )
