@@ -51,12 +51,12 @@ function HomeScreen() {
                   </TouchableOpacity>
                
                 </View>
-                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between',padding: 15, marginTop: "10%" }}>
+                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between',padding: 15, marginTop: "13%" }}>
                 <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                    <Image source={playbtn} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(40)}} />
+                    <Image source={playbtn} style={{resizeMode:'contain',width:widthPercentageToDP(41), height:heightPercentageToDP(40)}} />
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
-                    <Image source={investbtn} style={{resizeMode:'contain', width:widthPercentageToDP(45), height:heightPercentageToDP(40)}}/>
+                    <Image source={investbtn} style={{resizeMode:'contain', width:widthPercentageToDP(41), height:heightPercentageToDP(40)}}/>
                   </TouchableOpacity>
                 </View>
                 <View>
