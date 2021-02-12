@@ -62,7 +62,7 @@ function Invest({route}) {
       <View style={{flex: 1}}>  
       <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>      
       <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 25, marginTop: 5,marginBottom:'-15%' }}>
-      <Image source={title} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(10), marginTop: 20, marginLeft:'0%'}} />
+      <Image source={title} style={{resizeMode:'contain',width:widthPercentageToDP(80), height:heightPercentageToDP(10), marginTop: '3%', marginLeft:'0%'}} />
       
           </View>
         <ScrollView style={{height:'200%'}}>
@@ -70,7 +70,7 @@ function Invest({route}) {
                 
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('tickerInfo')}>
-                  <Image source={ticker} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(8)}} />
+                  <Image source={ticker} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(8),marginBottom:heightPercentageToDP(1)}} />
                 </TouchableOpacity>
                 {/*stock ticker should show after being selected , values should be taken from an equation */}
                 <RNPickerSelect
@@ -84,12 +84,12 @@ function Invest({route}) {
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={price} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}}/>
+                  <Image source={price} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5),marginBottom:heightPercentageToDP(1)}}/>
                 </TouchableOpacity>
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={qty} style={{resizeMode:'contain',width:widthPercentageToDP(9), height:heightPercentageToDP(5)}} />
+                  <Image source={qty} style={{resizeMode:'contain',width:widthPercentageToDP(9), height:heightPercentageToDP(5),marginBottom:heightPercentageToDP(1)}} />
                 </TouchableOpacity>
                 <Slider
           maximumValue={100}
@@ -103,7 +103,7 @@ function Invest({route}) {
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('typeInfo')}>
-                  <Image source={type} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7)}}/>
+                  <Image source={type} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7),marginBottom:heightPercentageToDP(1)}}/>
                 </TouchableOpacity>
                 <RNPickerSelect
             onValueChange={(oType) => setoType(oType)}
@@ -116,7 +116,7 @@ function Invest({route}) {
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('tfInfo')}>
-                  <Image source={time} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(7)}}/>
+                  <Image source={time} style={{resizeMode:'contain',width:widthPercentageToDP(45), height:heightPercentageToDP(7),marginBottom:heightPercentageToDP(1)}}/>
                 </TouchableOpacity>
                 <RNPickerSelect
             onValueChange={(tForce) => settForce(tForce)}
@@ -129,7 +129,7 @@ function Invest({route}) {
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('slInfo')}>
-                  <Image source={stoploss} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7)}}/>
+                  <Image source={stoploss} style={{resizeMode:'contain',width:widthPercentageToDP(40), height:heightPercentageToDP(7),marginBottom:heightPercentageToDP(1)}}/>
                 </TouchableOpacity>
                 <Slider
           maximumValue={100}
@@ -145,7 +145,7 @@ function Invest({route}) {
               </View>
               <View>
                 <TouchableOpacity onPress={() => profileUpload()}>
-                  <Image source={primary} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(11),marginTop:'10%',left:'7%'}}/>
+                  <Image source={primary} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(7),marginTop:'3%',left:'7%'}}/>
                 </TouchableOpacity>
                 </View>
        
