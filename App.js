@@ -29,8 +29,8 @@ import macd from './screens/Profile/macd.js'
 import dualma from './screens/Profile/dualma.js'
 import threema from './screens/Profile/threema.js'
 import rsi from './screens/Profile/threema.js'
-import SignUp from './screens/SignUp/SignUp.js'
-import Login from './screens/SignUp/Login.js'
+import SignUp from './screens/SignUp/signup.js'
+import Login from './screens/SignUp/login.js'
 
 
 
