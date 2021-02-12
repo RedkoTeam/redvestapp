@@ -1,7 +1,7 @@
 import {useNavigation} from "@react-navigation/native";
 import React, {useEffect} from "react";
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
-import back from "../../assets/images/Invest/step4/back.png"
+import back from "../../assets/images/signup/SignIn.png"
 import hist from "../../assets/images/Info/dualma.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
 import { Dimensions } from 'react-native';
@@ -9,7 +9,7 @@ import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
-import next from "../../assets/images/Invest/step4/next.png"
+import next from "../../assets/images/signup/signinbtn.png"
 
 
 enableScreens(false)

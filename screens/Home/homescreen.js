@@ -31,10 +31,10 @@ function HomeScreen() {
         <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'space-between', padding: 15, marginTop: 18 }}>
        
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 15, marginTop: 18 }}>
-                  <TouchableOpacity onPress={() => navigation.navigate('')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                     <Image source={signupbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}} />
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => navigation.navigate('')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                     <Image source={loginbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}}/>
                   </TouchableOpacity>
                 </View>
