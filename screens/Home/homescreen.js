@@ -27,7 +27,9 @@ function HomeScreen() {
     return (
         <View style={{flex: 1}}>  
         <ImageBackground source={bg} style={{width:widthPercentageToDP(100), height:heightPercentageToDP(100)}}>
+        <ScrollView >
         <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'space-between', padding: 15, marginTop: 18 }}>
+       
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between', padding: 15, marginTop: 18 }}>
                   <TouchableOpacity onPress={() => navigation.navigate('')}>
                     <Image source={signupbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}} />
@@ -40,10 +42,10 @@ function HomeScreen() {
                 color={Colors.green500}
           fillStyle={{}}
           backgroundStyle={{backgroundColor: '#78AC43', borderRadius: 2}}
-          style={{ width: 300, height:1, position: 'absolute', marginTop:'35%', marginBottom:  "3%", marginLeft:'10%',backgroundColor: '#'}}
+          style={{ width: widthPercentageToDP(67), height:15, position: 'absolute', marginTop:heightPercentageToDP(15), marginLeft:widthPercentageToDP(13), backgroundColor: '#FFFFFF',padding:widthPercentageToDP(1)}}
           progress={0.5}
         />
-                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "5%", marginTop:'5%'  }}>
+                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "1%", marginTop:'1%'  }}>
       
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
                     <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(90), height:heightPercentageToDP(20)}}/>
@@ -51,22 +53,23 @@ function HomeScreen() {
                   </TouchableOpacity>
                
                 </View>
-                <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'space-between',padding: 15, marginTop: "13%" }}>
+                <View style={{  flex: 1, flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
                 <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                    <Image source={playbtn} style={{resizeMode:'contain',width:widthPercentageToDP(41), height:heightPercentageToDP(40)}} />
+                    <Image source={playbtn} style={{resizeMode:'contain',width:widthPercentageToDP(41), marginRight:widthPercentageToDP(4),height:heightPercentageToDP(20)}} />
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
-                    <Image source={investbtn} style={{resizeMode:'contain', width:widthPercentageToDP(41), height:heightPercentageToDP(40)}}/>
+                    <Image source={investbtn} style={{resizeMode:'contain', width:widthPercentageToDP(41), height:heightPercentageToDP(20)}}/>
                   </TouchableOpacity>
                 </View>
-                <View>
-                <Image source={hometxt} style={{resizeMode:'contain', width:widthPercentageToDP(80), height:heightPercentageToDP(40), marginTop:'40%',left:'10%'}}/>
+                <View style={{justifyContent: 'center'}} >
+                <Image source={hometxt} style={{resizeMode:'contain', width:widthPercentageToDP(77), height:heightPercentageToDP(15), marginTop:'2%',left:'10%'}}/>
                 <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
-                <Image source={premium} style={{resizeMode:'contain', width:widthPercentageToDP(80), height:heightPercentageToDP(20), marginTop:'-30%',left:'10%'}}/>
+                <Image source={premium} style={{resizeMode:'contain', width:widthPercentageToDP(80), height:heightPercentageToDP(20), marginTop:'3%',left:'10%'}}/>
                 </TouchableOpacity>
                 </View>
+               
                 </View>
-      
+                </ScrollView>
             
                 
         </ImageBackground>
