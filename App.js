@@ -29,6 +29,9 @@ import macd from './screens/Profile/macd.js'
 import dualma from './screens/Profile/dualma.js'
 import threema from './screens/Profile/threema.js'
 import rsi from './screens/Profile/threema.js'
+import SignUp from './screens/SignUp/SignUp.js'
+import Login from './screens/SignUp/Login.js'
+
 
 
 
@@ -69,6 +72,8 @@ function App() {
 <Stack.Screen name="dualma" component={dualma} /> 
 <Stack.Screen name="threema" component={threema} /> 
 <Stack.Screen name="ActiveStrategies" component={ActiveStrategies} /> 
+<Stack.Screen name="SignUp" component={SignUp} /> 
+<Stack.Screen name="Login" component={Login} /> 
 
 
 </Stack.Navigator>
