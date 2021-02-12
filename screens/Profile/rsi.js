@@ -31,7 +31,7 @@ function rsi() {
                                 }}>
                                         <Image source={back} style={{width :widthPercentageToDP('3'), height :heightPercentageToDP('3'), resizeMode:'contain'}} />
                         </TouchableOpacity>
-               ]
+               
                   <Image source={hist} style={{resizeMode:'contain',width:widthPercentageToDP(70), height:heightPercentageToDP(70),marginTop:'-35%',left:'20%'}}/>
                
                 </View>
