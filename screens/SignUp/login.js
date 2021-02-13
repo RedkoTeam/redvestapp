@@ -7,11 +7,8 @@ import emailtxt from "../../assets/images/signup/Email.png"
 import passwordtxt from "../../assets/images/signup/Password.png"
 import forgottxt from "../../assets/images/signup/Forgot.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
-import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
-import NavBar_game from "../Navbar/Navbar_game.js";
-import {enableScreens} from "react-native-screens";
 import next from "../../assets/images/signup/signinbtn.png"
 
 

@@ -8,11 +8,20 @@ import next from "../../assets/images/Invest/step3/next.png"
 import title from "../../assets/images/Invest/step3/title.png"
 import totalInv from "../../assets/images/Invest/step3/totalInv.png" 
 import bg from "../../assets/images/HomeScreen/bg.png"
-import { Dimensions } from 'react-native';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import Navbar_game from "../Navbar/Navbar_game.js";
 import {enableScreens} from "react-native-screens";
+import aapl from "../../assets/images/stocks/Appl.png"
+import goog from "../../assets/images/stocks/GOOG.png"
+import tsla from "../../assets/images/stocks/TSLA.png"
+import snap from "../../assets/images/stocks/SNAP.png"
+import nflx from "../../assets/images/stocks/NFLX.png"
+import msft from "../../assets/images/stocks/MSFT.png"
+import amzn from "../../assets/images/stocks/AMZN.png"
+import sne from "../../assets/images/stocks/SNE.png"
+import pick from "../../assets/images/stocks/Pick.png"
+
 
 
 enableScreens(false)
@@ -39,8 +48,23 @@ function stepThree() {
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                  <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(40)}} />
+                  <Image source={cont} style={{position:'absolute',resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(40)}} />
                 </TouchableOpacity>
+                <View style={{  flex: 1, flexDirection: 'row', width: '100%', justifyContent: 'space-evenly',marginLeft:'-5%' }}>
+                <Image source={aapl} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(0)}} />
+                <Image source={snap} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(0)}} />
+                <Image source={amzn} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(0)}} />
+                </View>
+                <View style={{  flex: 1, flexDirection: 'row', width: '100%', justifyContent: 'center', justifyContent: 'space-evenly' ,marginLeft:'-5%' }}>
+                <Image source={nflx} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(1)}} />
+                <Image source={sne} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(1)}} />
+                <Image source={msft} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(1)}} />
+                </View>
+                <View style={{  flex: 1, flexDirection: 'row', width: '100%', justifyContent: 'center', justifyContent: 'space-evenly',marginLeft:'-5%'  }}>
+                <Image source={goog} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(1)}} />
+                <Image source={tsla} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(1)}} />
+                <Image source={pick} style={{width :widthPercentageToDP('13'), height :heightPercentageToDP('13'), resizeMode:'contain',marginTop: heightPercentageToDP(1)}} />
+                </View>
                 </View>
                 <View>
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
