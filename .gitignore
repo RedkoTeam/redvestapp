@@ -9,5 +9,12 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+GoogleService-Info.plist
+
+# dotenv environment variables file
+.env
+
 # macOS
 .DS_Store

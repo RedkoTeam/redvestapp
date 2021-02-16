@@ -19,10 +19,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.redko.redvest"
+      "bundleIdentifier": "com.redko.redvest",
+      "googleServicesFile": "./firebase/GoogleService-Info.plist",
+      "supportsTablet": true
     },
     "android": {
+      "package": "com.redko.redvest",
+      "googleServicesFile": "./firebase/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
