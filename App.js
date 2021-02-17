@@ -1,5 +1,6 @@
 'use strict';
 import React from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
 import { DataProvider } from 'redvest/contexts/DataContext';
 import NavigationContainer from 'redvest/navigators/NavigationContainer';

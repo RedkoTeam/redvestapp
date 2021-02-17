@@ -5,7 +5,7 @@ import firebase from 'firebase';
 
 const DataContext = React.createContext();
 
-export function AuthProvider({ children }) {
+export function DataProvider({ children }) {
   const [db, setDb] = useState(null);
 
   useEffect(() => {
