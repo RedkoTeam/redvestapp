@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
+import { DataProvider } from 'redvest/contexts/DataContext';
 import NavigationContainer from 'redvest/navigators/NavigationContainer';
 
 import firebase from 'firebase';
@@ -41,7 +42,9 @@ function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer />
+      <DataProvider>
+        <NavigationContainer />
+      </DataProvider>
     </AuthProvider>
   );
 }
