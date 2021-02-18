@@ -1,6 +1,15 @@
 import { Platform, StyleSheet } from 'react-native';
 import { widthPercentageToDP, heightPercentageToDP } from 'redvest/util/scaler';
 
+export const colors = {
+  primary: '#78AC43',
+  redError: '#EB5757',
+  offWhite: '#E3E5E5',
+  mediumGrey: '#C6CACC',
+  darkGrey: '#5E6366',
+  offBlack: '#1F1F1F',
+};
+
 export const textStyles = StyleSheet.create({
   // BIG
   bigRegular: {
@@ -72,30 +81,21 @@ export const textStyles = StyleSheet.create({
   },
 });
 
-export const colors = {
-  background: '#1F1F1F',
-  primary: '#78AC43',
-  redError: '#EB5757',
-  offWhite: '#E3E5E5',
-  mediumGrey: '#C6CACC',
-  darkGrey: '#5E6366',
-  offBlack: '#1F1F1F',
-};
-
 export const headerPaddings = {
   horizontal: widthPercentageToDP(6) + 2,
   vertical: Platform.OS === 'ios' ? 5 : 1,
 };
 
 export const headerStyles = {
-  backgroundColor: 'white',
+  backgroundColor: colors.offBlack,
   shadowColor: 'transparent',
   elevation: 0,
   shadowOpacity: 0,
   borderBottomWidth: 0,
+  headerTitleStyle: { color: colors.offWhite },
 };
 
 export const headerOptions = {
-  headerTitle: false,
+  //headerTitle: false,
   headerStyle: headerStyles,
 };

@@ -7,6 +7,16 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true
-  }
+    "strict": true,
+    "allowJs": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "redvest/*": ["*"]
+    }
+  },
+  "exclude": [
+        "node_modules",
+    ]
 }
