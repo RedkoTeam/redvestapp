@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import DataContext from 'redvest/contexts/DataContext';
+import AuthContext from 'redvest/contexts/AuthContext';
 import * as firebase from 'firebase';
 import { actuatedNormalize } from '../../util/fontScaler';
 import {
@@ -31,7 +31,7 @@ import SaveItemInStorage from '../../util/SaveItemInStorage';
 import GetItemInStorage from '../../util/GetItemInStorage';
 
 function SignUpScreen({ navigation }) {
-  const { db } = useContext(DataContext);
+  const { signUpWithEmailAsync } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
   const [currentError, setCurrentError] = useState('');
 
@@ -163,7 +163,7 @@ function SignUpScreen({ navigation }) {
           <Formik
             validationSchema={SignUpValidationSchema}
             initialValues={{ email: '', password: '', confirmPassword: '' }}
-            onSubmit={(values) => SignUp(values)}
+            onSubmit={signUpWithEmailAsync}
           >
             {({ handleChange, handleBlur, handleSubmit, values, errors, isValid }) => (
               <>
