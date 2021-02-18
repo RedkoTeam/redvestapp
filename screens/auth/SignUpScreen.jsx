@@ -1,7 +1,5 @@
-//import { colors } from 'redvest/styles/styles';
+import { colors } from 'redvest/util/styles';
 import { widthPercentageToDP, heightPercentageToDP } from 'redvest/util/scaler';
-//import PingIcon from 'redvest/icons/PingIcon';
-//import googleLogo from 'redvest/assets/Google_G_Logo.png';
 
 import React, { useContext, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
@@ -21,9 +19,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AUTH_SCHEMA from 'redvest/schema/authSchema';
 
-//import Spacer from 'redvest/components/Spacer';
-//import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
-//import CustomButton from 'redvest/components/CustomButton';
+import Spacer from 'redvest/components/Spacer';
+import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
+import CustomButton from 'redvest/components/CustomButton';
 
 function SignUpScreen() {
   const { signUpWithEmailAsync, signInWithGoogleAsync } = useContext(AuthContext);
@@ -48,37 +46,29 @@ function SignUpScreen() {
         minHeight: Math.round(Dimensions.get('window').height),
       }}
     >
-      {/*<StatusBar backgroundColor={colors.primary} />*/}
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
         contentContainerStyle={{ flex: 1, alignItems: 'center' }}
         style={{ flex: 1, alignItems: 'center' }}
       >
-        {/*<Spacer height={6.5} />*/}
+        <Spacer height={6.5} />
 
-        {/*<EmailInput control={control} errors={errors} />*/}
-        {/*<PasswordInput control={control} errors={errors} />*/}
-        {/*<Spacer height={2} />*/}
+        <EmailInput control={control} errors={errors} />
+        <PasswordInput control={control} errors={errors} />
+        <Spacer height={2} />
 
-        {/*{formState.isSubmitting && (
-          <View>
-            <ActivityIndicator size={'large'} />
-          </View>
-        )}*/}
-
-        {/*<CustomButton
+        <CustomButton
           text="Sign Up"
           onPress={handleSubmit(
             async (data) => await signUpWithEmailAsync(data, onSignUpSuccess, onSignUpFailure),
           )}
-          isPrimary={true}
-        />*/}
-        {/*<CustomButton
-          icon={googleLogo}
+          isPrimary
+        />
+        <CustomButton
           text="Continue with Google"
           onPress={async () => await signInWithGoogleAsync(onSignUpSuccess, onSignUpFailure)}
-        />*/}
+        />
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

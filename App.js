@@ -1,9 +1,18 @@
 'use strict';
 import React from 'react';
+import { LogBox } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
 import { DataProvider } from 'redvest/contexts/DataContext';
 import NavigationContainer from 'redvest/navigators/NavigationContainer';
+
+import {
+  useFonts,
+  FiraSans_400Regular,
+  FiraSans_500Medium,
+  FiraSans_600SemiBold,
+  FiraSans_700Bold,
+} from '@expo-google-fonts/fira-sans';
 
 import firebase from 'firebase';
 import {
@@ -37,9 +46,13 @@ SplashScreen.preventAutoHideAsync().catch(() =>
 );
 
 function App() {
-  const forFade = ({ current }) => ({ cardStyle: { opacity: current.progress } });
-
-  // Put Error fallback here
+  const [fontsLoaded] = useFonts({
+    FiraSans_400Regular,
+    FiraSans_500Medium,
+    FiraSans_600SemiBold,
+    FiraSans_700Bold,
+  });
+  if (!fontsLoaded) return null;
 
   return (
     <AuthProvider>
