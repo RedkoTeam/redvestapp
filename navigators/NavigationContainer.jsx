@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import AuthContext from 'redvest/contexts/AuthContext';
 
 import { NavigationContainer } from '@react-navigation/native';
-import AuthStackNavigator from 'redvest/navigators/AuthStackNavigator';
+import BottomTabNavigator from 'redvest/navigators/BottomTabNavigator';
+
+import AuthStackNavigator from 'redvest/navigators/AccountStackNavigator';
 import HomeStackNavigator from 'redvest/navigators/HomeStackNavigator';
 
 function Navigation() {
@@ -10,7 +12,8 @@ function Navigation() {
 
   return (
     <NavigationContainer>
-      {user ? <HomeStackNavigator /> : <AuthStackNavigator />}
+      {/*{user ? <HomeStackNavigator /> : <AuthStackNavigator />}*/}
+      <BottomTabNavigator />
     </NavigationContainer>
   );
 }

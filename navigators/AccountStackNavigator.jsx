@@ -9,7 +9,7 @@ import ResetPasswordScreen from 'redvest/screens/auth/ResetPasswordScreen';
 
 const AuthStack = createStackNavigator();
 
-function AuthStackNavigator() {
+function AccountStackNavigator() {
   return (
     <AuthStack.Navigator screenOptions={headerOptions}>
       <AuthStack.Screen
@@ -40,4 +40,4 @@ function AuthStackNavigator() {
   );
 }
 
-export default AuthStackNavigator;
+export default AccountStackNavigator;
