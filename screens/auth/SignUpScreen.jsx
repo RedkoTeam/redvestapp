@@ -25,6 +25,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import AUTH_SCHEMA from 'redvest/schema/authSchema';
 
 import Spacer from 'redvest/components/Spacer';
+import HorizontalRule from 'redvest/components/HorizontalRule';
 import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
 
@@ -71,6 +72,15 @@ function SignUpScreen({ navigation }) {
             async (data) => await signUpWithEmailAsync(data, onSignUpSuccess, onSignUpFailure),
           )}
         />
+
+        <Spacer height={3.5} />
+        <View style={styles.orContainer}>
+          <HorizontalRule />
+          <Text style={[textStyles.bigRegular, styles.orText]}>or</Text>
+          <HorizontalRule />
+        </View>
+        <Spacer height={2.5} />
+
         <CustomButton
           icon={facebookLogo}
           text="Continue with Facebook"
@@ -82,7 +92,7 @@ function SignUpScreen({ navigation }) {
           onPress={async () => await signInWithGoogleAsync(onSignUpSuccess, onSignUpFailure)}
         />
 
-        <View style={styles.registerButton}>
+        <View style={styles.bottomButtons}>
           <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
             Already have an account?
           </Text>
@@ -101,7 +111,18 @@ const styles = StyleSheet.create({
     left: widthPercentageToDP(2),
     top: heightPercentageToDP(2),
   },
-  registerButton: {
+  orContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: widthPercentageToDP(80),
+  },
+  orText: {
+    color: colors.mediumGrey,
+    paddingHorizontal: widthPercentageToDP(4),
+  },
+  bottomButtons: {
     position: 'absolute',
     bottom: widthPercentageToDP(2) + 85,
     flexDirection: 'column',

@@ -68,7 +68,7 @@ function ResetPasswordScreen({ navigation }) {
           )}
         />
 
-        <View style={styles.registerButton}>
+        <View style={styles.buttomButtons}>
           <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
             Don't have an account yet?
           </Text>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     left: widthPercentageToDP(2),
     top: heightPercentageToDP(2),
   },
-  registerButton: {
+  buttomButtons: {
     position: 'absolute',
     bottom: widthPercentageToDP(2) + 85,
     flexDirection: 'column',

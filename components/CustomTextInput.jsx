@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     right: 15,
   },
   barBelowInput: {
-    marginTop: -13,
+    marginTop: -10,
     width: widthPercentageToDP(88),
     height: 50,
     display: 'flex',
