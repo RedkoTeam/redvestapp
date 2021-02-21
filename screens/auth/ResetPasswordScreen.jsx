@@ -8,7 +8,6 @@ import AuthContext from 'redvest/contexts/AuthContext';
 import {
   StatusBar,
   KeyboardAvoidingView,
-  SafeAreaView,
   View,
   Text,
   TouchableOpacity,
@@ -16,6 +15,7 @@ import {
   Dimensions,
   Platform,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -45,7 +45,7 @@ function ResetPasswordScreen({ navigation }) {
         flex: 1,
         alignItems: 'center',
         backgroundColor: colors.darkBackground,
-        minHeight: Math.round(Dimensions.get('window').height),
+        minHeight: Math.round(Dimensions.get('window').height / 2),
       }}
     >
       <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
@@ -55,7 +55,7 @@ function ResetPasswordScreen({ navigation }) {
         contentContainerStyle={{ flex: 1, alignItems: 'center' }}
         style={{ flex: 1, alignItems: 'center' }}
       >
-        <Spacer height={7} />
+        <Spacer height={2} />
 
         <EmailInput control={control} errors={errors} />
         <Spacer height={1} />
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   buttomButtons: {
     position: 'absolute',
-    bottom: widthPercentageToDP(2) + 85,
+    bottom: heightPercentageToDP(Platform.OS === 'ios' ? -2 : 2),
     flexDirection: 'column',
     width: 195,
     alignItems: 'center',

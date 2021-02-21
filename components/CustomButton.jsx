@@ -2,7 +2,7 @@ import { textStyles, colors } from 'redvest/util/styles';
 import { heightPercentageToDP, widthPercentageToDP } from 'redvest/util/scaler';
 
 import React from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
 function CustomButton({ icon, text, onPress, primary = false, small = false, disabled = false }) {
   return (
@@ -36,11 +36,13 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: heightPercentageToDP(1.2),
-    marginBottom: heightPercentageToDP(1.2),
+    marginTop: heightPercentageToDP(1),
+    marginBottom: heightPercentageToDP(1),
+    //borderColor: 'red',
+    //borderWidth: 1,
   },
   button: {
-    height: heightPercentageToDP(6.3),
+    height: heightPercentageToDP(Platform.OS === 'ios' ? 5.8 : 6.3),
     paddingHorizontal: 30,
     borderRadius: 50,
     display: 'flex',

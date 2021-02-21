@@ -11,7 +11,6 @@ import AuthContext from 'redvest/contexts/AuthContext';
 import {
   StatusBar,
   KeyboardAvoidingView,
-  SafeAreaView,
   View,
   Text,
   TouchableOpacity,
@@ -19,6 +18,7 @@ import {
   Dimensions,
   Platform,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -49,7 +49,7 @@ function SignInScreen({ navigation }) {
         flex: 1,
         alignItems: 'center',
         backgroundColor: colors.darkBackground,
-        minHeight: Math.round(Dimensions.get('window').height),
+        minHeight: Math.round(Dimensions.get('window').height / 2),
       }}
     >
       <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
@@ -59,14 +59,14 @@ function SignInScreen({ navigation }) {
         contentContainerStyle={{ flex: 1, alignItems: 'center' }}
         style={{ flex: 1, alignItems: 'center' }}
       >
-        <Spacer height={5} />
+        <Spacer height={1} />
         <EmailInput control={control} errors={errors} />
         <PasswordInput
           control={control}
           errors={errors}
           forgotPassword={() => navigation.navigate('ResetPassword')}
         />
-        <Spacer height={2} />
+        <Spacer height={3} />
 
         <CustomButton
           primary
@@ -76,13 +76,13 @@ function SignInScreen({ navigation }) {
           )}
         />
 
-        <Spacer height={3.5} />
+        <Spacer height={3} />
         <View style={styles.orContainer}>
           <HorizontalRule />
           <Text style={[textStyles.bigRegular, styles.orText]}>or</Text>
           <HorizontalRule />
         </View>
-        <Spacer height={2.5} />
+        <Spacer height={2} />
 
         <CustomButton
           icon={facebookLogo}
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   buttomButtons: {
     position: 'absolute',
-    bottom: widthPercentageToDP(2) + 85,
+    bottom: heightPercentageToDP(Platform.OS === 'ios' ? -2 : 2),
     flexDirection: 'column',
     width: 195,
     alignItems: 'center',
