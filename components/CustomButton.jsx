@@ -4,15 +4,29 @@ import { heightPercentageToDP, widthPercentageToDP } from 'redvest/util/scaler';
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-function CustomButton({ icon, text, onPress, isPrimary }) {
+function CustomButton({ icon, text, onPress, primary = false, small = false, disabled = false }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={[styles.button, isPrimary ? styles.buttonPrimary : styles.buttonSecondary]}
+        style={[
+          { width: widthPercentageToDP(small ? 47 : 80) },
+          styles.button,
+          primary ? styles.buttonPrimary : styles.buttonSecondary,
+          disabled && primary && styles.primaryDisabled,
+          disabled && !primary && styles.secondaryDisabled,
+        ]}
         onPress={onPress}
+        disabled={disabled}
       >
         {icon && <Image source={icon} style={styles.icon} />}
-        <Text style={[textStyles.bigBold, isPrimary ? styles.textPrimary : styles.textSecondary]}>
+        <Text
+          style={[
+            textStyles.bigBold,
+            primary ? styles.textPrimary : styles.textSecondary,
+            disabled && primary && styles.textPrimaryDisabled,
+            disabled && !primary && styles.textSecondaryDisabled,
+          ]}
+        >
           {text}
         </Text>
       </TouchableOpacity>
@@ -26,7 +40,6 @@ const styles = StyleSheet.create({
     marginBottom: heightPercentageToDP(1.2),
   },
   button: {
-    width: widthPercentageToDP(80),
     height: heightPercentageToDP(6.3),
     paddingHorizontal: 30,
     borderRadius: 50,
@@ -47,6 +60,12 @@ const styles = StyleSheet.create({
   buttonSecondary: {
     backgroundColor: 'white',
   },
+  primaryDisabled: {
+    backgroundColor: '#ccc',
+  },
+  secondaryDisabled: {
+    backgroundColor: '#f5f5f5',
+  },
   icon: {
     resizeMode: 'contain',
     width: 35,
@@ -58,6 +77,12 @@ const styles = StyleSheet.create({
   },
   textSecondary: {
     color: colors.primary,
+  },
+  textPrimaryDisabled: {
+    color: 'white',
+  },
+  textSecondaryDisabled: {
+    color: '#aaa',
   },
 });
 

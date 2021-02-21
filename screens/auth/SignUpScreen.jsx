@@ -46,6 +46,7 @@ function SignUpScreen() {
         minHeight: Math.round(Dimensions.get('window').height),
       }}
     >
+      <StatusBar barStyle={'light-content'} backgroundColor={colors.offBlack} />
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
@@ -63,7 +64,7 @@ function SignUpScreen() {
           onPress={handleSubmit(
             async (data) => await signUpWithEmailAsync(data, onSignUpSuccess, onSignUpFailure),
           )}
-          isPrimary
+          primary
         />
         <CustomButton
           text="Continue with Google"

@@ -23,7 +23,7 @@ import Spacer from 'redvest/components/Spacer';
 import { EmailInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
 
-function PasswordResetScreen() {
+function ResetPasswordScreen() {
   const { passwordResetEmailAsync } = useContext(AuthContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(EMAIL_SCHEMA),
@@ -46,6 +46,7 @@ function PasswordResetScreen() {
         minHeight: Math.round(Dimensions.get('window').height),
       }}
     >
+      <StatusBar barStyle={'light-content'} backgroundColor={colors.offBlack} />
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
@@ -62,7 +63,7 @@ function PasswordResetScreen() {
           onPress={handleSubmit(
             async (data) => await passwordResetEmailAsync(data, onResetSuccess, onResetFailure),
           )}
-          isPrimary={true}
+          primary
         />
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -77,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PasswordResetScreen;
+export default ResetPasswordScreen;

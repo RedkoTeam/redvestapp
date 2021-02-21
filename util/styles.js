@@ -92,10 +92,12 @@ export const headerStyles = {
   elevation: 0,
   shadowOpacity: 0,
   borderBottomWidth: 0,
-  headerTitleStyle: { color: colors.offWhite },
+  
 };
 
 export const headerOptions = {
   //headerTitle: false,
   headerStyle: headerStyles,
+  headerTitleAlign: 'center',
+  headerTitleStyle: { color: colors.offWhite },
 };

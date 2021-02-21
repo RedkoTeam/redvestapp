@@ -1,4 +1,4 @@
-import { textStyles, headerPaddings } from 'redvest/util/styles';
+import { textStyles, headerPaddings, colors } from 'redvest/util/styles';
 import { Ionicons } from '@expo/vector-icons'; 
 
 import React from 'react';
@@ -9,7 +9,7 @@ function BackChevron({ text = '' }) {
   return (
     <TouchableOpacity onPress={() => navigation.goBack()}>
       <View style={styles.container}>
-        <Ionicons name="ios-chevron-back" size={24} color="black" />
+        <Ionicons name="ios-chevron-back" size={24} color={colors.offWhite} />
         <Text style={textStyles.normalMedium}>{text}</Text>
       </View>
     </TouchableOpacity>

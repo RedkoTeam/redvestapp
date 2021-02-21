@@ -7,7 +7,7 @@ import ScreenTitle from 'redvest/components/header/ScreenTitle';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from 'redvest/screens/auth/SignUpScreen';
 import SignInScreen from 'redvest/screens/auth/SignInScreen';
-import ForgotPasswordScreen from 'redvest/screens/auth/ForgotPasswordScreen';
+import ResetPasswordScreen from 'redvest/screens/auth/ResetPasswordScreen';
 
 const AuthStack = createStackNavigator();
 
@@ -15,22 +15,22 @@ function AuthStackNavigator() {
   return (
     <AuthStack.Navigator screenOptions={headerOptions}>
       <AuthStack.Screen
-        name="SignUp"
+        name="Sign Up"
         component={SignUpScreen}
         options={{
           headerLeft: () => <BackChevron />,
         }}
       />
       <AuthStack.Screen
-        name="SignIn"
+        name="Sign In"
         component={SignInScreen}
         options={{
           headerLeft: () => <BackChevron />,
         }}
       />
       <AuthStack.Screen
-        name="ForgotPassword"
-        component={ForgotPasswordScreen}
+        name="Reset Password"
+        component={ResetPasswordScreen}
         options={{
           headerLeft: () => <BackChevron />,
         }}

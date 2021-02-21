@@ -49,6 +49,7 @@ function SignInScreen({ navigation }) {
         minHeight: Math.round(Dimensions.get('window').height),
       }}
     >
+      <StatusBar barStyle={'light-content'} backgroundColor={colors.offBlack} />
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
@@ -56,7 +57,6 @@ function SignInScreen({ navigation }) {
         style={{ flex: 1, alignItems: 'center' }}
       >
         <Spacer height={6.5} />
-
         <EmailInput control={control} errors={errors} />
         <PasswordInput
           control={control}
@@ -70,7 +70,7 @@ function SignInScreen({ navigation }) {
           onPress={handleSubmit(
             async (data) => await signInWithEmailAsync(data, onSignInSuccess, onSignInFailure),
           )}
-          isPrimary
+          primary
         />
         <CustomButton
           icon={googleLogo}
