@@ -63,7 +63,7 @@ function SignInScreen({ navigation }) {
         <PasswordInput
           control={control}
           errors={errors}
-          forgotPassword={() => navigation.navigate('PasswordReset')}
+          forgotPassword={() => navigation.navigate('ResetPassword')}
         />
         <Spacer height={2} />
 

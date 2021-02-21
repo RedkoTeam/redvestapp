@@ -1,4 +1,4 @@
-import { colors } from 'redvest/util/styles';
+import { textStyles, colors } from 'redvest/util/styles';
 import { widthPercentageToDP, heightPercentageToDP } from 'redvest/util/scaler';
 
 import React, { useContext, useCallback } from 'react';
