@@ -8,6 +8,7 @@ export const colors = {
   mediumGrey: '#C6CACC',
   darkGrey: '#5E6366',
   offBlack: '#1F1F1F',
+  darkBackground: '#121212',
 };
 
 export const textStyles = StyleSheet.create({
@@ -87,7 +88,7 @@ export const headerPaddings = {
 };
 
 export const headerStyles = {
-  backgroundColor: colors.offBlack,
+  backgroundColor: colors.darkBackground,
   shadowColor: 'transparent',
   elevation: 0,
   shadowOpacity: 0,

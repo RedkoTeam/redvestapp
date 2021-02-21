@@ -1,8 +1,6 @@
 import React from 'react';
 import { headerOptions } from 'redvest/util/styles';
-
-import BackChevron from 'redvest/components/header/BackChevron';
-import ScreenTitle from 'redvest/components/header/ScreenTitle';
+import BackChevron from 'redvest/components/BackChevron';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from 'redvest/screens/auth/SignUpScreen';

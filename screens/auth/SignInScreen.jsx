@@ -45,11 +45,11 @@ function SignInScreen({ navigation }) {
       style={{
         flex: 1,
         alignItems: 'center',
-        backgroundColor: colors.offBlack,
+        backgroundColor: colors.darkBackground,
         minHeight: Math.round(Dimensions.get('window').height),
       }}
     >
-      <StatusBar barStyle={'light-content'} backgroundColor={colors.offBlack} />
+      <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
