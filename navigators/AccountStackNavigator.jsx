@@ -12,10 +12,6 @@ import Profile from 'redvest/screens/invest/Profile';
 import ActiveStrategies from 'redvest/screens/Profile/ActiveStrategies';
 import orders from 'redvest/screens/Profile/orders';
 import history from 'redvest/screens/Profile/history';
-import macd from 'redvest/screens/Profile/macd';
-import dualma from 'redvest/screens/Profile/dualma';
-import threema from 'redvest/screens/Profile/threema';
-import rsi from 'redvest/screens/Profile/threema';
 
 const AuthStack = createStackNavigator();
 
@@ -83,38 +79,6 @@ function AccountStackNavigator() {
             options={{
               headerLeft: () => <BackChevron />,
               title: 'History',
-            }}
-          />
-          <AuthStack.Screen
-            name="macd"
-            component={macd}
-            options={{
-              headerLeft: () => <BackChevron />,
-              title: 'MACD',
-            }}
-          />
-          <AuthStack.Screen
-            name="dualma"
-            component={dualma}
-            options={{
-              headerLeft: () => <BackChevron />,
-              title: 'DUALMA',
-            }}
-          />
-          <AuthStack.Screen
-            name="threema"
-            component={threema}
-            options={{
-              headerLeft: () => <BackChevron />,
-              title: 'THREEMA',
-            }}
-          />
-          <AuthStack.Screen
-            name="rsi"
-            component={rsi}
-            options={{
-              headerLeft: () => <BackChevron />,
-              title: 'RSI',
             }}
           />
         </>

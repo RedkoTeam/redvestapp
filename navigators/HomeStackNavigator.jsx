@@ -15,7 +15,10 @@ import tfInfo from 'redvest/screens/info/tfInfo';
 import tickerInfo from 'redvest/screens/info/tickerInfo';
 import typeInfo from 'redvest/screens/info/typeInfo';
 import slInfo from 'redvest/screens/info/slInfo';
-
+import macd from 'redvest/screens/Profile/macd';
+import dualma from 'redvest/screens/Profile/dualma';
+import threema from 'redvest/screens/Profile/threema';
+import rsi from 'redvest/screens/Profile/threema';
 
 const HomeStack = createStackNavigator();
 
@@ -36,6 +39,10 @@ function HomeStackNavigator() {
       <HomeStack.Screen name="typeInfo" component={typeInfo} />
       <HomeStack.Screen name="tickerInfo" component={tickerInfo} />
       <HomeStack.Screen name="slInfo" component={slInfo} />
+      <HomeStack.Screen name="macd" component={macd} />
+      <HomeStack.Screen name="rsi" component={rsi} />
+      <HomeStack.Screen name="dualma" component={dualma} />
+      <HomeStack.Screen name="threema" component={threema} />
     </HomeStack.Navigator>
   );
 }
