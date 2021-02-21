@@ -10,6 +10,8 @@ import AccountIcon from 'redvest/icons/bottom-tabs/AccountIcon';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStackNavigator from 'redvest/navigators/HomeStackNavigator';
+import GameStackNavigator from 'redvest/navigators/GameStackNavigator';
+import InvestStackNavigator from 'redvest/navigators/InvestStackNavigator';
 import AccountStackNavigator from 'redvest/navigators/AccountStackNavigator';
 
 const BottomTab = createBottomTabNavigator();
@@ -24,7 +26,7 @@ function BottomTabNavigator() {
         },
         tabStyle: {
           paddingTop: heightPercentageToDP(Platform.OS === 'ios' ? 1.5 : 2.5),
-          paddingBottom: heightPercentageToDP(Platform.OS === 'ios' ? 0.5 : 1),
+          paddingBottom: heightPercentageToDP(Platform.OS === 'ios' ? 0.8 : 1),
         },
         labelStyle: textStyles.tinyRegular,
         //iconStyle: {},
@@ -40,12 +42,12 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Game"
-        component={HomeStackNavigator}
+        component={GameStackNavigator}
         options={{ tabBarIcon: GameIcon }}
       />
       <BottomTab.Screen
         name="Invest"
-        component={HomeStackNavigator}
+        component={InvestStackNavigator}
         options={{ tabBarIcon: InvestIcon }}
       />
       <BottomTab.Screen
