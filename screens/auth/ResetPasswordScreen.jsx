@@ -6,7 +6,6 @@ import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from 'redvest/contexts/AuthContext';
 
 import {
-  StatusBar,
   KeyboardAvoidingView,
   View,
   Text,
@@ -48,7 +47,6 @@ function ResetPasswordScreen({ navigation }) {
         minHeight: Math.round(Dimensions.get('window').height / 2),
       }}
     >
-      <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}

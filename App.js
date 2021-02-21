@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
-import { LogBox } from 'react-native';
+import { colors } from 'redvest/util/styles';
+import { LogBox, StatusBar } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
 import { DataProvider } from 'redvest/contexts/DataContext';
@@ -59,6 +60,7 @@ function App() {
     <AuthProvider>
       <DataProvider>
         <SafeAreaProvider>
+          <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
           <NavigationContainer />
         </SafeAreaProvider>
       </DataProvider>
