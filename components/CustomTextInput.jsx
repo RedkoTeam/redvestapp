@@ -54,8 +54,8 @@ function CustomTextInput({
 
   return (
     <View style={styles.container}>
-      <View style={[styles.marginOffset, styles.label]}>
-        <Text style={[textStyles.normalSemiBold]}>{input.label}</Text>
+      <View style={[styles.marginOffset, styles.labelContainer]}>
+        <Text style={[textStyles.smallRegular, styles.label]}>{input.label}</Text>
         {optional && <Text style={[textStyles.smallRegular, styles.optional]}>optional</Text>}
       </View>
       <Controller
@@ -183,9 +183,12 @@ const styles = StyleSheet.create({
   container: {
     width: widthPercentageToDP(90),
   },
-  label: {
+  labelContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  label: {
+    color: colors.primary
   },
   optional: {
     color: colors.darkGrey,
