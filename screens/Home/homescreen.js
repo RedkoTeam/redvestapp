@@ -34,7 +34,7 @@ function HomeScreen() {
                   <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                     <Image source={signupbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}} />
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
                     <Image source={loginbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}}/>
                   </TouchableOpacity>
                 </View>
