@@ -9,7 +9,7 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
     <View style={styles.container}>
       <TouchableOpacity
         style={[
-          { width: widthPercentageToDP(small ? 47 : 80) },
+          { width: widthPercentageToDP(small ? 47 : 90) },
           styles.button,
           primary ? styles.buttonPrimary : styles.buttonSecondary,
           disabled && primary && styles.primaryDisabled,

@@ -72,6 +72,7 @@ function CustomTextInput({
                 focus && styles.inputFocused,
                 error && { borderColor: colors.redError },
               ]}
+              keyboardAppearance={'dark'}
               onBlur={onBlur}
               onChangeText={(value) => onChange(value)}
               value={value}

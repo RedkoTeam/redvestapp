@@ -30,7 +30,9 @@ import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
 
 function SignInScreen({ navigation }) {
-  const { signInWithEmailAsync, signInWithGoogleAsync } = useContext(AuthContext);
+  const { signInWithEmailAsync, signInWithFacebook, signInWithGoogleAsync } = useContext(
+    AuthContext,
+  );
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(SIGNUP_SCHEMA),
   });

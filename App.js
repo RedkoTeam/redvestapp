@@ -4,6 +4,7 @@ import { LogBox } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
 import { DataProvider } from 'redvest/contexts/DataContext';
+//import { AppearanceProvider } from 'react-native-appearance';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import NavigationContainer from 'redvest/navigators/NavigationContainer';
 
@@ -58,9 +59,11 @@ function App() {
   return (
     <AuthProvider>
       <DataProvider>
-        <SafeAreaProvider>
-          <NavigationContainer />
-        </SafeAreaProvider>
+        {/*<AppearanceProvider> */}
+          <SafeAreaProvider>
+            <NavigationContainer />
+          </SafeAreaProvider>
+        {/*</AppearanceProvider>*/}
       </DataProvider>
     </AuthProvider>
   );

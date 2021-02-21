@@ -80,6 +80,22 @@ export function AuthProvider({ children }) {
       });
   };
 
+  const signInWithFacebook = async (handleSuccess, handleFailure) => {
+    try {
+      const { type, token } = await Facebook.logInWithReadPermissionsAsync('684399708713036', {
+        permissions: ['public_profile'],
+      });
+      if (type === 'success') {
+        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        const credential = firebase.auth.FacebookAuthProvider.credential(token);
+        const facebookProfileData = await firebase.auth().signInWithCredential(credential);
+        handleSuccess();
+      }
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  };
+
   const signInWithGoogleAsync = async (handleSuccess, handleFailure) => {
     try {
       await GoogleSignIn.askForPlayServicesAsync();
@@ -90,11 +106,11 @@ export function AuthProvider({ children }) {
           user.auth.idToken,
           user.auth.accessToken,
         );
-        await firebase.auth().signInWithCredential(credential);
+        const googleProfileData = await firebase.auth().signInWithCredential(credential);
         handleSuccess();
       }
     } catch ({ message }) {
-      handleFailure('Login error: ' + message);
+      alert(`Google Login Error: ${message}`);
     }
   };
 
@@ -106,6 +122,7 @@ export function AuthProvider({ children }) {
         signUpWithEmailAsync,
         signInWithEmailAsync,
         passwordResetEmailAsync,
+        signInWithFacebook,
         signInWithGoogleAsync,
       }}
     >
