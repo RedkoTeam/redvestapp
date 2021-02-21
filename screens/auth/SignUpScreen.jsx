@@ -22,7 +22,7 @@ import {
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import AUTH_SCHEMA from 'redvest/schema/authSchema';
+import {SIGNUP_SCHEMA} from 'redvest/schema/authSchema';
 
 import Spacer from 'redvest/components/Spacer';
 import HorizontalRule from 'redvest/components/HorizontalRule';
@@ -32,7 +32,7 @@ import CustomButton from 'redvest/components/CustomButton';
 function SignUpScreen({ navigation }) {
   const { signUpWithEmailAsync, signInWithGoogleAsync } = useContext(AuthContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
-    resolver: yupResolver(AUTH_SCHEMA),
+    resolver: yupResolver(SIGNUP_SCHEMA),
   });
   useFocusEffect(useCallback(reset));
 
@@ -59,11 +59,16 @@ function SignUpScreen({ navigation }) {
         contentContainerStyle={{ flex: 1, alignItems: 'center' }}
         style={{ flex: 1, alignItems: 'center' }}
       >
-        <Spacer height={6.5} />
+        <Spacer height={1.5} />
 
         <EmailInput control={control} errors={errors} />
         <PasswordInput control={control} errors={errors} />
-        <Spacer height={2} />
+        <PasswordInput
+          control={control}
+          errors={errors}
+          input={{ name: 'confirm-password', label: 'Confirm Password' }}
+        />
+        <Spacer height={0} />
 
         <CustomButton
           primary
@@ -73,13 +78,13 @@ function SignUpScreen({ navigation }) {
           )}
         />
 
-        <Spacer height={3.5} />
+        <Spacer height={1.5} />
         <View style={styles.orContainer}>
           <HorizontalRule />
           <Text style={[textStyles.bigRegular, styles.orText]}>or</Text>
           <HorizontalRule />
         </View>
-        <Spacer height={2.5} />
+        <Spacer height={1} />
 
         <CustomButton
           icon={facebookLogo}

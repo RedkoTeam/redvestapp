@@ -182,6 +182,8 @@ export function PasswordInput({
 const styles = StyleSheet.create({
   container: {
     width: widthPercentageToDP(90),
+    //borderColor: 'red',
+    //borderWidth: 1,
   },
   labelContainer: {
     flexDirection: 'row',
@@ -210,14 +212,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     backgroundColor: colors.offWhite,
-    height: heightPercentageToDP(6.8),
+    height: heightPercentageToDP(6.5),
   },
   inputWithIcon: {
     paddingRight: 60,
   },
   inputFocused: {
     backgroundColor: colors.offWhite,
-    borderColor: colors.offBlack,
+    borderColor: colors.primary,
   },
   icon: {
     position: 'absolute',
@@ -225,15 +227,17 @@ const styles = StyleSheet.create({
   },
   barBelowInput: {
     marginTop: -10,
+    marginBottom: -12,
     width: widthPercentageToDP(88),
     height: 50,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   error: {
     color: colors.redError,
+    marginTop: 10,
   },
   forgotPassword: {
     color: colors.primary,

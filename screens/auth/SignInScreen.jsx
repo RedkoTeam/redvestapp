@@ -22,7 +22,7 @@ import {
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import AUTH_SCHEMA from 'redvest/schema/authSchema';
+import SIGNUP_SCHEMA from 'redvest/schema/authSchema';
 
 import Spacer from 'redvest/components/Spacer';
 import HorizontalRule from 'redvest/components/HorizontalRule';
@@ -32,7 +32,7 @@ import CustomButton from 'redvest/components/CustomButton';
 function SignInScreen({ navigation }) {
   const { signInWithEmailAsync, signInWithGoogleAsync } = useContext(AuthContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
-    resolver: yupResolver(AUTH_SCHEMA),
+    resolver: yupResolver(SIGNUP_SCHEMA),
   });
   useFocusEffect(useCallback(reset));
 
@@ -59,7 +59,7 @@ function SignInScreen({ navigation }) {
         contentContainerStyle={{ flex: 1, alignItems: 'center' }}
         style={{ flex: 1, alignItems: 'center' }}
       >
-        <Spacer height={6.5} />
+        <Spacer height={5} />
         <EmailInput control={control} errors={errors} />
         <PasswordInput
           control={control}

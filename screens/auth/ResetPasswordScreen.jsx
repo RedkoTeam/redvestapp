@@ -55,7 +55,7 @@ function ResetPasswordScreen({ navigation }) {
         contentContainerStyle={{ flex: 1, alignItems: 'center' }}
         style={{ flex: 1, alignItems: 'center' }}
       >
-        <Spacer height={8} />
+        <Spacer height={7} />
 
         <EmailInput control={control} errors={errors} />
         <Spacer height={1} />
