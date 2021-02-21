@@ -95,8 +95,6 @@ export const headerStyles = {
   borderBottomWidth: 0,
 };
 
-//export const headerTitleStyle = ;
-
 export const headerOptions = {
   //headerTitle: false,
   headerStyle: headerStyles,
