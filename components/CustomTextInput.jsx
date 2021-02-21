@@ -43,7 +43,7 @@ function CustomTextInput({
         component: (
           <Ionicons
             name={secure ? 'ios-eye-outline' : 'ios-eye-off-outline'}
-            size={heightPercentageToDP(4.2)}
+            size={heightPercentageToDP(3.5)}
             color={colors.offBlack}
           />
         ),
@@ -100,7 +100,7 @@ function CustomTextInput({
           <View>
             {forgotPassword && (
               <TouchableOpacity onPress={forgotPassword} style={styles.forgotPassword}>
-                <Text style={[textStyles.smallRegular, { color: colors.primary }]}>
+                <Text style={[textStyles.normalRegular, { color: colors.primary }]}>
                   Forgot password
                 </Text>
               </TouchableOpacity>
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   barBelowInput: {
     marginTop: -13,
     width: widthPercentageToDP(88),
-    height: 45,
+    height: 50,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',

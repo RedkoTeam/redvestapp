@@ -5,7 +5,7 @@ import React from 'react';
 import { withNavigation } from '@react-navigation/compat';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-function BackChevron({ text = '' }) {
+function BackChevron({ navigation, text = '' }) {
   return (
     <TouchableOpacity onPress={() => navigation.goBack()}>
       <View style={styles.container}>

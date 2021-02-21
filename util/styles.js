@@ -93,12 +93,13 @@ export const headerStyles = {
   elevation: 0,
   shadowOpacity: 0,
   borderBottomWidth: 0,
-  
 };
+
+//export const headerTitleStyle = ;
 
 export const headerOptions = {
   //headerTitle: false,
   headerStyle: headerStyles,
   headerTitleAlign: 'center',
-  headerTitleStyle: { color: colors.offWhite },
+  headerTitleStyle: [textStyles.bigSemiBold, { color: colors.offWhite }],
 };

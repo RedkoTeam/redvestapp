@@ -13,24 +13,27 @@ function AuthStackNavigator() {
   return (
     <AuthStack.Navigator screenOptions={headerOptions}>
       <AuthStack.Screen
-        name="Sign In"
+        name="SignIn"
         component={SignInScreen}
         options={{
           headerLeft: () => <BackChevron />,
+          title: 'Sign in',
         }}
       />
       <AuthStack.Screen
-        name="Sign Up"
+        name="SignUp"
         component={SignUpScreen}
         options={{
           headerLeft: () => <BackChevron />,
+          title: 'Create an account',
         }}
       />
       <AuthStack.Screen
-        name="Reset Password"
+        name="ResetPassword"
         component={ResetPasswordScreen}
         options={{
           headerLeft: () => <BackChevron />,
+          title: 'Reset your password',
         }}
       />
     </AuthStack.Navigator>

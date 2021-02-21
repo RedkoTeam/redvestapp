@@ -1,4 +1,4 @@
-import { colors } from 'redvest/util/styles';
+import { textStyles, colors } from 'redvest/util/styles';
 import { widthPercentageToDP, heightPercentageToDP } from 'redvest/util/scaler';
 
 import facebookLogo from 'redvest/assets/Facebook_F_Logo.png';
@@ -13,9 +13,11 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   View,
-  ActivityIndicator,
+  Text,
+  TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Platform,
 } from 'react-native';
 
 import { useForm } from 'react-hook-form';
@@ -26,7 +28,7 @@ import Spacer from 'redvest/components/Spacer';
 import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
 
-function SignUpScreen() {
+function SignUpScreen({ navigation }) {
   const { signUpWithEmailAsync, signInWithGoogleAsync } = useContext(AuthContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(AUTH_SCHEMA),
@@ -63,11 +65,11 @@ function SignUpScreen() {
         <Spacer height={2} />
 
         <CustomButton
+          primary
           text="Sign Up"
           onPress={handleSubmit(
             async (data) => await signUpWithEmailAsync(data, onSignUpSuccess, onSignUpFailure),
           )}
-          primary
         />
         <CustomButton
           icon={facebookLogo}
@@ -79,6 +81,15 @@ function SignUpScreen() {
           text="Continue with Google"
           onPress={async () => await signInWithGoogleAsync(onSignUpSuccess, onSignUpFailure)}
         />
+
+        <View style={styles.registerButton}>
+          <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
+            Already have an account?
+          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>SIGN IN</Text>
+          </TouchableOpacity>
+        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -92,9 +103,9 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     position: 'absolute',
-    bottom: heightPercentageToDP(3),
-    flexDirection: 'row',
-    width: widthPercentageToDP(50),
+    bottom: widthPercentageToDP(2) + 85,
+    flexDirection: 'column',
+    width: 195,
     alignItems: 'center',
     justifyContent: 'space-between',
   },

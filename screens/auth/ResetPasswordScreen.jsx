@@ -10,9 +10,11 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   View,
-  ActivityIndicator,
+  Text,
+  TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Platform,
 } from 'react-native';
 
 import { useForm } from 'react-hook-form';
@@ -23,7 +25,7 @@ import Spacer from 'redvest/components/Spacer';
 import { EmailInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
 
-function ResetPasswordScreen() {
+function ResetPasswordScreen({ navigation }) {
   const { passwordResetEmailAsync } = useContext(AuthContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(EMAIL_SCHEMA),
@@ -59,12 +61,21 @@ function ResetPasswordScreen() {
         <Spacer height={1} />
 
         <CustomButton
+          primary
           text="Send Email"
           onPress={handleSubmit(
             async (data) => await passwordResetEmailAsync(data, onResetSuccess, onResetFailure),
           )}
-          primary
         />
+
+        <View style={styles.registerButton}>
+          <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
+            Don't have an account yet?
+          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>CREATE ACCOUNT</Text>
+          </TouchableOpacity>
+        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -75,6 +86,14 @@ const styles = StyleSheet.create({
     position: 'relative',
     left: widthPercentageToDP(2),
     top: heightPercentageToDP(2),
+  },
+  registerButton: {
+    position: 'absolute',
+    bottom: widthPercentageToDP(2) + 85,
+    flexDirection: 'column',
+    width: 195,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 

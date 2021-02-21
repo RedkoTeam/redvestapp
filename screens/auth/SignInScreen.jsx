@@ -15,7 +15,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ActivityIndicator,
   StyleSheet,
   Dimensions,
   Platform,
@@ -69,11 +68,11 @@ function SignInScreen({ navigation }) {
         <Spacer height={2} />
 
         <CustomButton
+          primary
           text="Sign In"
           onPress={handleSubmit(
             async (data) => await signInWithEmailAsync(data, onSignInSuccess, onSignInFailure),
           )}
-          primary
         />
         <CustomButton
           icon={facebookLogo}
@@ -87,11 +86,11 @@ function SignInScreen({ navigation }) {
         />
 
         <View style={styles.registerButton}>
-          <Text style={[textStyles.smallRegular, { color: colors.offBlack }]}>
-            Don't have an account?
+          <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
+            Don't have an account yet?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-            <Text style={[textStyles.normalSemiBold, { color: colors.primary }]}>Register</Text>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>CREATE ACCOUNT</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -108,7 +107,7 @@ const styles = StyleSheet.create({
   registerButton: {
     position: 'absolute',
     bottom: widthPercentageToDP(2) + 85,
-    flexDirection: 'row',
+    flexDirection: 'column',
     width: 195,
     alignItems: 'center',
     justifyContent: 'space-between',
