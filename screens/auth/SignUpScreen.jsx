@@ -42,7 +42,7 @@ function SignUpScreen() {
       style={{
         flex: 1,
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.offBlack,
         minHeight: Math.round(Dimensions.get('window').height),
       }}
     >
