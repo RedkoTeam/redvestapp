@@ -1,6 +1,9 @@
 import { colors } from 'redvest/util/styles';
 import { widthPercentageToDP, heightPercentageToDP } from 'redvest/util/scaler';
 
+import facebookLogo from 'redvest/assets/Facebook_F_Logo.png';
+import googleLogo from 'redvest/assets/Google_G_Logo.png';
+
 import React, { useContext, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from 'redvest/contexts/AuthContext';
@@ -67,6 +70,12 @@ function SignUpScreen() {
           primary
         />
         <CustomButton
+          icon={facebookLogo}
+          text="Continue with Facebook"
+          onPress={() => console.log('Login with Facebook')}
+        />
+        <CustomButton
+          icon={googleLogo}
           text="Continue with Google"
           onPress={async () => await signInWithGoogleAsync(onSignUpSuccess, onSignUpFailure)}
         />

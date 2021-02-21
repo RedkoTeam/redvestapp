@@ -13,15 +13,15 @@ function AuthStackNavigator() {
   return (
     <AuthStack.Navigator screenOptions={headerOptions}>
       <AuthStack.Screen
-        name="Sign Up"
-        component={SignUpScreen}
+        name="Sign In"
+        component={SignInScreen}
         options={{
           headerLeft: () => <BackChevron />,
         }}
       />
       <AuthStack.Screen
-        name="Sign In"
-        component={SignInScreen}
+        name="Sign Up"
+        component={SignUpScreen}
         options={{
           headerLeft: () => <BackChevron />,
         }}

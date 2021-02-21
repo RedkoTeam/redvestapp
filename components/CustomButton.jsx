@@ -21,7 +21,7 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
         {icon && <Image source={icon} style={styles.icon} />}
         <Text
           style={[
-            textStyles.bigBold,
+            primary ? textStyles.bigMedium : textStyles.bigRegular ,
             primary ? styles.textPrimary : styles.textSecondary,
             disabled && primary && styles.textPrimaryDisabled,
             disabled && !primary && styles.textSecondaryDisabled,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   textSecondary: {
-    color: colors.primary,
+    color: colors.offBlack,
   },
   textPrimaryDisabled: {
     color: 'white',
