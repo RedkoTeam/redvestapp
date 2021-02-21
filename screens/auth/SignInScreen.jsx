@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: widthPercentageToDP(80),
+    width: widthPercentageToDP(90),
   },
   orText: {
     color: colors.mediumGrey,
