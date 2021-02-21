@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-function AccountIcon({ size = 18, color = '#78AC43', ...props }) {
+function GameIcon({ size = 18, color = '#78AC43', ...props }) {
   return (
     <Svg
       width={size}
@@ -21,4 +21,4 @@ function AccountIcon({ size = 18, color = '#78AC43', ...props }) {
   );
 }
 
-export default AccountIcon;
+export default GameIcon;

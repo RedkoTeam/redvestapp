@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-function AccountIcon({ size = 18, color = '#78AC43', ...props }) {
+function InvestIcon({ size = 18, color = '#78AC43', ...props }) {
   return (
     <Svg
       width={size * 1.05}
@@ -19,4 +19,4 @@ function AccountIcon({ size = 18, color = '#78AC43', ...props }) {
   );
 }
 
-export default AccountIcon;
+export default InvestIcon;
