@@ -8,9 +8,9 @@
     "scheme": "myapp",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/Redvest_White_Logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#E75E53"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

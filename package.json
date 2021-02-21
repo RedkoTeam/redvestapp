@@ -26,6 +26,7 @@
     "apisauce": "^2.0.1",
     "expo": "^40.0.1",
     "expo-analytics-segment": "^10.0.0",
+    "expo-app-loading": "^1.0.1",
     "expo-asset": "~8.2.1",
     "expo-constants": "~9.3.0",
     "expo-font": "~8.4.0",
