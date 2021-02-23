@@ -36,7 +36,7 @@ function CustomButton({
         <Text
           style={[
             primary
-              ? !small
+              ? small
                 ? textStyles.normalMedium
                 : textStyles.bigMedium
               : small
