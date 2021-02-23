@@ -36,7 +36,7 @@ function CustomButton({
         <Text
           style={[
             primary
-              ? small
+              ? !small
                 ? textStyles.normalMedium
                 : textStyles.bigMedium
               : small
@@ -93,13 +93,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   buttonPrimaryOutline: {
-    //
+    backgroundColor: colors.darkBackground,
+    borderColor: colors.primary,
+    borderWidth: 3,
   },
   buttonSecondary: {
     backgroundColor: 'white',
   },
   buttonSecondaryOutline: {
-    //
+    backgroundColor: colors.darkBackground,
+    borderColor: colors.offWhite,
+    borderWidth: 2,
   },
   primaryDisabled: {
     backgroundColor: '#ccc',
@@ -117,13 +121,13 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   textPrimaryOutline: {
-    //
+    color: colors.primary,
   },
   textSecondary: {
     color: colors.offBlack,
   },
   textSecondaryOutline: {
-    //
+    color: colors.offWhite,
   },
   textPrimaryDisabled: {
     color: 'white',
