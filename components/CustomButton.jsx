@@ -4,14 +4,28 @@ import { heightPercentageToDP, widthPercentageToDP } from 'redvest/util/scaler';
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
-function CustomButton({ icon, text, onPress, primary = false, small = false, disabled = false }) {
+function CustomButton({
+  icon,
+  text,
+  onPress,
+  primary = false,
+  small = false,
+  outline = false,
+  disabled = false,
+}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={[
-          small ? styles.buttonSmall : styles.buttonLarge,
           styles.button,
-          primary ? styles.buttonPrimary : styles.buttonSecondary,
+          small ? styles.buttonSmall : styles.buttonLarge,
+          primary
+            ? outline
+              ? styles.buttonPrimaryOutline
+              : styles.buttonPrimary
+            : outline
+              ? styles.buttonSecondaryOutline
+              : styles.buttonSecondary,
           disabled && primary && styles.primaryDisabled,
           disabled && !primary && styles.secondaryDisabled,
         ]}
@@ -28,7 +42,13 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
               : small
                 ? textStyles.normalRegular
                 : textStyles.bigRegular,
-            primary ? styles.textPrimary : styles.textSecondary,
+            primary
+              ? outline
+                ? styles.textPrimaryOutline
+                : styles.textPrimary
+              : outline
+                ? styles.textSecondaryOutline
+                : styles.textSecondary,
             disabled && primary && styles.textPrimaryDisabled,
             disabled && !primary && styles.textSecondaryDisabled,
           ]}
@@ -72,8 +92,14 @@ const styles = StyleSheet.create({
   buttonPrimary: {
     backgroundColor: colors.primary,
   },
+  buttonPrimaryOutline: {
+    //
+  },
   buttonSecondary: {
     backgroundColor: 'white',
+  },
+  buttonSecondaryOutline: {
+    //
   },
   primaryDisabled: {
     backgroundColor: '#ccc',
@@ -90,8 +116,14 @@ const styles = StyleSheet.create({
   textPrimary: {
     color: 'white',
   },
+  textPrimaryOutline: {
+    //
+  },
   textSecondary: {
     color: colors.offBlack,
+  },
+  textSecondaryOutline: {
+    //
   },
   textPrimaryDisabled: {
     color: 'white',
