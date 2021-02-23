@@ -9,7 +9,7 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
     <View style={styles.container}>
       <TouchableOpacity
         style={[
-          { width: widthPercentageToDP(small ? 47 : 90) },
+          small ? styles.buttonSmall : styles.buttonLarge,
           styles.button,
           primary ? styles.buttonPrimary : styles.buttonSecondary,
           disabled && primary && styles.primaryDisabled,
@@ -21,7 +21,13 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
         {icon && <Image source={icon} style={styles.icon} />}
         <Text
           style={[
-            primary ? textStyles.bigMedium : textStyles.bigRegular ,
+            primary
+              ? small
+                ? textStyles.normalMedium
+                : textStyles.bigMedium
+              : small
+                ? textStyles.normalRegular
+                : textStyles.bigRegular,
             primary ? styles.textPrimary : styles.textSecondary,
             disabled && primary && styles.textPrimaryDisabled,
             disabled && !primary && styles.textSecondaryDisabled,
@@ -42,7 +48,6 @@ const styles = StyleSheet.create({
     //borderWidth: 1,
   },
   button: {
-    height: heightPercentageToDP(Platform.OS === 'ios' ? 5.8 : 6.3),
     paddingHorizontal: 30,
     borderRadius: 50,
     display: 'flex',
@@ -55,6 +60,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonLarge: {
+    width: widthPercentageToDP(90),
+    height: heightPercentageToDP(Platform.OS === 'ios' ? 5.8 : 6.3),
+  },
+  buttonSmall: {
+    minWidth: widthPercentageToDP(28),
+    height: heightPercentageToDP(Platform.OS === 'ios' ? 4.2 : 4.8),
   },
   buttonPrimary: {
     backgroundColor: colors.primary,
