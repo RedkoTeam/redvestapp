@@ -1,4 +1,8 @@
 import React from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import SCHEMA from 'redvest/schema/schema';
+
 import { headerOptions } from 'redvest/util/styles';
 import BackChevron from 'redvest/components/BackChevron';
 
@@ -14,23 +18,29 @@ import stepFiveA from 'redvest/screens/game/stepFiveA';
 const GameStack = createStackNavigator();
 
 function AccountStackNavigator() {
+  const methods = useForm({ 
+    //resolver: yupResolver(SCHEMA)
+  });
+
   return (
-    <GameStack.Navigator screenOptions={headerOptions}>
-      <GameStack.Screen
-        name="stepOne"
-        component={stepOne}
-        options={{
-          headerLeft: () => <BackChevron />,
-          title: 'Game Screen',
-        }}
-      />
-      <GameStack.Screen name="stepTwo" component={stepTwo} />
-      <GameStack.Screen name="stepThree" component={stepThree} />
-      <GameStack.Screen name="stepThreea" component={stepThreea} />
-      <GameStack.Screen name="stepFour" component={stepFour} />
-      <GameStack.Screen name="stepFive" component={stepFive} />
-      <GameStack.Screen name="stepFiveA" component={stepFiveA} />
-    </GameStack.Navigator>
+    <FormProvider {...methods}>
+      <GameStack.Navigator screenOptions={headerOptions}>
+        <GameStack.Screen
+          name="stepOne"
+          component={stepOne}
+          options={{
+            headerLeft: () => <BackChevron />,
+            title: 'Game Screen',
+          }}
+        />
+        <GameStack.Screen name="stepTwo" component={stepTwo} />
+        <GameStack.Screen name="stepThree" component={stepThree} />
+        <GameStack.Screen name="stepThreea" component={stepThreea} />
+        <GameStack.Screen name="stepFour" component={stepFour} />
+        <GameStack.Screen name="stepFive" component={stepFive} />
+        <GameStack.Screen name="stepFiveA" component={stepFiveA} />
+      </GameStack.Navigator>
+    </FormProvider>
   );
 }
 
