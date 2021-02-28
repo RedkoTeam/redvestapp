@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from 'redvest/screens/Home/homescreen';
-import Onboarding from 'redvest/screens/Home/homescreen';
-import stepOne from 'redvest/screens/invest/stepOne';
-import stepTwo from 'redvest/screens/invest/stepTwo';
-import stepThree from 'redvest/screens/invest/stepThree';
-import stepThreea from 'redvest/screens/invest/stepThreea';
-import stepFour from 'redvest/screens/invest/stepFour';
-import stepFive from 'redvest/screens/invest/stepFive';
-import stepFiveA from 'redvest/screens/invest/stepFiveA';
-import main from 'redvest/screens/invest/main';
-import tfInfo from 'redvest/screens/info/tfInfo';
-import tickerInfo from 'redvest/screens/info/tickerInfo';
-import typeInfo from 'redvest/screens/info/typeInfo';
-import slInfo from 'redvest/screens/info/slInfo';
-import macd from 'redvest/screens/Profile/macd';
-import dualma from 'redvest/screens/Profile/dualma';
-import threema from 'redvest/screens/Profile/threema';
-import rsi from 'redvest/screens/Profile/threema';
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "redvest/screens/Home/homescreen";
+import Onboarding from "redvest/screens/Home/homescreen";
+import stepOne from "redvest/screens/Invest/stepOne";
+import stepTwo from "redvest/screens/Invest/stepTwo";
+import stepThree from "redvest/screens/Invest/stepThree";
+import stepThreea from "redvest/screens/Invest/stepThreea";
+import stepFour from "redvest/screens/Invest/stepFour";
+import stepFive from "redvest/screens/Invest/stepFive";
+import stepFiveA from "redvest/screens/Invest/stepFiveA";
+import main from "redvest/screens/Invest/main";
+import tfInfo from "redvest/screens/info/tfInfo";
+import tickerInfo from "redvest/screens/info/tickerInfo";
+import typeInfo from "redvest/screens/info/typeInfo";
+import slInfo from "redvest/screens/info/slInfo";
+import macd from "redvest/screens/Profile/macd";
+import dualma from "redvest/screens/Profile/dualma";
+import threema from "redvest/screens/Profile/threema";
+import rsi from "redvest/screens/Profile/threema";
 
 const HomeStack = createStackNavigator();
 

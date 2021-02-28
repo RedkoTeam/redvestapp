@@ -1,10 +1,10 @@
-import React from 'react';
-import { headerOptions } from 'redvest/util/styles';
-import BackChevron from 'redvest/components/BackChevron';
+import React from "react";
+import { headerOptions } from "redvest/util/styles";
+import BackChevron from "redvest/components/BackChevron";
 
-import { createStackNavigator } from '@react-navigation/stack';
-import Invest from 'redvest/screens/invest/Invest';
-
+import { createStackNavigator } from "@react-navigation/stack";
+import Invest from "redvest/screens/Invest/Invest";
+import stepOne from "redvest/screens/Invest/stepOne";
 const InvestStack = createStackNavigator();
 
 function InvestStackNavigator() {
@@ -15,7 +15,7 @@ function InvestStackNavigator() {
         component={Invest}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Invest Screen',
+          title: "Invest Screen",
         }}
       />
     </InvestStack.Navigator>

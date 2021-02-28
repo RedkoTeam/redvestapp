@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
-import AuthContext from 'redvest/contexts/AuthContext';
-import { headerOptions } from 'redvest/util/styles';
-import BackChevron from 'redvest/components/BackChevron';
+import React, { useContext } from "react";
+import AuthContext from "redvest/contexts/AuthContext";
+import { headerOptions } from "redvest/util/styles";
+import BackChevron from "redvest/components/BackChevron";
 
-import { createStackNavigator } from '@react-navigation/stack';
-import SignUpScreen from 'redvest/screens/auth/SignUpScreen';
-import SignInScreen from 'redvest/screens/auth/SignInScreen';
-import ResetPasswordScreen from 'redvest/screens/auth/ResetPasswordScreen';
+import { createStackNavigator } from "@react-navigation/stack";
+import SignUpScreen from "redvest/screens/auth/SignUpScreen";
+import SignInScreen from "redvest/screens/auth/SignInScreen";
+import ResetPasswordScreen from "redvest/screens/auth/ResetPasswordScreen";
 
-import Profile from 'redvest/screens/invest/Profile';
-import ActiveStrategies from 'redvest/screens/Profile/ActiveStrategies';
-import orders from 'redvest/screens/Profile/orders';
-import history from 'redvest/screens/Profile/history';
+import Profile from "redvest/screens/Invest/Profile";
+import ActiveStrategies from "redvest/screens/Profile/ActiveStrategies";
+import orders from "redvest/screens/Profile/orders";
+import history from "redvest/screens/Profile/history";
 
 const AuthStack = createStackNavigator();
 
@@ -27,7 +27,7 @@ function AccountStackNavigator() {
             component={SignInScreen}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'Sign in',
+              title: "Sign in",
             }}
           />
           <AuthStack.Screen
@@ -35,7 +35,7 @@ function AccountStackNavigator() {
             component={SignUpScreen}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'Create an account',
+              title: "Create an account",
             }}
           />
           <AuthStack.Screen
@@ -43,7 +43,7 @@ function AccountStackNavigator() {
             component={ResetPasswordScreen}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'Reset your password',
+              title: "Reset your password",
             }}
           />
         </>
@@ -54,7 +54,7 @@ function AccountStackNavigator() {
             component={Profile}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'Profile',
+              title: "Profile",
             }}
           />
           <AuthStack.Screen
@@ -62,7 +62,7 @@ function AccountStackNavigator() {
             component={ActiveStrategies}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'Active strategies',
+              title: "Active strategies",
             }}
           />
           <AuthStack.Screen
@@ -70,7 +70,7 @@ function AccountStackNavigator() {
             component={orders}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'Orders',
+              title: "Orders",
             }}
           />
           <AuthStack.Screen
@@ -78,7 +78,7 @@ function AccountStackNavigator() {
             component={history}
             options={{
               headerLeft: () => <BackChevron />,
-              title: 'History',
+              title: "History",
             }}
           />
         </>
