@@ -4,14 +4,28 @@ import { heightPercentageToDP, widthPercentageToDP } from 'redvest/util/scaler';
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
-function CustomButton({ icon, text, onPress, primary = false, small = false, disabled = false }) {
+function CustomButton({
+  icon,
+  text,
+  onPress,
+  primary = false,
+  small = false,
+  outline = false,
+  disabled = false,
+}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={[
-          { width: widthPercentageToDP(small ? 47 : 90) },
           styles.button,
-          primary ? styles.buttonPrimary : styles.buttonSecondary,
+          small ? styles.buttonSmall : styles.buttonLarge,
+          primary
+            ? outline
+              ? styles.buttonPrimaryOutline
+              : styles.buttonPrimary
+            : outline
+              ? styles.buttonSecondaryOutline
+              : styles.buttonSecondary,
           disabled && primary && styles.primaryDisabled,
           disabled && !primary && styles.secondaryDisabled,
         ]}
@@ -21,8 +35,20 @@ function CustomButton({ icon, text, onPress, primary = false, small = false, dis
         {icon && <Image source={icon} style={styles.icon} />}
         <Text
           style={[
-            primary ? textStyles.bigMedium : textStyles.bigRegular ,
-            primary ? styles.textPrimary : styles.textSecondary,
+            primary
+              ? small
+                ? textStyles.normalMedium
+                : textStyles.bigMedium
+              : small
+                ? textStyles.normalRegular
+                : textStyles.bigRegular,
+            primary
+              ? outline
+                ? styles.textPrimaryOutline
+                : styles.textPrimary
+              : outline
+                ? styles.textSecondaryOutline
+                : styles.textSecondary,
             disabled && primary && styles.textPrimaryDisabled,
             disabled && !primary && styles.textSecondaryDisabled,
           ]}
@@ -42,7 +68,6 @@ const styles = StyleSheet.create({
     //borderWidth: 1,
   },
   button: {
-    height: heightPercentageToDP(Platform.OS === 'ios' ? 5.8 : 6.3),
     paddingHorizontal: 30,
     borderRadius: 50,
     display: 'flex',
@@ -56,11 +81,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonLarge: {
+    width: widthPercentageToDP(90),
+    height: heightPercentageToDP(Platform.OS === 'ios' ? 5.8 : 6.3),
+  },
+  buttonSmall: {
+    minWidth: widthPercentageToDP(28),
+    height: heightPercentageToDP(Platform.OS === 'ios' ? 4.2 : 4.8),
+  },
   buttonPrimary: {
     backgroundColor: colors.primary,
   },
+  buttonPrimaryOutline: {
+    backgroundColor: colors.darkBackground,
+    borderColor: colors.primary,
+    borderWidth: 3,
+  },
   buttonSecondary: {
     backgroundColor: 'white',
+  },
+  buttonSecondaryOutline: {
+    backgroundColor: colors.darkBackground,
+    borderColor: colors.offWhite,
+    borderWidth: 2,
   },
   primaryDisabled: {
     backgroundColor: '#ccc',
@@ -77,8 +120,14 @@ const styles = StyleSheet.create({
   textPrimary: {
     color: 'white',
   },
+  textPrimaryOutline: {
+    color: colors.primary,
+  },
   textSecondary: {
     color: colors.offBlack,
+  },
+  textSecondaryOutline: {
+    color: colors.offWhite,
   },
   textPrimaryDisabled: {
     color: 'white',

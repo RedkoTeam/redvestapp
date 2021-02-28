@@ -3,13 +3,6 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "redvest/screens/Home/homescreen";
 import Onboarding from "redvest/screens/Home/homescreen";
-import stepOne from "redvest/screens/Invest/stepOne";
-import stepTwo from "redvest/screens/Invest/stepTwo";
-import stepThree from "redvest/screens/Invest/stepThree";
-import stepThreea from "redvest/screens/Invest/stepThreea";
-import stepFour from "redvest/screens/Invest/stepFour";
-import stepFive from "redvest/screens/Invest/stepFive";
-import stepFiveA from "redvest/screens/Invest/stepFiveA";
 import main from "redvest/screens/Invest/main";
 import tfInfo from "redvest/screens/info/tfInfo";
 import tickerInfo from "redvest/screens/info/tickerInfo";
@@ -27,13 +20,6 @@ function HomeStackNavigator() {
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
       <HomeStack.Screen name="Onboarding" component={Onboarding} />
-      <HomeStack.Screen name="stepOne" component={stepOne} />
-      <HomeStack.Screen name="stepTwo" component={stepTwo} />
-      <HomeStack.Screen name="stepThree" component={stepThree} />
-      <HomeStack.Screen name="stepThreea" component={stepThreea} />
-      <HomeStack.Screen name="stepFour" component={stepFour} />
-      <HomeStack.Screen name="stepFive" component={stepFive} />
-      <HomeStack.Screen name="stepFiveA" component={stepFiveA} />
       <HomeStack.Screen name="main" component={main} />
       <HomeStack.Screen name="tfInfo" component={tfInfo} />
       <HomeStack.Screen name="typeInfo" component={typeInfo} />

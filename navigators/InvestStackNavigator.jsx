@@ -4,7 +4,7 @@ import BackChevron from "redvest/components/BackChevron";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import Invest from "redvest/screens/Invest/Invest";
-import stepOne from "redvest/screens/Invest/stepOne";
+
 const InvestStack = createStackNavigator();
 
 function InvestStackNavigator() {
