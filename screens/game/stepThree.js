@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
 import back from '../../assets/images/Invest/step3/back.png';
 import cashRes from '../../assets/images/Invest/step3/cashRes.png';
@@ -19,12 +19,22 @@ import msft from '../../assets/images/stocks/MSFT.png';
 import amzn from '../../assets/images/stocks/AMZN.png';
 import sne from '../../assets/images/stocks/SNE.png';
 import pick from '../../assets/images/stocks/Pick.png';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SCHEMA } from 'redvest/schema/gameSchema';
 
 enableScreens(false);
 
 function stepThree({ navigation }) {
-  const { control, errors } = useFormContext();
+  const { updateGameData } = useContext(GameContext);
+
+  const { control, errors, handleSubmit } = useForm({
+    //resolver: yupResolver(SCHEMA),
+  });
+  const onSubmit = (data) => {
+    updateGameData(data);
+    navigation.navigate('');
+  };
 
   useEffect(() => {
     let mounted = true;
