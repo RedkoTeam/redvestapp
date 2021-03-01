@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import GameContext from 'redvest/contexts/GameContext';
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
 import AIone from '../../assets/images/Invest/step1/AIone.png';
 import AItwo from '../../assets/images/Invest/step1/AItwo.png';
@@ -12,12 +13,22 @@ import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import { enableScreens } from 'react-native-screens';
 import back from '../../assets/images/Invest/step3a/back.png';
 import NavBar_game from '../Navbar/Navbar_game';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SCHEMA } from 'redvest/schema/gameSchema';
 
 enableScreens(false);
 
 function stepOne({ navigation }) {
-  const { control, errors } = useFormContext();
+  const { updateGameData } = useContext(GameContext);
+
+  const { control, errors, handleSubmit } = useForm({
+    //resolver: yupResolver(SCHEMA),
+  });
+  const onSubmit = (data) => {
+    updateGameData(data);
+    navigation.navigate('');
+  };
 
   useEffect(() => {
     let mounted = true;

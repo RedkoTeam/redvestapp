@@ -1,3 +1,4 @@
+import React, { useEffect, useContext } from 'react';
 import React, { useEffect, useState } from 'react';
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
 import back from '../../assets/images/Invest/step4/back.png';
@@ -11,12 +12,22 @@ import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import Navbar_game from '../Navbar/Navbar_game.js';
 import { enableScreens } from 'react-native-screens';
 import Slider from '@react-native-community/slider';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SCHEMA } from 'redvest/schema/gameSchema';
 
 enableScreens(false);
 
 function stepFour({ navigation }) {
-  const { control, errors } = useFormContext();
+  const { updateGameData } = useContext(GameContext);
+
+  const { control, errors, handleSubmit } = useForm({
+    //resolver: yupResolver(SCHEMA),
+  });
+  const onSubmit = (data) => {
+    updateGameData(data);
+    navigation.navigate('');
+  };
 
   const [sliderValue1, setSliderValue1] = useState(15);
   const [sliderValue2, setSliderValue2] = useState(15);
