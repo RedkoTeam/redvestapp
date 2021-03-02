@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-
+import CustomInputLabel from 'redvest/components/CustomInputLabel'
 
 import { Controller } from 'react-hook-form';
 // control and errors are passed from the useForm hook of the react-hook-form package
@@ -54,10 +54,7 @@ function CustomTextInput({
 
   return (
     <View style={styles.container}>
-      <View style={[styles.marginOffset, styles.labelContainer]}>
-        <Text style={[textStyles.smallRegular, styles.label]}>{input.label}</Text>
-        {optional && <Text style={[textStyles.smallRegular, styles.optional]}>optional</Text>}
-      </View>
+      <CustomInputLabel text={input.label} optional={optional} />
       <Controller
         control={control}
         name={input.name}
@@ -185,17 +182,6 @@ const styles = StyleSheet.create({
     width: widthPercentageToDP(90),
     //borderColor: 'red',
     //borderWidth: 1,
-  },
-  labelContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  label: {
-    color: colors.primary
-  },
-  optional: {
-    color: colors.darkGrey,
-    paddingLeft: widthPercentageToDP(5),
   },
   inputContainer: {
     marginTop: heightPercentageToDP(0.5),
