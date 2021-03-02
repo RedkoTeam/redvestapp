@@ -1,5 +1,4 @@
-import React, { useEffect, useContext } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
 import back from '../../assets/images/Invest/step4/back.png';
 import Amounttra from '../../assets/images/Invest/step4/Amounttra.png';

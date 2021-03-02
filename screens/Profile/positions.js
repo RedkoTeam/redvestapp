@@ -1,8 +1,8 @@
 import {
   createReducer,
   createActions,
-} from "redvest/screens/Invest/node_modules/reduxsauce";
-import Immutable from "redvest/screens/Invest/node_modules/seamless-immutable";
+} from "redvest/screens/invest/node_modules/reduxsauce";
+import Immutable from "redvest/screens/invest/node_modules/seamless-immutable";
 
 const { Types, Creators } = createActions({
   getAccountAttempt: null,

@@ -10,11 +10,11 @@ import NavigationContainer from 'redvest/navigators/NavigationContainer';
 
 import {
   useFonts,
-  FiraSans_400Regular,
-  FiraSans_500Medium,
-  FiraSans_600SemiBold,
-  FiraSans_700Bold,
-} from '@expo-google-fonts/fira-sans';
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
 
 import firebase from 'firebase';
 import {
@@ -49,10 +49,10 @@ SplashScreen.preventAutoHideAsync().catch(() =>
 
 function App() {
   const [fontsLoaded] = useFonts({
-    FiraSans_400Regular,
-    FiraSans_500Medium,
-    FiraSans_600SemiBold,
-    FiraSans_700Bold,
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
   });
   if (!fontsLoaded) return null;
 

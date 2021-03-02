@@ -3,7 +3,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "redvest/screens/Home/homescreen";
 import Onboarding from "redvest/screens/Home/homescreen";
-import main from "redvest/screens/Invest/main";
+import main from "redvest/screens/invest/main";
 import tfInfo from "redvest/screens/info/tfInfo";
 import tickerInfo from "redvest/screens/info/tickerInfo";
 import typeInfo from "redvest/screens/info/typeInfo";
