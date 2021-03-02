@@ -1,5 +1,5 @@
 import React from 'react';
-import GameProvider from 'redvest/contexts/GameContext';
+import { GameProvider } from 'redvest/contexts/GameContext';
 
 import { headerOptions } from 'redvest/util/styles';
 import BackChevron from 'redvest/components/BackChevron';

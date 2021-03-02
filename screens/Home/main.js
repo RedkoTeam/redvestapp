@@ -1,4 +1,3 @@
-import {useNavigation} from "@react-navigation/native";
 import React, {useEffect} from "react";
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
 import investbtn from "../../assets/images/HomeScreen/investbtn.png"
@@ -27,8 +26,7 @@ import {enableScreens} from "react-native-screens";
 enableScreens(false)
 
 
-function main() {
-  const navigation = useNavigation();
+function main({ navigation }) {
   useEffect(()=>{
       let mounted = true;
   })

@@ -3,7 +3,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "redvest/screens/Home/homescreen";
 import Onboarding from "redvest/screens/Home/homescreen";
-import main from "redvest/screens/invest/main";
+import main from "redvest/screens/Home/main";
 import macd from "redvest/screens/Profile/macd";
 import dualma from "redvest/screens/Profile/dualma";
 import threema from "redvest/screens/Profile/threema";
