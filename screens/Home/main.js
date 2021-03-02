@@ -39,12 +39,12 @@ function main({ navigation }) {
         <ScrollView style={{height:'200%'}}>
               <View style={{  flex: 0.03, flexDirection: 'column', width: '100%', justifyContent: 'center', padding: 15, marginLeft:'3%' }}>
               <View>
-                <TouchableOpacity onPress={() => navigation.navigate('stepOne')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Game', {screen: 'stepOne'})}>
                   <Image source={cash} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(20)}} />
                 </TouchableOpacity>
                 </View>
                 <View>
-                <TouchableOpacity onPress={() => navigation.navigate('Invest')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Invest', {screen: 'Invest'})}>
                   <Image source={as} style={{resizeMode:'contain',width:widthPercentageToDP(85), height:heightPercentageToDP(20)}}/>
                 </TouchableOpacity>
                 </View>
