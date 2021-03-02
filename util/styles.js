@@ -12,6 +12,23 @@ export const colors = {
 };
 
 export const textStyles = StyleSheet.create({
+  // HUGE
+  hugeRegular: {
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 30,
+  },
+  hugeMedium: {
+    fontFamily: 'Poppins_500Medium',
+    fontSize: 30,
+  },
+  hugeSemiBold: {
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 30,
+  },
+  hugeBold: {
+    fontFamily: 'Poppins_700Bold',
+    fontSize: 30,
+  },
   // BIG
   bigRegular: {
     fontFamily: 'Poppins_400Regular',

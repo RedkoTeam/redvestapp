@@ -1,7 +1,15 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState, useContext } from 'react';
 import DataContext from 'redvest/contexts/DataContext';
-import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Linking,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import price from '../../assets/images/manual/price.png';
 import qty from '../../assets/images/manual/qty.png';
 import stoploss from '../../assets/images/manual/stoploss.png';
@@ -20,28 +28,32 @@ import { enableScreens } from 'react-native-screens';
 import RNPickerSelect from 'react-native-picker-select';
 import Slider from '@react-native-community/slider';
 import primary from '../../assets/images/Invest/step5/investbtn.png';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 import NavBar_invest from '../Navbar/Navbar_invest';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { textStyles, colors } from 'redvest/util/styles';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 //import alpacaApi from '../services/alpaca';
 
 enableScreens(false);
 
-function Invest({ route }) {
-  const { db } = useContext(DataContext);
+function Invest({ navigation }) {
+  const { control, handleSubmit, errors, reset, formState } = useForm({
+    resolver: yupResolver(),
+  });
 
-  const navigation = useNavigation();
   const [sTicker, setsTicker] = useState('');
   const [sPrice, setsPrice] = useState('');
   const [sQty, setsQty] = useState('');
   const [oType, setoType] = useState('');
   const [tForce, settForce] = useState('');
   const [sLoss, setsLoss] = useState('');
-  useEffect(() => {
-    let mounted = true;
-  });
 
   const profileUpload = () => {
-    db.collection('users')
+    firebase
+      .firestore()
+      .collection('users')
       .doc(firebase.auth().currentUser.uid)
       .set(
         {
@@ -60,184 +72,174 @@ function Invest({ route }) {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <ImageBackground
-        source={bg}
-        style={{ width: widthPercentageToDP(100), height: heightPercentageToDP(100) }}
-      >
+    <SafeAreaView
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: colors.darkBackground,
+        minHeight: Math.round(Dimensions.get('window').height / 2),
+      }}
+    >
+      <Text style={[textStyles.hugeRegular, styles.screenTitle]}>Place an order</Text>
+      <ScrollView style={{ height: '200%' }}>
         <View
           style={{
-            flexDirection: 'row',
+            flex: 0.03,
+            flexDirection: 'column',
             width: '100%',
-            justifyContent: 'space-between',
-            padding: 25,
-            marginTop: 5,
-            marginBottom: '-15%',
+            justifyContent: 'center',
+            padding: 15,
+            marginLeft: '3%',
           }}
         >
-          <Image
-            source={title}
-            style={{
-              resizeMode: 'contain',
-              width: widthPercentageToDP(80),
-              height: heightPercentageToDP(10),
-              marginTop: '3%',
-              marginLeft: '0%',
-            }}
-          />
-        </View>
-        <ScrollView style={{ height: '200%' }}>
-          <View
-            style={{
-              flex: 0.03,
-              flexDirection: 'column',
-              width: '100%',
-              justifyContent: 'center',
-              padding: 15,
-              marginLeft: '3%',
-            }}
-          >
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('tickerInfo')}>
-                <Image
-                  source={ticker}
-                  style={{
-                    resizeMode: 'contain',
-                    width: widthPercentageToDP(45),
-                    height: heightPercentageToDP(8),
-                    marginBottom: heightPercentageToDP(1),
-                  }}
-                />
-              </TouchableOpacity>
-              {/*stock ticker should show after being selected , values should be taken from an equation */}
-              <RNPickerSelect
-                onValueChange={(sTicker) => setsTicker(sTicker)}
-                items={[
-                  { label: 'Apple', value: 'APPL' },
-                  { label: 'Baseball', value: 'baseball' },
-                  { label: 'Hockey', value: 'hockey' },
-                ]}
-              />
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('')}>
-                <Image
-                  source={price}
-                  style={{
-                    resizeMode: 'contain',
-                    width: widthPercentageToDP(30),
-                    height: heightPercentageToDP(5),
-                    marginBottom: heightPercentageToDP(1),
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('')}>
-                <Image
-                  source={qty}
-                  style={{
-                    resizeMode: 'contain',
-                    width: widthPercentageToDP(9),
-                    height: heightPercentageToDP(5),
-                    marginBottom: heightPercentageToDP(1),
-                  }}
-                />
-              </TouchableOpacity>
-              <Slider
-                maximumValue={100}
-                minimumValue={0}
-                minimumTrackTintColor="#78AC43"
-                maximumTrackTintColor="#000000"
-                step={1}
-                value={sQty}
-                onValueChange={(sQty) => setsQty(sQty)}
-              />
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('typeInfo')}>
-                <Image
-                  source={type}
-                  style={{
-                    resizeMode: 'contain',
-                    width: widthPercentageToDP(40),
-                    height: heightPercentageToDP(7),
-                    marginBottom: heightPercentageToDP(1),
-                  }}
-                />
-              </TouchableOpacity>
-              <RNPickerSelect
-                onValueChange={(oType) => setoType(oType)}
-                items={[
-                  { label: 'Apple', value: 'APPL' },
-                  { label: 'Baseball', value: 'baseball' },
-                  { label: 'Hockey', value: 'hockey' },
-                ]}
-              />
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('tfInfo')}>
-                <Image
-                  source={time}
-                  style={{
-                    resizeMode: 'contain',
-                    width: widthPercentageToDP(45),
-                    height: heightPercentageToDP(7),
-                    marginBottom: heightPercentageToDP(1),
-                  }}
-                />
-              </TouchableOpacity>
-              <RNPickerSelect
-                onValueChange={(tForce) => settForce(tForce)}
-                items={[
-                  { label: 'Apple', value: 'APPL' },
-                  { label: 'Baseball', value: 'baseball' },
-                  { label: 'Hockey', value: 'hockey' },
-                ]}
-              />
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('slInfo')}>
-                <Image
-                  source={stoploss}
-                  style={{
-                    resizeMode: 'contain',
-                    width: widthPercentageToDP(40),
-                    height: heightPercentageToDP(7),
-                    marginBottom: heightPercentageToDP(1),
-                  }}
-                />
-              </TouchableOpacity>
-              <Slider
-                maximumValue={100}
-                minimumValue={0}
-                minimumTrackTintColor="#EB5757"
-                maximumTrackTintColor="#000000"
-                step={1}
-                value={sLoss}
-                onValueChange={(sLoss) => setsLoss(sLoss)}
-              />
-            </View>
-          </View>
           <View>
-            <TouchableOpacity onPress={() => profileUpload()}>
+            <TouchableOpacity onPress={() => navigation.navigate('tickerInfo')}>
               <Image
-                source={primary}
+                source={ticker}
                 style={{
                   resizeMode: 'contain',
-                  width: widthPercentageToDP(85),
-                  height: heightPercentageToDP(7),
-                  marginTop: '3%',
-                  left: '7%',
+                  width: widthPercentageToDP(45),
+                  height: heightPercentageToDP(8),
+                  marginBottom: heightPercentageToDP(1),
+                }}
+              />
+            </TouchableOpacity>
+            {/*stock ticker should show after being selected , values should be taken from an equation */}
+            <RNPickerSelect
+              onValueChange={(sTicker) => setsTicker(sTicker)}
+              items={[
+                { label: 'Apple', value: 'APPL' },
+                { label: 'Baseball', value: 'baseball' },
+                { label: 'Hockey', value: 'hockey' },
+              ]}
+            />
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('')}>
+              <Image
+                source={price}
+                style={{
+                  resizeMode: 'contain',
+                  width: widthPercentageToDP(30),
+                  height: heightPercentageToDP(5),
+                  marginBottom: heightPercentageToDP(1),
                 }}
               />
             </TouchableOpacity>
           </View>
-        </ScrollView>
-      </ImageBackground>
-      <NavBar_invest />
-    </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('')}>
+              <Image
+                source={qty}
+                style={{
+                  resizeMode: 'contain',
+                  width: widthPercentageToDP(9),
+                  height: heightPercentageToDP(5),
+                  marginBottom: heightPercentageToDP(1),
+                }}
+              />
+            </TouchableOpacity>
+            <Slider
+              maximumValue={100}
+              minimumValue={0}
+              minimumTrackTintColor="#78AC43"
+              maximumTrackTintColor="#000000"
+              step={1}
+              value={sQty}
+              onValueChange={(sQty) => setsQty(sQty)}
+            />
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('typeInfo')}>
+              <Image
+                source={type}
+                style={{
+                  resizeMode: 'contain',
+                  width: widthPercentageToDP(40),
+                  height: heightPercentageToDP(7),
+                  marginBottom: heightPercentageToDP(1),
+                }}
+              />
+            </TouchableOpacity>
+            <RNPickerSelect
+              onValueChange={(oType) => setoType(oType)}
+              items={[
+                { label: 'Apple', value: 'APPL' },
+                { label: 'Baseball', value: 'baseball' },
+                { label: 'Hockey', value: 'hockey' },
+              ]}
+            />
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('tfInfo')}>
+              <Image
+                source={time}
+                style={{
+                  resizeMode: 'contain',
+                  width: widthPercentageToDP(45),
+                  height: heightPercentageToDP(7),
+                  marginBottom: heightPercentageToDP(1),
+                }}
+              />
+            </TouchableOpacity>
+            <RNPickerSelect
+              onValueChange={(tForce) => settForce(tForce)}
+              items={[
+                { label: 'Apple', value: 'APPL' },
+                { label: 'Baseball', value: 'baseball' },
+                { label: 'Hockey', value: 'hockey' },
+              ]}
+            />
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('slInfo')}>
+              <Image
+                source={stoploss}
+                style={{
+                  resizeMode: 'contain',
+                  width: widthPercentageToDP(40),
+                  height: heightPercentageToDP(7),
+                  marginBottom: heightPercentageToDP(1),
+                }}
+              />
+            </TouchableOpacity>
+            <Slider
+              maximumValue={100}
+              minimumValue={0}
+              minimumTrackTintColor="#EB5757"
+              maximumTrackTintColor="#000000"
+              step={1}
+              value={sLoss}
+              onValueChange={(sLoss) => setsLoss(sLoss)}
+            />
+          </View>
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => profileUpload()}>
+            <Image
+              source={primary}
+              style={{
+                resizeMode: 'contain',
+                width: widthPercentageToDP(85),
+                height: heightPercentageToDP(7),
+                marginTop: '3%',
+                left: '7%',
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  screenTitle: {
+    color: colors.offWhite,
+    width: '100%',
+    padding: 25,
+    marginBottom: heightPercentageToDP(-2.5),
+  },
+});
 
 export default Invest;
