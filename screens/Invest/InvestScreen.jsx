@@ -54,7 +54,7 @@ function InvestScreen({ navigation }) {
       <Text style={[styles.screenTitle, textStyles.hugeRegular]}>Place an order</Text>
       <ScrollView style={styles.scrollView}>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('tickerInfo')}>
+          <TouchableOpacity onPress={() => navigation.navigate('StockTickerInfo')}>
             <CustomInputLabel text="Stock ticker" big info />
           </TouchableOpacity>
           {/*stock ticker should show after being selected , values should be taken from an equation */}
@@ -68,12 +68,12 @@ function InvestScreen({ navigation }) {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
+          <TouchableOpacity onPress={() => navigation.navigate('PriceInfo')}>
             <CustomInputLabel text="Price" big info />
           </TouchableOpacity>
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
+          <TouchableOpacity onPress={() => navigation.navigate('QuantityInfo')}>
             <CustomInputLabel text="Quantity" big info />
           </TouchableOpacity>
           <Slider
@@ -87,7 +87,7 @@ function InvestScreen({ navigation }) {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('typeInfo')}>
+          <TouchableOpacity onPress={() => navigation.navigate('OrderTypeInfo')}>
             <CustomInputLabel text="Order type" big info />
           </TouchableOpacity>
           <RNPickerSelect
@@ -100,7 +100,7 @@ function InvestScreen({ navigation }) {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('tfInfo')}>
+          <TouchableOpacity onPress={() => navigation.navigate('TimeInForceInfo')}>
             <CustomInputLabel text="Time in force" big info />
           </TouchableOpacity>
           <RNPickerSelect
@@ -113,7 +113,7 @@ function InvestScreen({ navigation }) {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('slInfo')}>
+          <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
             <CustomInputLabel text="Stop loss" big info />
           </TouchableOpacity>
           <Slider

@@ -4,10 +4,12 @@ import BackChevron from 'redvest/components/BackChevron';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import InvestScreen from 'redvest/screens/invest/InvestScreen';
-import tickerInfo from 'redvest/screens/info/tickerInfo';
-import typeInfo from 'redvest/screens/info/typeInfo';
-import tfInfo from 'redvest/screens/info/tfInfo';
-import slInfo from 'redvest/screens/info/slInfo';
+import StockTickerInfoScreen from 'redvest/screens/info/StockTickerInfoScreen';
+import PriceInfoScreen from 'redvest/screens/info/PriceInfoScreen';
+import QuantityInfoScreen from 'redvest/screens/info/QuantityInfoScreen';
+import OrderTypeInfoScreen from 'redvest/screens/info/OrderTypeInfoScreen';
+import TimeInForceInfoScreen from 'redvest/screens/info/TimeInForceInfoScreen';
+import StopLossInfoScreen from 'redvest/screens/info/StopLossInfoScreen';
 
 const InvestStack = createStackNavigator();
 
@@ -16,32 +18,48 @@ function InvestStackNavigator() {
     <InvestStack.Navigator screenOptions={headerOptions}>
       <InvestStack.Screen name="Invest" component={InvestScreen} options={{ headerShown: false }} />
       <InvestStack.Screen
-        name="tickerInfo"
-        component={tickerInfo}
+        name="StockTickerInfo"
+        component={StockTickerInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
           title: 'Stock ticker info',
         }}
       />
       <InvestStack.Screen
-        name="typeInfo"
-        component={typeInfo}
+        name="PriceInfo"
+        component={PriceInfoScreen}
+        options={{
+          headerLeft: () => <BackChevron />,
+          title: 'Price info',
+        }}
+      />
+      <InvestStack.Screen
+        name="QuantityInfo"
+        component={QuantityInfoScreen}
+        options={{
+          headerLeft: () => <BackChevron />,
+          title: 'Quantity info',
+        }}
+      />
+      <InvestStack.Screen
+        name="OrderTypeInfo"
+        component={OrderTypeInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
           title: 'Order type info',
         }}
       />
       <InvestStack.Screen
-        name="tfInfo"
-        component={tfInfo}
+        name="TimeInForceInfo"
+        component={TimeInForceInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
           title: 'Time in force info',
         }}
       />
       <InvestStack.Screen
-        name="slInfo"
-        component={slInfo}
+        name="StopLossInfo"
+        component={StopLossInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
           title: 'Stop loss info',
