@@ -1,35 +1,18 @@
-import React, { useEffect, useState, useContext } from 'react';
-import DataContext from 'redvest/contexts/DataContext';
-import {
-  Image,
-  ImageBackground,
-  Linking,
-  TouchableOpacity,
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import React, { useState } from 'react';
+import { Image, TouchableOpacity, View, ScrollView, StyleSheet, Text } from 'react-native';
 import price from '../../assets/images/manual/price.png';
 import qty from '../../assets/images/manual/qty.png';
 import stoploss from '../../assets/images/manual/stoploss.png';
 import ticker from '../../assets/images/manual/ticker.png';
-import title from '../../assets/images/manual/title.png';
 import time from '../../assets/images/manual/time.png';
 import type from '../../assets/images/manual/type.png';
-import bg from '../../assets/images/HomeScreen/bg.png';
-import loginbtn from '../../assets/images/HomeScreen/login.png';
-import signupbtn from '../../assets/images/HomeScreen/signup.png';
 import { Dimensions } from 'react-native';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
-import { actuatedNormalize } from '../../util/fontScaler';
-import NavBar_game from '../Navbar/Navbar_game.js';
 import { enableScreens } from 'react-native-screens';
 import RNPickerSelect from 'react-native-picker-select';
 import Slider from '@react-native-community/slider';
 import primary from '../../assets/images/Invest/step5/investbtn.png';
 import firebase from 'firebase';
-import NavBar_invest from '../Navbar/Navbar_invest';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { textStyles, colors } from 'redvest/util/styles';
 import { useForm } from 'react-hook-form';
