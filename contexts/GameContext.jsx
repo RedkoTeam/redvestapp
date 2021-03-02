@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 const GameContext = React.createContext();
 
 export function GameProvider({ children }) {
-  const [gameData, setGameData] = useState({});
+  const [formData, setFormData] = useState({});
 
-  const updateGameData = (newData) => setGameData({ ...gameData, ...newData });
-  const resetGameData = () => setGameData({});
+  const updateFormData = (newData) => setFormData({ ...formData, ...newData });
+  const resetFormData = () => setFormData({});
 
   return (
     <GameContext.Provider
       value={{
-        gameData,
-        updateGameData,
-        resetGameData,
+        formData,
+        updateFormData,
+        resetFormData,
       }}
     >
       {children}

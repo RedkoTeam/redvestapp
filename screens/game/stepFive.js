@@ -19,13 +19,13 @@ import { SCHEMA } from 'redvest/schema/gameSchema';
 enableScreens(false);
 
 function stepFive({ navigation }) {
-  const { updateGameData } = useContext(GameContext);
+  const { updateFormData } = useContext(GameContext);
 
   const { control, errors, handleSubmit } = useForm({
     //resolver: yupResolver(SCHEMA),
   });
   const onSubmit = (data) => {
-    updateGameData(data);
+    updateFormData(data);
     navigation.navigate('');
   };
 
