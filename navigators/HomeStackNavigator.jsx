@@ -11,7 +11,7 @@ import slInfo from "redvest/screens/info/slInfo";
 import macd from "redvest/screens/Profile/macd";
 import dualma from "redvest/screens/Profile/dualma";
 import threema from "redvest/screens/Profile/threema";
-import rsi from "redvest/screens/Profile/threema";
+import rsi from "redvest/screens/Profile/rsi";
 
 const HomeStack = createStackNavigator();
 

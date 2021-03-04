@@ -7,9 +7,11 @@ const DataContext = React.createContext();
 
 export function DataProvider({ children }) {
   const [db, setDb] = useState(null);
+  const [firebaseDB, setFirebaseDB]=useState(null)
 
   useEffect(() => {
     setDb(firebase.firestore());
+    setFirebaseDB(firebase.database().ref())
   }, []);
 
   const profileUploadAsync = async () => {
@@ -80,6 +82,7 @@ export function DataProvider({ children }) {
     <DataContext.Provider
       value={{
         db,
+        firebaseDB,
         profileUploadAsync,
         signUpAsync,
       }}

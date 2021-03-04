@@ -23,12 +23,13 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel,
 } from "react-native-simple-radio-button";
+
 enableScreens(false);
 
-function stepThreea({ navigation }) {
+function stepThreea({ navigation, route }) {
   const { control, errors } = useFormContext();
-  const [value3Index, setValue3Index] = useState(0);
-
+  const [valueIndex, setValueIndex] = useState(0);
+  const [frequency, setFrequency] = useState("");
   useEffect(() => {
     let mounted = true;
   });
@@ -36,11 +37,23 @@ function stepThreea({ navigation }) {
     { label: "Daily", value: 0 },
     { label: "Weekly", value: 1 },
     { label: "Monthly", value: 2 },
-    { label: "Custom", value: 2 },
+    { label: "Custom", value: 3 },
   ];
-  const onPress = (value) => {
-    setValue3Index(value);
-  };
+
+  function onPress(value, obj) {
+    setValueIndex(value);
+    setFrequency(obj["label"]);
+  }
+
+  function choosingFrequencyCompleted() {
+    navigation.navigate("stepFour", {
+      strategy: route.params.strategy,
+      portfolio: route.params.portfolio,
+      stocks: route.params.stocks,
+      frequency: frequency,
+    });
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground
@@ -153,11 +166,11 @@ function stepThreea({ navigation }) {
                     <RadioButtonInput
                       obj={obj}
                       index={i}
-                      isSelected={value3Index === i}
-                      onPress={() => onPress(i)}
+                      isSelected={valueIndex === i}
+                      onPress={() => onPress(i, obj)}
                       borderWidth={1}
                       buttonInnerColor={"#78AC43"}
-                      buttonOuterColor={value3Index === i ? "#78AC43" : "white"}
+                      buttonOuterColor={valueIndex === i ? "#78AC43" : "white"}
                       buttonSize={15}
                       buttonOuterSize={25}
                       buttonStyle={{ marginTop: 18 }}
@@ -185,15 +198,14 @@ function stepThreea({ navigation }) {
               </RadioForm>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate("stepFour")}>
+            <TouchableOpacity onPress={choosingFrequencyCompleted}>
               <Image
                 source={next}
                 style={{
                   resizeMode: "contain",
                   width: widthPercentageToDP(85),
                   height: heightPercentageToDP(11),
-                  top: 130,
-                  //paddingTop: 200,
+                  top: "15%",
                 }}
               />
             </TouchableOpacity>

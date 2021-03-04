@@ -28,7 +28,6 @@ function AccountStackNavigator() {
           component={stepOne}
           options={{
             headerLeft: () => <BackChevron />,
-            title: "Game Screen",
           }}
         />
         <GameStack.Screen name="stepTwo" component={stepTwo} />
