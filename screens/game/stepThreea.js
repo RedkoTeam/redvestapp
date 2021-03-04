@@ -17,7 +17,9 @@ import bg from "../../assets/images/HomeScreen/bg.png";
 import { widthPercentageToDP, heightPercentageToDP } from "../../util/scaler";
 import Navbar_game from "../Navbar/Navbar_game.js";
 import { enableScreens } from "react-native-screens";
-import { useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SCHEMA } from "redvest/schema/gameSchema";
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
@@ -27,7 +29,6 @@ import RadioForm, {
 enableScreens(false);
 
 function stepThreea({ navigation, route }) {
-  const { control, errors } = useFormContext();
   const [valueIndex, setValueIndex] = useState(0);
   const [frequency, setFrequency] = useState("");
   useEffect(() => {

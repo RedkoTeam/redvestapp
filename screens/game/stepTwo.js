@@ -23,8 +23,6 @@ import { useFormContext } from "react-hook-form";
 enableScreens(false);
 
 function stepTwo({ navigation, route }) {
-  const { control, errors } = useFormContext();
-
   useEffect(() => {
     let mounted = true;
   });

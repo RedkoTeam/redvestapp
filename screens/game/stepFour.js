@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Image,
   ImageBackground,
@@ -19,13 +19,10 @@ import { widthPercentageToDP, heightPercentageToDP } from "../../util/scaler";
 import Navbar_game from "../Navbar/Navbar_game.js";
 import { enableScreens } from "react-native-screens";
 import Slider from "@react-native-community/slider";
-import { useFormContext } from "react-hook-form";
 
 enableScreens(false);
 
 function stepFour({ navigation, route }) {
-  const { control, errors } = useFormContext();
-
   const [sliderValue1, setSliderValue1] = useState(15);
   const [sliderValue2, setSliderValue2] = useState(15);
 

@@ -12,72 +12,89 @@ export const colors = {
 };
 
 export const textStyles = StyleSheet.create({
+  // HUGE
+  hugeRegular: {
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 30,
+  },
+  hugeMedium: {
+    fontFamily: 'Poppins_500Medium',
+    fontSize: 30,
+  },
+  hugeSemiBold: {
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 30,
+  },
+  hugeBold: {
+    fontFamily: 'Poppins_700Bold',
+    fontSize: 30,
+  },
   // BIG
   bigRegular: {
-    fontFamily: "FiraSans_400Regular",
+    fontFamily: 'Poppins_400Regular',
     fontSize: 18,
   },
   bigMedium: {
-    fontFamily: "FiraSans_500Medium",
+    fontFamily: 'Poppins_500Medium',
     fontSize: 18,
   },
   bigSemiBold: {
-    fontFamily: "FiraSans_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 18,
   },
   bigBold: {
-    fontFamily: "FiraSans_700Bold",
+    fontFamily: 'Poppins_700Bold',
     fontSize: 18,
   },
   // NORMAL
   normalRegular: {
-    fontFamily: "FiraSans_400Regular",
+    fontFamily: 'Poppins_400Regular',
     fontSize: 16,
   },
   normalMedium: {
-    fontFamily: "FiraSans_500Medium",
+    fontFamily: 'Poppins_500Medium',
     fontSize: 16,
   },
   normalSemiBold: {
-    fontFamily: "FiraSans_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 16,
   },
   normalBold: {
-    fontFamily: "FiraSans_700Bold",
+    fontFamily: 'Poppins_700Bold',
     fontSize: 16,
   },
   // SMALL
   smallRegular: {
-    fontFamily: "FiraSans_400Regular",
+    fontFamily: 'Poppins_400Regular',
     fontSize: 12,
   },
   smallMedium: {
-    fontFamily: "FiraSans_500Medium",
+    fontFamily: 'Poppins_500Medium',
     fontSize: 12,
   },
   smallSemiBold: {
-    fontFamily: "FiraSans_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 12,
   },
   smallBold: {
-    fontFamily: "FiraSans_700Bold",
+    fontFamily: 'Poppins_700Bold',
     fontSize: 12,
   },
   // TINY
   tinyRegular: {
-    fontFamily: "FiraSans_400Regular",
+    fontFamily: 'Poppins_400Regular',
     fontSize: 10,
   },
   tinyMedium: {
-    fontFamily: "FiraSans_500Medium",
+    fontFamily: 'Poppins_500Medium',
     fontSize: 10,
   },
   tinySemiBold: {
-    fontFamily: "FiraSans_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 10,
   },
   tinyBold: {
-    fontFamily: "FiraSans_700Bold",
+    fontFamily: 'Poppins_700Bold',
     fontSize: 10,
   },
 });

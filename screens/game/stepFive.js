@@ -21,35 +21,14 @@ import bg from "../../assets/images/HomeScreen/bg.png";
 import { widthPercentageToDP, heightPercentageToDP } from "../../util/scaler";
 import Navbar_game from "../Navbar/Navbar_game.js";
 import { enableScreens } from "react-native-screens";
-import { useFormContext } from "react-hook-form";
-//import firebaseDb from '../../firebase/firebase'
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SCHEMA } from "redvest/schema/gameSchema";
 import DataContext from "redvest/contexts/DataContext";
-import firebase from "firebase";
-import {
-  API_KEY,
-  AUTH_DOMAIN,
-  DATABASE_URL,
-  PROJECT_ID,
-  STORAGE_BUCKET,
-  MESSAGE_SENDER_ID,
-  APP_ID,
-  MEASUREMENT_ID,
-} from "@env";
 
-const FIREBASE_CONFIG = {
-  apiKey: API_KEY,
-  authDomain: AUTH_DOMAIN,
-  databaseURL: DATABASE_URL,
-  projectId: PROJECT_ID,
-  storageBucket: STORAGE_BUCKET,
-  messagingSenderId: MESSAGE_SENDER_ID,
-  appId: APP_ID,
-  measurementId: MEASUREMENT_ID,
-};
 enableScreens(false);
 
 function stepFive({ navigation, route }) {
-  const { control, errors } = useFormContext();
   const { firebaseDB } = useContext(DataContext);
   const { strategy, portfolio, frequency, stopLoss, amount } = route.params;
 

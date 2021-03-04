@@ -9,11 +9,11 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import NavigationContainer from "redvest/navigators/NavigationContainer";
 import {
   useFonts,
-  FiraSans_400Regular,
-  FiraSans_500Medium,
-  FiraSans_600SemiBold,
-  FiraSans_700Bold,
-} from "@expo-google-fonts/fira-sans";
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
 
 import firebase from "firebase";
 import {
@@ -22,7 +22,7 @@ import {
   DATABASE_URL,
   PROJECT_ID,
   STORAGE_BUCKET,
-  MESSAGE_SENDER_ID,
+  MESSAGING_SENDER_ID,
   APP_ID,
   MEASUREMENT_ID,
 } from "@env";
@@ -33,7 +33,7 @@ const FIREBASE_CONFIG = {
   databaseURL: DATABASE_URL,
   projectId: PROJECT_ID,
   storageBucket: STORAGE_BUCKET,
-  messagingSenderId: MESSAGE_SENDER_ID,
+  messagingSenderId: MESSAGING_SENDER_ID,
   appId: APP_ID,
   measurementId: MEASUREMENT_ID,
 };
@@ -50,10 +50,10 @@ SplashScreen.preventAutoHideAsync().catch(() =>
 
 function App() {
   const [fontsLoaded] = useFonts({
-    FiraSans_400Regular,
-    FiraSans_500Medium,
-    FiraSans_600SemiBold,
-    FiraSans_700Bold,
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
   });
   if (!fontsLoaded) return null;
 

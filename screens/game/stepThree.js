@@ -31,8 +31,9 @@ import { useFormContext } from "react-hook-form";
 enableScreens(false);
 
 function stepThree({ navigation, route }) {
-  const { control, errors } = useFormContext();
   const [stocks, setStocs] = useState([]);
+
+  enableScreens(false);
 
   useEffect(() => {
     let mounted = true;
