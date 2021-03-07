@@ -13,6 +13,12 @@ import CustomInputLabel from 'redvest/components/CustomInputLabel';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import MultiSelect from 'react-native-multiple-select';
+import RadioForm, {
+  RadioButton,
+  RadioButtonInput,
+  RadioButtonLabel,
+} from "react-native-simple-radio-button";
+import { Searchbar } from 'react-native-paper';
 //import alpacaApi from '../services/alpaca';
 
 enableScreens(false);
@@ -61,6 +67,60 @@ function InvestScreen({ navigation }) {
     resolver: yupResolver(),
   });
 
+  var radio_props = [
+    { label: "Buy", value: "buy" },
+    { label: "Sell", value: "sell" },
+    
+  ];
+
+  function onPress(value, obj) {
+    setValueIndex(value);
+    setFrequency(obj["label"]);
+  }
+
+  state = {
+    query: '',
+    totalItems: [],
+    filteredItems: []
+}
+
+{/*
+onSearchBarTextChange = _.debounce(() => {
+  this.filterItems()
+}, 800)
+
+
+{/*filterItems = () => {
+  const { assets, getBars } = this.props
+  const { query } = this.state
+
+  let filteredItems = _.map(assets, function (el) {
+      if (query && el.symbol.toLowerCase().startsWith(query.toLowerCase())) return el
+  })
+  filteredItems = _.without(filteredItems, undefined)
+  if (filteredItems.length > 199) {
+      filteredItems = filteredItems.slice(0, 199)
+  }
+
+  this.setState({
+      query,
+      filteredItems
+  })
+
+  let symbols = ''
+  _.map(filteredItems, function (item) {
+      let div = symbols.length > 0 ? ',' : ''
+      symbols = symbols + div + item.symbol
+  })
+  getBars('1Min', symbols, getTodayStart(), getTodayEnd(), 'today')
+  getBars('1D', symbols, getYesterdayStart(), getYesterdayEnd(), 'yesterday')
+} */}
+
+
+
+
+  //const { query, filteredItems } = this.state
+
   const [sTicker, setsTicker] = useState('');
   const [sPrice, setsPrice] = useState('');
   const [sQty, setsQty] = useState('');
@@ -68,6 +128,13 @@ function InvestScreen({ navigation }) {
   const [tForce, settForce] = useState('');
   const [sLoss, setsLoss] = useState('');
   const [selectedItem, setSelectedItem] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
+
+  const onChangeSearch = query => setSearchQuery(query);
+  
+  const [valueIndex, setValueIndex] = useState(0);
+  const [frequency, setFrequency] = useState("");
 
   onSelectedItemChange = (selectedItem) => {
     setSelectedItem(selectedItem);
@@ -99,6 +166,57 @@ function InvestScreen({ navigation }) {
     <SafeAreaView style={styles.safeAreaContainer}>
       <Text style={[styles.screenTitle, textStyles.hugeRegular]}>Place an order</Text>
       <ScrollView style={styles.scrollView}>
+
+      <RadioForm
+                style={{ height: '13%' }}
+                formHorizontal={true}
+                animation={true}
+              >
+                {/* To create radio buttons, loop through your array of options */}
+                {radio_props.map((obj, i) => (
+                  <RadioButton
+                    labelHorizontal={true}
+                    key={i}
+                    // onPress={(value) => {
+                    //   setValue3Index(value);
+                    // }}
+                  >
+                    {/*  You can set RadioButtonLabel before RadioButtonInput */}
+                    <RadioButtonInput
+                      obj={obj}
+                      index={i}
+                      isSelected={valueIndex === i}
+                      onPress={() => onPress(i, obj)}
+                      borderWidth={1}
+                      buttonInnerColor={"#ffff"}
+                      buttonOuterColor={valueIndex === i ? "#78AC43" : "white"}
+                      buttonSize={15}
+                      buttonOuterSize={25}
+                      buttonStyle={{ marginTop: 18 }}
+                      buttonWrapStyle={{
+                        marginTop: '0%',
+                      }}
+                      //buttonStyle={{ marginTop: 15 }}
+                    />
+                    <RadioButtonLabel
+                      obj={obj}
+                      index={i}
+                      labelHorizontal={true}
+                      onPress={onPress}
+                      labelStyle={{
+                        fontSize: widthPercentageToDP(5),
+                        color: "white",
+                        paddingTop: '5%',
+                        marginTop: '5%',
+                        marginLeft: '20%',
+                        paddingBottom: '1%',
+                      }}
+                      labelWrapStyle={{ marginTop: '1%', left: 0 }}
+                    />
+                  </RadioButton>
+                ))}
+              </RadioForm>
+
         <View style={styles.inputContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('StockTickerInfo')}>
             <CustomInputLabel text="Stock ticker" big info />
@@ -154,6 +272,15 @@ function InvestScreen({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate('QuantityInfo')}>
             <CustomInputLabel text="Quantity" big info />
           </TouchableOpacity>
+          <Text
+                    style={{
+                      fontSize: 20,
+                      color: "#78AC43",
+                      alignSelf: "flex-end",
+                    }}
+                  >
+                    {sQty} stocks
+                  </Text>
           <Slider
             maximumValue={100}
             minimumValue={0}
@@ -171,9 +298,8 @@ function InvestScreen({ navigation }) {
           <RNPickerSelect
             onValueChange={(oType) => setoType(oType)}
             items={[
-              { label: 'Apple', value: 'APPL' },
-              { label: 'Baseball', value: 'baseball' },
-              { label: 'Hockey', value: 'hockey' },
+              { label: 'Limit', value: 'limit' },
+              { label: 'Day', value: 'day' },
             ]}
           />
         </View>
@@ -184,9 +310,10 @@ function InvestScreen({ navigation }) {
           <RNPickerSelect
             onValueChange={(tForce) => settForce(tForce)}
             items={[
-              { label: 'Apple', value: 'APPL' },
-              { label: 'Baseball', value: 'baseball' },
-              { label: 'Hockey', value: 'hockey' },
+              { label: 'Regular Trading | 9:30am - 4:00pm ET', value: 'day' },
+              { label: 'Good Until Canceled', value: 'gtc' },
+              { label: 'Immediate Or Cancel', value: 'ioc' },
+              { label: 'Fill or Kill', value: 'fok' },
             ]}
           />
         </View>
@@ -194,6 +321,15 @@ function InvestScreen({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
             <CustomInputLabel text="Stop loss" big info />
           </TouchableOpacity>
+          <Text
+                    style={{
+                      fontSize: 20,
+                      color: "#EB5757",
+                      alignSelf: "flex-end",
+                    }}
+                  >
+                    %{sLoss}
+                  </Text>
           <Slider
             maximumValue={100}
             minimumValue={0}
