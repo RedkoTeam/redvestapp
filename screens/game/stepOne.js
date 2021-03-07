@@ -34,77 +34,90 @@ function stepOne({ navigation }) {
     let mounted = true;
   });
 
+  function macSelected() {}
+
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground
         source={bg}
-        style={{ width: widthPercentageToDP(100), height: heightPercentageToDP(100) }}
+        style={{
+          width: widthPercentageToDP(100),
+          height: heightPercentageToDP(100),
+        }}
       >
         <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
-            justifyContent: 'center',
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "center",
             marginTop: widthPercentageToDP(7),
           }}
         >
           <TouchableOpacity
-            onPress={() => navigation.navigate('main')}
+            onPress={() => navigation.navigate("main")}
             style={{
-              left: widthPercentageToDP(0),
+              left: widthPercentageToDP(-7),
               top: heightPercentageToDP(3),
             }}
           >
             <Image
               source={back}
               style={{
-                width: widthPercentageToDP('3'),
-                height: heightPercentageToDP('3'),
-                resizeMode: 'contain',
+                width: widthPercentageToDP("3"),
+                height: heightPercentageToDP("3"),
+                resizeMode: "contain",
               }}
             />
           </TouchableOpacity>
           <Image
             source={pickStra}
             style={{
-              resizeMode: 'contain',
-              width: widthPercentageToDP(75),
+              resizeMode: "contain",
+              width: widthPercentageToDP(80),
               height: heightPercentageToDP(10),
-              marginTop: '10%',
-              marginBottom: '0%',
+              marginTop: "10%",
+              marginBottom: "0%",
             }}
           />
         </View>
-        <ScrollView style={{ height: '100%' }}>
+        <ScrollView style={{ height: "100%" }}>
           <View
             style={{
               flex: 1,
-              flexDirection: 'column',
-              width: '100%',
-              justifyContent: 'space-between',
+              flexDirection: "column",
+              width: "100%",
+              justifyContent: "space-between",
               padding: 15,
-              marginLeft: '3%',
+              marginLeft: "3%",
+              paddingBottom: 200,
             }}
           >
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('macd')}>
+            <View
+              style={{
+                paddingBottom: "3%",
+              }}
+            >
+              <TouchableOpacity onPress={() => navigation.navigate("macd")}>
                 <Image
                   source={MACD}
                   style={{
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                     width: widthPercentageToDP(85),
                     height: heightPercentageToDP(11),
-                    marginBottom: '1%',
                   }}
                 />
               </TouchableOpacity>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('dualma')}>
+            <View
+              style={{
+                paddingBottom: "1%",
+              }}
+            >
+              <TouchableOpacity onPress={() => navigation.navigate("dualma")}>
                 <Image
                   source={DUAL}
                   style={{
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                     width: widthPercentageToDP(85),
                     height: heightPercentageToDP(11),
                     marginBottom: heightPercentageToDP(1),
@@ -112,12 +125,16 @@ function stepOne({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('rsi')}>
+            <View
+              style={{
+                paddingBottom: "1%",
+              }}
+            >
+              <TouchableOpacity onPress={() => navigation.navigate("rsi")}>
                 <Image
                   source={RSI}
                   style={{
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                     width: widthPercentageToDP(85),
                     height: heightPercentageToDP(11),
                     marginBottom: heightPercentageToDP(1),
@@ -125,12 +142,20 @@ function stepOne({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('threema')}>
+            <View
+              style={{
+                paddingBottom: "1%",
+              }}
+            >
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("threema", { threema: true })
+                }
+              >
                 <Image
                   source={Threema}
                   style={{
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                     width: widthPercentageToDP(85),
                     height: heightPercentageToDP(11),
                     marginBottom: heightPercentageToDP(1),
@@ -138,12 +163,16 @@ function stepOne({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <View
+              style={{
+                paddingBottom: "1%",
+              }}
+            >
+              <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={AIone}
                   style={{
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                     width: widthPercentageToDP(85),
                     height: heightPercentageToDP(11),
                     marginBottom: heightPercentageToDP(1),
@@ -152,11 +181,11 @@ function stepOne({ navigation }) {
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity onPress={() => navigation.navigate('')}>
+              <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={AItwo}
                   style={{
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                     width: widthPercentageToDP(85),
                     height: heightPercentageToDP(11),
                     marginBottom: heightPercentageToDP(1),

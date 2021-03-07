@@ -8,7 +8,7 @@ import SignUpScreen from "redvest/screens/auth/SignUpScreen";
 import SignInScreen from "redvest/screens/auth/SignInScreen";
 import ResetPasswordScreen from "redvest/screens/auth/ResetPasswordScreen";
 
-import Profile from "redvest/screens/invest/Profile";
+import Profile from "redvest/screens/Invest/Profile";
 import ActiveStrategies from "redvest/screens/Profile/ActiveStrategies";
 import orders from "redvest/screens/Profile/orders";
 import history from "redvest/screens/Profile/history";

@@ -1,50 +1,60 @@
-import React, { useEffect, useContext } from 'react';
-import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
-import back from '../../assets/images/Invest/step3a/back.png';
-import Weekly from '../../assets/images/Invest/step3a/Weekly.png';
-import Daily from '../../assets/images/Invest/step3a/Daily.png';
-import next from '../../assets/images/Invest/step3a/next.png';
-import title from '../../assets/images/Invest/step3a/title.png';
-import Monthly from '../../assets/images/Invest/step3a/Monthly.png';
-import bg from '../../assets/images/HomeScreen/bg.png';
-import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
-import Navbar_game from '../Navbar/Navbar_game.js';
-import { enableScreens } from 'react-native-screens';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { SCHEMA } from 'redvest/schema/gameSchema';
+import React, { useState, useEffect } from "react";
+import {
+  Image,
+  ImageBackground,
+  Linking,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from "react-native";
+import back from "../../assets/images/Invest/step3a/back.png";
+import Weekly from "../../assets/images/Invest/step3a/Weekly.png";
+import Daily from "../../assets/images/Invest/step3a/Daily.png";
+import next from "../../assets/images/Invest/step3a/next.png";
+import title from "../../assets/images/Invest/step3a/title.png";
+import Monthly from "../../assets/images/Invest/step3a/Monthly.png";
+import bg from "../../assets/images/HomeScreen/bg.png";
+import { widthPercentageToDP, heightPercentageToDP } from "../../util/scaler";
+import Navbar_game from "../Navbar/Navbar_game.js";
+import { enableScreens } from "react-native-screens";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SCHEMA } from "redvest/schema/gameSchema";
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
   RadioButtonLabel,
-} from 'react-native-simple-radio-button';
+} from "react-native-simple-radio-button";
+
 enableScreens(false);
 
-function stepThreea({ navigation }) {
-  const { updateFormData } = useContext(GameContext);
-
-  const { control, errors, handleSubmit } = useForm({
-    //resolver: yupResolver(SCHEMA),
-  });
-  const onSubmit = (data) => {
-    updateFormData(data);
-    navigation.navigate('');
-  };
-
-  const [value3Index, setValue3Index] = useState(0);
-
+function stepThreea({ navigation, route }) {
+  const [valueIndex, setValueIndex] = useState(0);
+  const [frequency, setFrequency] = useState("");
   useEffect(() => {
     let mounted = true;
   });
   var radio_props = [
-    { label: 'Daily', value: 0 },
-    { label: 'Weekly', value: 1 },
-    { label: 'Monthly', value: 2 },
-    { label: 'Custom', value: 2 },
+    { label: "Daily", value: 0 },
+    { label: "Weekly", value: 1 },
+    { label: "Monthly", value: 2 },
+    { label: "Custom", value: 3 },
   ];
-  const onPress = (value) => {
-    setValue3Index(value);
-  };
+
+  function onPress(value, obj) {
+    setValueIndex(value);
+    setFrequency(obj["label"]);
+  }
+
+  function choosingFrequencyCompleted() {
+    navigation.navigate("stepFour", {
+      strategy: route.params.strategy,
+      portfolio: route.params.portfolio,
+      stocks: route.params.stocks,
+      frequency: frequency,
+    });
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground
@@ -56,15 +66,15 @@ function stepThreea({ navigation }) {
       >
         <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
-            justifyContent: 'space-between',
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
             padding: 10,
             marginTop: 5,
           }}
         >
           <TouchableOpacity
-            onPress={() => navigation.navigate('stepThree')}
+            onPress={() => navigation.navigate("stepThree")}
             style={{
               left: widthPercentageToDP(3),
               top: heightPercentageToDP(3),
@@ -73,32 +83,32 @@ function stepThreea({ navigation }) {
             <Image
               source={back}
               style={{
-                width: widthPercentageToDP('3'),
-                height: heightPercentageToDP('3'),
-                resizeMode: 'contain',
+                width: widthPercentageToDP("3"),
+                height: heightPercentageToDP("3"),
+                resizeMode: "contain",
               }}
             />
           </TouchableOpacity>
           <Image
             source={title}
             style={{
-              resizeMode: 'contain',
+              resizeMode: "contain",
               width: widthPercentageToDP(80),
               height: heightPercentageToDP(15),
-              marginTop: '10%',
-              left: '-20%',
+              marginTop: "10%",
+              left: "-20%",
             }}
           />
         </View>
-        <ScrollView style={{ height: '200%' }}>
+        <ScrollView style={{ height: "200%" }}>
           <View
             style={{
               flex: 0.03,
-              flexDirection: 'column',
-              width: '100%',
-              justifyContent: 'center',
+              flexDirection: "column",
+              width: "100%",
+              justifyContent: "center",
               padding: 15,
-              marginLeft: '3%',
+              marginLeft: "3%",
             }}
           >
             {/* <View>
@@ -139,7 +149,11 @@ function stepThreea({ navigation }) {
           </View> */}
 
             <View style={{ bottom: 45, paddingBottom: 50 }}>
-              <RadioForm style={{ height: 200 }} formHorizontal={false} animation={true}>
+              <RadioForm
+                style={{ height: 200 }}
+                formHorizontal={false}
+                animation={true}
+              >
                 {/* To create radio buttons, loop through your array of options */}
                 {radio_props.map((obj, i) => (
                   <RadioButton
@@ -153,11 +167,11 @@ function stepThreea({ navigation }) {
                     <RadioButtonInput
                       obj={obj}
                       index={i}
-                      isSelected={value3Index === i}
-                      onPress={() => onPress(i)}
+                      isSelected={valueIndex === i}
+                      onPress={() => onPress(i, obj)}
                       borderWidth={1}
-                      buttonInnerColor={'#78AC43'}
-                      buttonOuterColor={value3Index === i ? '#78AC43' : 'white'}
+                      buttonInnerColor={"#78AC43"}
+                      buttonOuterColor={valueIndex === i ? "#78AC43" : "white"}
                       buttonSize={15}
                       buttonOuterSize={25}
                       buttonStyle={{ marginTop: 18 }}
@@ -173,7 +187,7 @@ function stepThreea({ navigation }) {
                       onPress={onPress}
                       labelStyle={{
                         fontSize: widthPercentageToDP(5),
-                        color: 'white',
+                        color: "white",
                         paddingTop: 3,
                         marginTop: 30,
                         paddingBottom: 5,
@@ -185,15 +199,14 @@ function stepThreea({ navigation }) {
               </RadioForm>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('stepFour')}>
+            <TouchableOpacity onPress={choosingFrequencyCompleted}>
               <Image
                 source={next}
                 style={{
-                  resizeMode: 'contain',
+                  resizeMode: "contain",
                   width: widthPercentageToDP(85),
                   height: heightPercentageToDP(11),
-                  top: 130,
-                  //paddingTop: 200,
+                  top: "15%",
                 }}
               />
             </TouchableOpacity>

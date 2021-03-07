@@ -1,14 +1,14 @@
-import { Platform, StyleSheet } from 'react-native';
-import { widthPercentageToDP, heightPercentageToDP } from 'redvest/util/scaler';
+import { Platform, StyleSheet } from "react-native";
+import { widthPercentageToDP, heightPercentageToDP } from "redvest/util/scaler";
 
 export const colors = {
-  primary: '#78AC43',
-  redError: '#EB5757',
-  offWhite: '#E3E5E5',
-  mediumGrey: '#C6CACC',
-  darkGrey: '#5E6366',
-  offBlack: '#1F1F1F',
-  darkBackground: '#121212',
+  primary: "#78AC43",
+  redError: "#EB5757",
+  offWhite: "#E3E5E5",
+  mediumGrey: "#C6CACC",
+  darkGrey: "#5E6366",
+  offBlack: "#1F1F1F",
+  darkBackground: "#121212",
 };
 
 export const textStyles = StyleSheet.create({
@@ -101,12 +101,12 @@ export const textStyles = StyleSheet.create({
 
 export const headerPaddings = {
   horizontal: widthPercentageToDP(6) + 2,
-  vertical: Platform.OS === 'ios' ? 5 : 1,
+  vertical: Platform.OS === "ios" ? 5 : 1,
 };
 
 export const headerStyles = {
   backgroundColor: colors.darkBackground,
-  shadowColor: 'transparent',
+  shadowColor: "transparent",
   elevation: 0,
   shadowOpacity: 0,
   borderBottomWidth: 0,
@@ -114,7 +114,8 @@ export const headerStyles = {
 
 export const headerOptions = {
   //headerTitle: false,
+  headerShown: false,
   headerStyle: headerStyles,
-  headerTitleAlign: 'center',
+  headerTitleAlign: "center",
   headerTitleStyle: [textStyles.bigSemiBold, { color: colors.offWhite }],
 };

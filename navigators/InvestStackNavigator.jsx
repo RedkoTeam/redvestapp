@@ -1,28 +1,32 @@
-import React from 'react';
-import { headerOptions } from 'redvest/util/styles';
-import BackChevron from 'redvest/components/BackChevron';
+import React from "react";
+import { headerOptions } from "redvest/util/styles";
+import BackChevron from "redvest/components/BackChevron";
 
-import { createStackNavigator } from '@react-navigation/stack';
-import InvestScreen from 'redvest/screens/invest/InvestScreen';
-import StockTickerInfoScreen from 'redvest/screens/info/StockTickerInfoScreen';
-import PriceInfoScreen from 'redvest/screens/info/PriceInfoScreen';
-import QuantityInfoScreen from 'redvest/screens/info/QuantityInfoScreen';
-import OrderTypeInfoScreen from 'redvest/screens/info/OrderTypeInfoScreen';
-import TimeInForceInfoScreen from 'redvest/screens/info/TimeInForceInfoScreen';
-import StopLossInfoScreen from 'redvest/screens/info/StopLossInfoScreen';
+import { createStackNavigator } from "@react-navigation/stack";
+import InvestScreen from "redvest/screens/Invest/InvestScreen";
+import StockTickerInfoScreen from "redvest/screens/info/StockTickerInfoScreen";
+import PriceInfoScreen from "redvest/screens/info/PriceInfoScreen";
+import QuantityInfoScreen from "redvest/screens/info/QuantityInfoScreen";
+import OrderTypeInfoScreen from "redvest/screens/info/OrderTypeInfoScreen";
+import TimeInForceInfoScreen from "redvest/screens/info/TimeInForceInfoScreen";
+import StopLossInfoScreen from "redvest/screens/info/StopLossInfoScreen";
 
 const InvestStack = createStackNavigator();
 
 function InvestStackNavigator() {
   return (
     <InvestStack.Navigator screenOptions={headerOptions}>
-      <InvestStack.Screen name="Invest" component={InvestScreen} options={{ headerShown: false }} />
+      <InvestStack.Screen
+        name="Invest"
+        component={InvestScreen}
+        options={{ headerShown: false }}
+      />
       <InvestStack.Screen
         name="StockTickerInfo"
         component={StockTickerInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Stock ticker info',
+          title: "Stock ticker info",
         }}
       />
       <InvestStack.Screen
@@ -30,7 +34,7 @@ function InvestStackNavigator() {
         component={PriceInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Price info',
+          title: "Price info",
         }}
       />
       <InvestStack.Screen
@@ -38,7 +42,7 @@ function InvestStackNavigator() {
         component={QuantityInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Quantity info',
+          title: "Quantity info",
         }}
       />
       <InvestStack.Screen
@@ -46,7 +50,7 @@ function InvestStackNavigator() {
         component={OrderTypeInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Order type info',
+          title: "Order type info",
         }}
       />
       <InvestStack.Screen
@@ -54,7 +58,7 @@ function InvestStackNavigator() {
         component={TimeInForceInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Time in force info',
+          title: "Time in force info",
         }}
       />
       <InvestStack.Screen
@@ -62,7 +66,7 @@ function InvestStackNavigator() {
         component={StopLossInfoScreen}
         options={{
           headerLeft: () => <BackChevron />,
-          title: 'Stop loss info',
+          title: "Stop loss info",
         }}
       />
     </InvestStack.Navigator>

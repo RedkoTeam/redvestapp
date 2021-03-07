@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   ImageBackground,
@@ -22,9 +22,17 @@ enableScreens(false);
 
 function dualma() {
   const navigation = useNavigation();
+
   useEffect(() => {
     let mounted = true;
   });
+
+  function dualmaSelected() {
+   
+    navigation.navigate("stepTwo", {
+      strategy: "Dema",
+    });
+  }
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground
@@ -71,7 +79,7 @@ function dualma() {
           />
         </View>
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate("stepTwo")}>
+          <TouchableOpacity onPress={dualmaSelected}>
             <Image
               source={next}
               style={{
