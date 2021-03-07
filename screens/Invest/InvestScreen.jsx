@@ -136,6 +136,24 @@ onSearchBarTextChange = _.debounce(() => {
   const [valueIndex, setValueIndex] = useState(0);
   const [frequency, setFrequency] = useState("");
 
+{/* ALPACA STOCK PICKER
+    const Alpaca = require('@alpacahq/alpaca-trade-api')
+  const alpaca = new Alpaca({
+    keyId: 'PKTN2F7X7160C6WX00NG',
+    secretKey: 'MfUP1Sa8WM6SwdRhWIG8KAIaX7SBufLbRfa5lPLf',
+    paper: true
+  })
+
+  //SHOW THESE ASSETS ON THE PICKER
+  const activeAssets = alpaca.getAssets({
+    status: 'active'
+}).then((activeAssets) => {
+    // Filter the assets down to just those on NASDAQ.
+    const nasdaqAssets = activeAssets.filter(asset => asset.exchange == 'NASDAQ')
+    console.log(nasdaqAssets)
+}) */}
+
+
   onSelectedItemChange = (selectedItem) => {
     setSelectedItem(selectedItem);
     console.log(selectedItem);
@@ -250,13 +268,10 @@ onSearchBarTextChange = _.debounce(() => {
             itemTextColor="#000"
             displayKey="name"
             searchInputStyle={{ color: '#CCC', height: 50 }}
-            styleDropdownMenu={{ height: 50, padding: 0, borderColor: 'orange', borderWidth: 5, borderRadius: 10 }}
             styleDropdownMenuSubsection={{ height: '100%', borderRadius: 10 }}
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
             styleTextDropdownSelected={{ paddingHorizontal: 10 }}
-            styleListContainer={{ borderColor: 'blue', borderWidth: 5, borderRadius: 50}}
-            styleSelectorContainer={{borderColor: 'red', borderWidth: 5, borderRadius: 50}}
-            styleMainWrapper={{borderColor: 'purple', borderWidth: 5, borderRadius: 50}}
+            
             //styleRowList={{borderColor: 'brown', borderWidth: 5, borderRadius: 50}}
             //styleTextDropdown={{borderColor: 'yellow', borderWidth: 5, borderRadius: 50}}
             //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
