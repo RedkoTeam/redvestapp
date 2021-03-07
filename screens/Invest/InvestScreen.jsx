@@ -17,7 +17,7 @@ import RadioForm, {
   RadioButton,
   RadioButtonInput,
   RadioButtonLabel,
-} from "react-native-simple-radio-button";
+} from 'react-native-simple-radio-button';
 import { Searchbar } from 'react-native-paper';
 //import alpacaApi from '../services/alpaca';
 
@@ -68,23 +68,23 @@ function InvestScreen({ navigation }) {
   });
 
   var radio_props = [
-    { label: "Buy", value: "buy" },
-    { label: "Sell", value: "sell" },
-    
+    { label: 'Buy', value: 'buy' },
+    { label: 'Sell', value: 'sell' },
   ];
 
   function onPress(value, obj) {
     setValueIndex(value);
-    setFrequency(obj["label"]);
+    setFrequency(obj['label']);
   }
 
   state = {
     query: '',
     totalItems: [],
-    filteredItems: []
-}
+    filteredItems: [],
+  };
 
-{/*
+  {
+    /*
 onSearchBarTextChange = _.debounce(() => {
   this.filterItems()
 }, 800)
@@ -114,10 +114,8 @@ onSearchBarTextChange = _.debounce(() => {
   })
   getBars('1Min', symbols, getTodayStart(), getTodayEnd(), 'today')
   getBars('1D', symbols, getYesterdayStart(), getYesterdayEnd(), 'yesterday')
-} */}
-
-
-
+} */
+  }
 
   //const { query, filteredItems } = this.state
 
@@ -130,11 +128,10 @@ onSearchBarTextChange = _.debounce(() => {
   const [selectedItem, setSelectedItem] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const onChangeSearch = (query) => setSearchQuery(query);
 
-  const onChangeSearch = query => setSearchQuery(query);
-  
   const [valueIndex, setValueIndex] = useState(0);
-  const [frequency, setFrequency] = useState("");
+  const [frequency, setFrequency] = useState('');
 
   onSelectedItemChange = (selectedItem) => {
     setSelectedItem(selectedItem);
@@ -166,56 +163,51 @@ onSearchBarTextChange = _.debounce(() => {
     <SafeAreaView style={styles.safeAreaContainer}>
       <Text style={[styles.screenTitle, textStyles.hugeRegular]}>Place an order</Text>
       <ScrollView style={styles.scrollView}>
-
-      <RadioForm
-                style={{ height: '13%' }}
-                formHorizontal={true}
-                animation={true}
-              >
-                {/* To create radio buttons, loop through your array of options */}
-                {radio_props.map((obj, i) => (
-                  <RadioButton
-                    labelHorizontal={true}
-                    key={i}
-                    // onPress={(value) => {
-                    //   setValue3Index(value);
-                    // }}
-                  >
-                    {/*  You can set RadioButtonLabel before RadioButtonInput */}
-                    <RadioButtonInput
-                      obj={obj}
-                      index={i}
-                      isSelected={valueIndex === i}
-                      onPress={() => onPress(i, obj)}
-                      borderWidth={1}
-                      buttonInnerColor={"#ffff"}
-                      buttonOuterColor={valueIndex === i ? "#78AC43" : "white"}
-                      buttonSize={15}
-                      buttonOuterSize={25}
-                      buttonStyle={{ marginTop: 18 }}
-                      buttonWrapStyle={{
-                        marginTop: '0%',
-                      }}
-                      //buttonStyle={{ marginTop: 15 }}
-                    />
-                    <RadioButtonLabel
-                      obj={obj}
-                      index={i}
-                      labelHorizontal={true}
-                      onPress={onPress}
-                      labelStyle={{
-                        fontSize: widthPercentageToDP(5),
-                        color: "white",
-                        paddingTop: '5%',
-                        marginTop: '5%',
-                        marginLeft: '20%',
-                        paddingBottom: '1%',
-                      }}
-                      labelWrapStyle={{ marginTop: '1%', left: 0 }}
-                    />
-                  </RadioButton>
-                ))}
-              </RadioForm>
+        <RadioForm style={{ height: '13%' }} formHorizontal={true} animation={true}>
+          {/* To create radio buttons, loop through your array of options */}
+          {radio_props.map((obj, i) => (
+            <RadioButton
+              labelHorizontal={true}
+              key={i}
+              // onPress={(value) => {
+              //   setValue3Index(value);
+              // }}
+            >
+              {/*  You can set RadioButtonLabel before RadioButtonInput */}
+              <RadioButtonInput
+                obj={obj}
+                index={i}
+                isSelected={valueIndex === i}
+                onPress={() => onPress(i, obj)}
+                borderWidth={1}
+                buttonInnerColor={'#ffff'}
+                buttonOuterColor={valueIndex === i ? '#78AC43' : 'white'}
+                buttonSize={15}
+                buttonOuterSize={25}
+                buttonStyle={{ marginTop: 18 }}
+                buttonWrapStyle={{
+                  marginTop: '0%',
+                }}
+                //buttonStyle={{ marginTop: 15 }}
+              />
+              <RadioButtonLabel
+                obj={obj}
+                index={i}
+                labelHorizontal={true}
+                onPress={onPress}
+                labelStyle={{
+                  fontSize: widthPercentageToDP(5),
+                  color: 'white',
+                  paddingTop: '5%',
+                  marginTop: '5%',
+                  marginLeft: '20%',
+                  paddingBottom: '1%',
+                }}
+                labelWrapStyle={{ marginTop: '1%', left: 0 }}
+              />
+            </RadioButton>
+          ))}
+        </RadioForm>
 
         <View style={styles.inputContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('StockTickerInfo')}>
@@ -258,9 +250,8 @@ onSearchBarTextChange = _.debounce(() => {
             //styleSelectorContainer={{borderColor: 'red', borderWidth: 5, borderRadius: 50}}
             //styleMainWrapper={{borderColor: 'purple', borderWidth: 5, borderRadius: 50}}
             //styleRowList={{borderColor: 'brown', borderWidth: 5, borderRadius: 50}}
-            styleTextDropdown={{paddingHorizontal: 10}}
+            styleTextDropdown={{ paddingHorizontal: 10 }}
             //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
-            
           />
         </View>
         <View style={styles.inputContainer}>
@@ -269,18 +260,12 @@ onSearchBarTextChange = _.debounce(() => {
           </TouchableOpacity>
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('QuantityInfo')}>
-            <CustomInputLabel text="Quantity" big info />
-          </TouchableOpacity>
-          <Text
-                    style={{
-                      fontSize: 20,
-                      color: "#78AC43",
-                      alignSelf: "flex-end",
-                    }}
-                  >
-                    {sQty} stocks
-                  </Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('QuantityInfo')}>
+              <CustomInputLabel text="Quantity" big info />
+            </TouchableOpacity>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>{sQty} stocks</Text>
+          </View>
           <Slider
             maximumValue={100}
             minimumValue={0}
@@ -318,18 +303,12 @@ onSearchBarTextChange = _.debounce(() => {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
-            <CustomInputLabel text="Stop loss" big info />
-          </TouchableOpacity>
-          <Text
-                    style={{
-                      fontSize: 20,
-                      color: "#EB5757",
-                      alignSelf: "flex-end",
-                    }}
-                  >
-                    %{sLoss}
-                  </Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
+              <CustomInputLabel text="Stop loss" big info />
+            </TouchableOpacity>
+            <Text style={[textStyles.bigRegular, { color: colors.redError }]}>%{sLoss}</Text>
+          </View>
           <Slider
             maximumValue={100}
             minimumValue={0}
