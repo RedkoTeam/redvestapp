@@ -16,6 +16,7 @@ import {
   StyleSheet,
   Dimensions,
   Platform,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -27,6 +28,7 @@ import Spacer from 'redvest/components/Spacer';
 import HorizontalRule from 'redvest/components/HorizontalRule';
 import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
+import title from "../../assets/images/signup/SignUp.png";
 
 function SignUpScreen({ navigation }) {
   const { signUpWithEmailAsync, signInWithFacebook, signInWithGoogleAsync } = useContext(
@@ -53,6 +55,27 @@ function SignUpScreen({ navigation }) {
         minHeight: Math.round(Dimensions.get('window').height / 2),
       }}
     >
+            <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            padding: 10,
+            marginTop: 5,
+          }}
+        >
+        
+          <Image
+            source={title}
+            style={{
+              resizeMode: "contain",
+              width: widthPercentageToDP(25),
+              height: heightPercentageToDP(6),
+              marginTop: "10%",
+              left: "20%",
+            }}
+          />
+        </View>
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
