@@ -10,11 +10,51 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { textStyles, colors } from 'redvest/util/styles';
 import CustomButton from 'redvest/components/CustomButton';
 import CustomInputLabel from 'redvest/components/CustomInputLabel';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import MultiSelect from 'react-native-multiple-select';
 //import alpacaApi from '../services/alpaca';
 
 enableScreens(false);
+
+const items = [
+  {
+    id: '92iijs7yta',
+    name: 'Ondo',
+  },
+  {
+    id: 'a0s0a8ssbsd',
+    name: 'Ogun',
+  },
+  {
+    id: '16hbajsabsd',
+    name: 'Calabar',
+  },
+  {
+    id: 'nahs75a5sg',
+    name: 'Lagos',
+  },
+  {
+    id: '667atsas',
+    name: 'Maiduguri',
+  },
+  {
+    id: 'hsyasajs',
+    name: 'Anambra',
+  },
+  {
+    id: 'djsjudksjd',
+    name: 'Benue',
+  },
+  {
+    id: 'sdhyaysdj',
+    name: 'Kaduna',
+  },
+  {
+    id: 'suudydjsjd',
+    name: 'Abuja',
+  },
+];
 
 function InvestScreen({ navigation }) {
   const { control, handleSubmit, errors, reset, formState } = useForm({
@@ -27,6 +67,12 @@ function InvestScreen({ navigation }) {
   const [oType, setoType] = useState('');
   const [tForce, settForce] = useState('');
   const [sLoss, setsLoss] = useState('');
+  const [selectedItem, setSelectedItem] = useState([]);
+
+  onSelectedItemChange = (selectedItem) => {
+    setSelectedItem(selectedItem);
+    console.log(selectedItem);
+  };
 
   const profileUpload = () => {
     firebase
@@ -58,13 +104,45 @@ function InvestScreen({ navigation }) {
             <CustomInputLabel text="Stock ticker" big info />
           </TouchableOpacity>
           {/*stock ticker should show after being selected , values should be taken from an equation */}
-          <RNPickerSelect
+          {/*<RNPickerSelect
             onValueChange={(sTicker) => setsTicker(sTicker)}
             items={[
               { label: 'Apple', value: 'APPL' },
               { label: 'Baseball', value: 'baseball' },
               { label: 'Hockey', value: 'hockey' },
             ]}
+          />*/}
+          <MultiSelect
+            hideTags
+            single
+            items={items}
+            uniqueKey="id"
+            ref={(component) => {
+              multiSelect = component;
+            }}
+            onSelectedItemsChange={onSelectedItemChange}
+            selectedItems={selectedItem}
+            selectText="Choose a Stock Ticker..."
+            searchInputPlaceholderText="Search Stock Tickers..."
+            tagRemoveIconColor="#CCC"
+            tagBorderColor="#CCC"
+            tagTextColor="#CCC"
+            selectedItemTextColor={colors.primary}
+            selectedItemIconColor={colors.primary}
+            itemTextColor="#000"
+            displayKey="name"
+            searchInputStyle={{ color: '#CCC', height: 50 }}
+            styleDropdownMenu={{ height: 50, padding: 0, borderColor: 'orange', borderWidth: 5, borderRadius: 10 }}
+            styleDropdownMenuSubsection={{ height: '100%', borderRadius: 10 }}
+            styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
+            styleTextDropdownSelected={{ paddingHorizontal: 10 }}
+            styleListContainer={{ borderColor: 'blue', borderWidth: 5, borderRadius: 50}}
+            styleSelectorContainer={{borderColor: 'red', borderWidth: 5, borderRadius: 50}}
+            styleMainWrapper={{borderColor: 'purple', borderWidth: 5, borderRadius: 50}}
+            //styleRowList={{borderColor: 'brown', borderWidth: 5, borderRadius: 50}}
+            //styleTextDropdown={{borderColor: 'yellow', borderWidth: 5, borderRadius: 50}}
+            //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
+            
           />
         </View>
         <View style={styles.inputContainer}>
