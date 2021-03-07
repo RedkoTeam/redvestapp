@@ -132,15 +132,15 @@ function InvestScreen({ navigation }) {
             itemTextColor="#000"
             displayKey="name"
             searchInputStyle={{ color: '#CCC', height: 50 }}
-            styleDropdownMenu={{ height: 50, padding: 0, borderColor: 'orange', borderWidth: 5, borderRadius: 10 }}
+            styleDropdownMenu={{ height: 50, padding: 0 }}
             styleDropdownMenuSubsection={{ height: '100%', borderRadius: 10 }}
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
             styleTextDropdownSelected={{ paddingHorizontal: 10 }}
-            styleListContainer={{ borderColor: 'blue', borderWidth: 5, borderRadius: 50}}
-            styleSelectorContainer={{borderColor: 'red', borderWidth: 5, borderRadius: 50}}
-            styleMainWrapper={{borderColor: 'purple', borderWidth: 5, borderRadius: 50}}
+            //styleListContainer={{ borderColor: 'blue', borderWidth: 5, borderRadius: 50}}
+            //styleSelectorContainer={{borderColor: 'red', borderWidth: 5, borderRadius: 50}}
+            //styleMainWrapper={{borderColor: 'purple', borderWidth: 5, borderRadius: 50}}
             //styleRowList={{borderColor: 'brown', borderWidth: 5, borderRadius: 50}}
-            //styleTextDropdown={{borderColor: 'yellow', borderWidth: 5, borderRadius: 50}}
+            styleTextDropdown={{paddingHorizontal: 10}}
             //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
             
           />
