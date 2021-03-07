@@ -13,6 +13,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@alpacahq/alpaca-trade-api": "^1.4.2",
     "@expo-google-fonts/fira-sans": "^0.1.0",
     "@expo-google-fonts/poppins": "^0.1.0",
     "@expo/vector-icons": "^12.0.0",

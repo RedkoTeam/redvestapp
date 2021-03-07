@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Image,
   ImageBackground,
-  Linking,
   TouchableOpacity,
   View,
   ScrollView,
@@ -26,7 +25,6 @@ import msft from "../../assets/images/stocks/MSFT.png";
 import amzn from "../../assets/images/stocks/AMZN.png";
 import sne from "../../assets/images/stocks/SNE.png";
 import pick from "../../assets/images/stocks/Pick.png";
-import { useFormContext } from "react-hook-form";
 
 enableScreens(false);
 
@@ -247,6 +245,7 @@ function stepThree({ navigation, route }) {
                     }}
                   />
                 </TouchableOpacity>
+                
                 <TouchableOpacity onPress={() => selectedStock("pick")}>
                   <Image
                     source={pick}
@@ -259,7 +258,7 @@ function stepThree({ navigation, route }) {
                   />
                 </TouchableOpacity>
               </View>
-            </View>
+            </View> 
             <View
               style={{
                 paddingBottom: "5%",

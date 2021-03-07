@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import {
   Image,
   ImageBackground,
-  Linking,
   TouchableOpacity,
   View,
   ScrollView,
@@ -151,7 +150,7 @@ function stepFour({ navigation, route }) {
                 </View>
               </View>
               <Slider
-                maximumValue={100}
+                maximumValue={50000}
                 minimumValue={0}
                 minimumTrackTintColor="#78AC43"
                 maximumTrackTintColor="#000000"
@@ -196,7 +195,7 @@ function stepFour({ navigation, route }) {
                       alignSelf: "center",
                     }}
                   >
-                    ${sliderValue2}
+                    %{sliderValue2}
                   </Text>
                 </View>
               </View>
