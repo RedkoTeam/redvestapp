@@ -3,7 +3,7 @@ import { headerOptions } from "redvest/util/styles";
 import BackChevron from "redvest/components/BackChevron";
 
 import { createStackNavigator } from "@react-navigation/stack";
-import InvestScreen from "redvest/screens/Invest/InvestScreen";
+import InvestScreen from "redvest/screens/invest/InvestScreen";
 import StockTickerInfoScreen from "redvest/screens/info/StockTickerInfoScreen";
 import PriceInfoScreen from "redvest/screens/info/PriceInfoScreen";
 import QuantityInfoScreen from "redvest/screens/info/QuantityInfoScreen";
