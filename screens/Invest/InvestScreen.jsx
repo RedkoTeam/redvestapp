@@ -20,6 +20,7 @@ import RadioForm, {
   RadioButtonLabel,
 } from 'react-native-simple-radio-button';
 import { Searchbar } from 'react-native-paper';
+import alpacaApi from 'redvest/services/alpaca';
 
 enableScreens(false);
 
@@ -40,13 +41,12 @@ function InvestScreen({ navigation }) {
     setFrequency(obj['label']);
   }
 
-  const [sTicker, setsTicker] = useState('');
+  const [stockTicker, setStockTicker] = useState('');
   const [sPrice, setsPrice] = useState('');
   const [sQty, setsQty] = useState(0);
   const [oType, setoType] = useState('');
   const [tForce, settForce] = useState('');
   const [sLoss, setsLoss] = useState(0);
-  const [selectedItem, setSelectedItem] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -55,8 +55,14 @@ function InvestScreen({ navigation }) {
   const [frequency, setFrequency] = useState('');
 
   const onSelectedItemChange = (selectedItem) => {
-    setSelectedItem(selectedItem);
-    console.log(selectedItem);
+    setStockTicker(selectedItem);
+  };
+
+  const onSubmit = async (stockTicker, sQty, oType, tForce, sLoss) => {
+    const api = await alpacaApi();
+    api
+      .postOrder({ stockTicker, sQty, oType, tForce, sLoss })
+      .then((result) => console.log('order submitted', result));
   };
 
   const profileUpload = () => {
@@ -153,7 +159,7 @@ function InvestScreen({ navigation }) {
             //}}
             onSelectedItemsChange={onSelectedItemChange}
             //fixedHeight
-            selectedItems={selectedItem}
+            selectedItems={stockTicker}
             selectText="Choose a Stock Ticker..."
             searchInputPlaceholderText="Search Stock Tickers..."
             tagRemoveIconColor="#CCC"
@@ -241,7 +247,7 @@ function InvestScreen({ navigation }) {
           />
         </View>
       </ScrollView>
-      <CustomButton primary text="Invest" onPress={() => console.log('Invest button pressed')} />
+      <CustomButton primary text="Invest" onPress={onSubmit} />
     </SafeAreaView>
   );
 }
