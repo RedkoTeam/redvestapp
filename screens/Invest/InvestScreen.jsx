@@ -152,7 +152,7 @@ function InvestScreen({ navigation }) {
             //  multiSelect = component;
             //}}
             onSelectedItemsChange={onSelectedItemChange}
-            fixedHeight
+            //fixedHeight
             selectedItems={selectedItem}
             selectText="Choose a Stock Ticker..."
             searchInputPlaceholderText="Search Stock Tickers..."
@@ -168,7 +168,9 @@ function InvestScreen({ navigation }) {
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
             styleTextDropdown={{ paddingHorizontal: 10 }}
             styleTextDropdownSelected={{ paddingHorizontal: 10 }}
-            styleSelectorContainer={{ marginBottom: 50 }}
+            flatListProps={{ nestedScrollEnabled: true }}
+            styleListContainer={{ maxHeight: 250 }}
+            //styleSelectorContainer={{ marginBottom: 50 }}
             //styleRowList={{ borderColor: 'brown', borderWidth: 5, borderRadius: 50 }}
             //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
           />
