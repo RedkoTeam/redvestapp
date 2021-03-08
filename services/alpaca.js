@@ -1,24 +1,25 @@
-import apisauce from 'apisauce'
-import config from '../config'
+import apisauce from 'apisauce';
+import { ALPACA_ENDPOINT, ALPACA_API_CLIENT_KEY_ID, ALPACA_API_CLIENT_SECRET_KEY } from '@env';
 
-const alpacaApi = (baseURL = config.BASE_URL) => {
-    
-    const api = apisauce.create({
-        baseURL: config.BASE_URL,
-        headers: {
-            'APCA-API-KEY-ID': config.ALPACA_API_KEY_ID,
-            'APCA-API-SECRET-KEY': config.ALPACA_API_SECRET_KEY
-        },
-        timeout: 5000
-    })
+const alpacaApi = (baseURL = ALPACA_ENDPOINT) => {
+  const api = apisauce.create({
+    baseURL: ALPACA_ENDPOINT,
+    headers: {
+      'APCA-API-KEY-ID': ALPACA_API_CLIENT_KEY_ID,
+      'APCA-API-SECRET-KEY': ALPACA_API_CLIENT_SECRET_KEY,
+    },
+    timeout: 5000,
+  });
 
-    const getAccount = () => api.get('v2/account')
-    const getPositions = () => api.get('v2/positions')
+  const getAccount = () => api.get('v2/account');
+  const getPositions = () => api.get('v2/positions');
+  const getAssets = () => api.get('v2/assets?status=active');
 
-    return {
-        getAccount,
-        getPositions
-    }
-}
+  return {
+    getAccount,
+    getPositions,
+    getAssets,
+  };
+};
 
-export default alpacaApi
+export default alpacaApi;

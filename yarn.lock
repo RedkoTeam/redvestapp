@@ -2895,6 +2895,8 @@
     "ramda" "^0.25.0"
 
 "aproba@^1.0.3":
+  "integrity" "sha512-Y9J6ZjXtoYh8RnXVCMOU/ttDmk1aBjunq9vO0ta5x85WDQiQfUF9sIPBITdbiiIVcBo03Hi3jMxigBtsddlXRw=="
+  "resolved" "https://registry.npmjs.org/aproba/-/aproba-1.2.0.tgz"
   "version" "1.2.0"
 
 "aproba@^2.0.0":
@@ -5866,6 +5868,8 @@
     "is-plain-object" "^2.0.4"
 
 "is-fullwidth-code-point@^1.0.0":
+  "integrity" "sha1-754xOG8DGn8NZDr4L95QxFfvAMs="
+  "resolved" "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-1.0.0.tgz"
   "version" "1.0.0"
   dependencies:
     "number-is-nan" "^1.0.0"
@@ -10137,6 +10141,8 @@
     "strip-ansi" "^5.2.0"
 
 "string-width@^1.0.1":
+  "integrity" "sha1-EYvfW4zcUaKn5w0hHgfisLmxB9M="
+  "resolved" "https://registry.npmjs.org/string-width/-/string-width-1.0.2.tgz"
   "version" "1.0.2"
   dependencies:
     "code-point-at" "^1.0.0"

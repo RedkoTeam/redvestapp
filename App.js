@@ -1,12 +1,13 @@
-"use strict";
-import React from "react";
-import { colors } from "redvest/util/styles";
-import { LogBox, StatusBar } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
-import { AuthProvider } from "redvest/contexts/AuthContext";
-import { DataProvider } from "redvest/contexts/DataContext";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import NavigationContainer from "redvest/navigators/NavigationContainer";
+'use strict';
+import React from 'react';
+import { colors } from 'redvest/util/styles';
+import { LogBox, StatusBar } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+import { AuthProvider } from 'redvest/contexts/AuthContext';
+import { AssetsProvider } from 'redvest/contexts/AssetsContext';
+import { DataProvider } from 'redvest/contexts/DataContext';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import NavigationContainer from 'redvest/navigators/NavigationContainer';
 import {
   useFonts,
   Poppins_400Regular,
@@ -15,7 +16,7 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
 
-import firebase from "firebase";
+import firebase from 'firebase';
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -25,7 +26,7 @@ import {
   MESSAGING_SENDER_ID,
   APP_ID,
   MEASUREMENT_ID,
-} from "@env";
+} from '@env';
 
 const FIREBASE_CONFIG = {
   apiKey: API_KEY,
@@ -38,14 +39,12 @@ const FIREBASE_CONFIG = {
   measurementId: MEASUREMENT_ID,
 };
 
-!firebase.apps.length
-  ? firebase.initializeApp(FIREBASE_CONFIG)
-  : firebase.app();
+!firebase.apps.length ? firebase.initializeApp(FIREBASE_CONFIG) : firebase.app();
 
 SplashScreen.preventAutoHideAsync().catch(() =>
   LogBox.ignoreLogs([
-    "Unhandled promise rejection: Error: Native splash screen is already hidden.",
-  ])
+    'Unhandled promise rejection: Error: Native splash screen is already hidden.',
+  ]),
 );
 
 function App() {
@@ -59,15 +58,14 @@ function App() {
 
   return (
     <AuthProvider>
-      <DataProvider>
-        <SafeAreaProvider>
-          <StatusBar
-            barStyle={"light-content"}
-            backgroundColor={colors.darkBackground}
-          />
-          <NavigationContainer />
-        </SafeAreaProvider>
-      </DataProvider>
+      <AssetsProvider>
+        <DataProvider>
+          <SafeAreaProvider>
+            <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
+            <NavigationContainer />
+          </SafeAreaProvider>
+        </DataProvider>
+      </AssetsProvider>
     </AuthProvider>
   );
 }

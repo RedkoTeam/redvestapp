@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import AssetsContext from 'redvest/contexts/AssetsContext';
 import { TouchableOpacity, View, ScrollView, StyleSheet, Text } from 'react-native';
 import { Dimensions } from 'react-native';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
@@ -19,53 +20,15 @@ import RadioForm, {
   RadioButtonLabel,
 } from 'react-native-simple-radio-button';
 import { Searchbar } from 'react-native-paper';
-//import alpacaApi from '../services/alpaca';
 
 enableScreens(false);
-
-const items = [
-  {
-    id: '92iijs7yta',
-    name: 'Ondo',
-  },
-  {
-    id: 'a0s0a8ssbsd',
-    name: 'Ogun',
-  },
-  {
-    id: '16hbajsabsd',
-    name: 'Calabar',
-  },
-  {
-    id: 'nahs75a5sg',
-    name: 'Lagos',
-  },
-  {
-    id: '667atsas',
-    name: 'Maiduguri',
-  },
-  {
-    id: 'hsyasajs',
-    name: 'Anambra',
-  },
-  {
-    id: 'djsjudksjd',
-    name: 'Benue',
-  },
-  {
-    id: 'sdhyaysdj',
-    name: 'Kaduna',
-  },
-  {
-    id: 'suudydjsjd',
-    name: 'Abuja',
-  },
-];
 
 function InvestScreen({ navigation }) {
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(),
   });
+
+  const { stockTickers } = useContext(AssetsContext);
 
   var radio_props = [
     { label: 'Buy', value: 'buy' },
@@ -77,54 +40,12 @@ function InvestScreen({ navigation }) {
     setFrequency(obj['label']);
   }
 
-  state = {
-    query: '',
-    totalItems: [],
-    filteredItems: [],
-  };
-
-  {
-    /*
-onSearchBarTextChange = _.debounce(() => {
-  this.filterItems()
-}, 800)
-
-
-{/*filterItems = () => {
-  const { assets, getBars } = this.props
-  const { query } = this.state
-
-  let filteredItems = _.map(assets, function (el) {
-      if (query && el.symbol.toLowerCase().startsWith(query.toLowerCase())) return el
-  })
-  filteredItems = _.without(filteredItems, undefined)
-  if (filteredItems.length > 199) {
-      filteredItems = filteredItems.slice(0, 199)
-  }
-
-  this.setState({
-      query,
-      filteredItems
-  })
-
-  let symbols = ''
-  _.map(filteredItems, function (item) {
-      let div = symbols.length > 0 ? ',' : ''
-      symbols = symbols + div + item.symbol
-  })
-  getBars('1Min', symbols, getTodayStart(), getTodayEnd(), 'today')
-  getBars('1D', symbols, getYesterdayStart(), getYesterdayEnd(), 'yesterday')
-} */
-  }
-
-  //const { query, filteredItems } = this.state
-
   const [sTicker, setsTicker] = useState('');
   const [sPrice, setsPrice] = useState('');
-  const [sQty, setsQty] = useState('');
+  const [sQty, setsQty] = useState(0);
   const [oType, setoType] = useState('');
   const [tForce, settForce] = useState('');
-  const [sLoss, setsLoss] = useState('');
+  const [sLoss, setsLoss] = useState(0);
   const [selectedItem, setSelectedItem] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -133,25 +54,7 @@ onSearchBarTextChange = _.debounce(() => {
   const [valueIndex, setValueIndex] = useState(0);
   const [frequency, setFrequency] = useState('');
 
-{/* ALPACA STOCK PICKER
-    const Alpaca = require('@alpacahq/alpaca-trade-api')
-  const alpaca = new Alpaca({
-    keyId: 'PKTN2F7X7160C6WX00NG',
-    secretKey: 'MfUP1Sa8WM6SwdRhWIG8KAIaX7SBufLbRfa5lPLf',
-    paper: true
-  })
-
-  //SHOW THESE ASSETS ON THE PICKER
-  const activeAssets = alpaca.getAssets({
-    status: 'active'
-}).then((activeAssets) => {
-    // Filter the assets down to just those on NASDAQ.
-    const nasdaqAssets = activeAssets.filter(asset => asset.exchange == 'NASDAQ')
-    console.log(nasdaqAssets)
-}) */}
-
-
-  onSelectedItemChange = (selectedItem) => {
+  const onSelectedItemChange = (selectedItem) => {
     setSelectedItem(selectedItem);
     console.log(selectedItem);
   };
@@ -180,7 +83,7 @@ onSearchBarTextChange = _.debounce(() => {
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
       <Text style={[styles.screenTitle, textStyles.hugeRegular]}>Place an order</Text>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} nestedScrollEnabled={true}>
         <RadioForm style={{ height: '13%' }} formHorizontal={true} animation={true}>
           {/* To create radio buttons, loop through your array of options */}
           {radio_props.map((obj, i) => (
@@ -243,12 +146,13 @@ onSearchBarTextChange = _.debounce(() => {
           <MultiSelect
             hideTags
             single
-            items={items}
+            items={stockTickers}
             uniqueKey="id"
-            ref={(component) => {
-              multiSelect = component;
-            }}
+            //ref={(component) => {
+            //  multiSelect = component;
+            //}}
             onSelectedItemsChange={onSelectedItemChange}
+            fixedHeight
             selectedItems={selectedItem}
             selectText="Choose a Stock Ticker..."
             searchInputPlaceholderText="Search Stock Tickers..."
@@ -262,10 +166,10 @@ onSearchBarTextChange = _.debounce(() => {
             searchInputStyle={{ color: '#CCC', height: 50 }}
             styleDropdownMenuSubsection={{ height: '100%', borderRadius: 10 }}
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
-            styleTextDropdownSelected={{ paddingHorizontal: 10 }}
-            
-            //styleRowList={{borderColor: 'brown', borderWidth: 5, borderRadius: 50}}
             styleTextDropdown={{ paddingHorizontal: 10 }}
+            styleTextDropdownSelected={{ paddingHorizontal: 10 }}
+            styleSelectorContainer={{ marginBottom: 50 }}
+            //styleRowList={{ borderColor: 'brown', borderWidth: 5, borderRadius: 50 }}
             //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
           />
         </View>
