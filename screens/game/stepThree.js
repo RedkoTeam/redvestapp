@@ -263,7 +263,8 @@ function stepThree({ navigation, route }) {
               style={{
                 paddingBottom: "5%",
               }}
-            >
+            > 
+            {/*
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={cashRes}
@@ -280,7 +281,7 @@ function stepThree({ navigation, route }) {
                 paddingBottom: "5%",
               }}
             >
-              <TouchableOpacity onPress={() => navigation.navigate("")}>
+            } <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={totalInv}
                   style={{
@@ -289,7 +290,7 @@ function stepThree({ navigation, route }) {
                     height: heightPercentageToDP(3),
                   }}
                 />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
 
             <View>

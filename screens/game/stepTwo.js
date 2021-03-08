@@ -156,6 +156,7 @@ function stepTwo({ navigation, route }) {
               </TouchableOpacity>
             </View>
             <View>
+              {/*
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={custom}
@@ -165,7 +166,7 @@ function stepTwo({ navigation, route }) {
                     height: heightPercentageToDP(11),
                   }}
                 />
-              </TouchableOpacity>
+              </TouchableOpacity>*/}
             </View>
           </View>
         </ScrollView>

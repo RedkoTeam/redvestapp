@@ -160,8 +160,8 @@ function InvestScreen({ navigation }) {
             onSelectedItemsChange={onSelectedItemChange}
             //fixedHeight
             selectedItems={stockTicker}
-            selectText="Choose a Stock Ticker..."
-            searchInputPlaceholderText="Search Stock Tickers..."
+            selectText="Choose a Stock..."
+            searchInputPlaceholderText="Search Stock..."
             tagRemoveIconColor="#CCC"
             tagBorderColor="#CCC"
             tagTextColor="#CCC"
@@ -176,6 +176,7 @@ function InvestScreen({ navigation }) {
             styleTextDropdownSelected={{ paddingHorizontal: 10 }}
             flatListProps={{ nestedScrollEnabled: true }}
             styleListContainer={{ maxHeight: 250 }}
+            nestedScrollEnabled={true}
             //styleSelectorContainer={{ marginBottom: 50 }}
             //styleRowList={{ borderColor: 'brown', borderWidth: 5, borderRadius: 50 }}
             //styleItemsContainer={{width: 50, borderColor: 'green', borderWidth: 5, borderRadius: 50}}
@@ -210,8 +211,9 @@ function InvestScreen({ navigation }) {
           <RNPickerSelect
             onValueChange={(oType) => setoType(oType)}
             items={[
+              { label: 'Market', value: 'market' },
               { label: 'Limit', value: 'limit' },
-              { label: 'Day', value: 'day' },
+              { label: 'Stop', value: 'stop' },
             ]}
           />
         </View>
