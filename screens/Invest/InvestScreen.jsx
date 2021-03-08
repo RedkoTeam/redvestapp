@@ -147,7 +147,7 @@ function InvestScreen({ navigation }) {
             hideTags
             single
             items={stockTickers}
-            uniqueKey="id"
+            uniqueKey="symbol"
             //ref={(component) => {
             //  multiSelect = component;
             //}}
