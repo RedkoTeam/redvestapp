@@ -24,12 +24,12 @@ import alpacaApi from 'redvest/services/alpaca';
 enableScreens(false);
 
 function InvestScreen({ navigation }) {
-  const { stockTickers } = useContext(AssetsContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(),
   });
-
-  var radio_props = [
+  
+  const { stockTickers } = useContext(AssetsContext);
+  const orderSidesRadioProps = [
     { label: 'Buy', value: 'buy' },
     { label: 'Sell', value: 'sell' },
   ];
@@ -72,7 +72,7 @@ function InvestScreen({ navigation }) {
       <ScrollView style={styles.scrollView} nestedScrollEnabled={true}>
         <RadioForm style={{ height: '13%' }} formHorizontal={true} animation={true}>
           {/* To create radio buttons, loop through your array of options */}
-          {radio_props.map((obj, i) => (
+          {orderSidesRadioProps.map((obj, i) => (
             <RadioButton
               labelHorizontal={true}
               key={i}
