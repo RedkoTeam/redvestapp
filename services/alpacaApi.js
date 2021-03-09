@@ -14,12 +14,14 @@ const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
   const getAccount = () => api.get('v2/account');
   const getPositions = () => api.get('v2/positions');
   const getAssets = () => api.get('v2/assets?status=active');
+  const getOrders = () => api.get('v2/orders');
   const postOrder = (data) => api.post('v2/orders', data);
 
   return {
     getAccount,
     getPositions,
     getAssets,
+    getOrders,
     postOrder,
   };
 };
