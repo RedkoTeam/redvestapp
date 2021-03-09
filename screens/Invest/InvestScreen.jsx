@@ -76,9 +76,6 @@ function InvestScreen({ navigation }) {
             <RadioButton
               labelHorizontal={true}
               key={i}
-              // onPress={(value) => {
-              //   setValue3Index(value);
-              // }}
             >
               {/*  You can set RadioButtonLabel before RadioButtonInput */}
               <RadioButtonInput
@@ -107,7 +104,8 @@ function InvestScreen({ navigation }) {
                   color: 'white',
                   paddingTop: '5%',
                   marginTop: '5%',
-                  marginLeft: '20%',
+                  marginLeft: '10%',
+                  marginRight: '10%',
                   paddingBottom: '1%',
                 }}
                 labelWrapStyle={{ marginTop: '1%', left: 0 }}
