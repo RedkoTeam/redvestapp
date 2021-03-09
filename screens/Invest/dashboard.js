@@ -1,53 +1,43 @@
-import React,{useState} from 'react'
-import { Text, View } from 'react-native'
-import alpacaApi from '../services/alpaca'
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
+import alpacaApi from 'redvest/services/alpacaApi';
 
-function Dashboard () {
+function Dashboard() {
+  const [buyingPower, setBuyingPower] = useState(0);
+  const [cash, setCash] = useState(0);
+  const [longMarket, setLongMarket] = useState(0);
+  const [portfolioValue, setPortfolioValue] = useState(0);
 
-    const [buying_power,setbuying_power] = useState(0) 
-    const [cash,setCash] = useState(0) 
-    const [long_market_value,setCash] = useState(0) 
-    const [portfolio_value,setCash] = useState(0) 
-    
+  useEffect(() => {
+    console.log('fetch data from alpaca');
+    const api = alpacaApi();
+    api.getAccount().then((response) => {
+      console.log(response);
+      if (response.ok) {
+        setBuyingPower(response.data.buying_power);
+        setLongMarket(response.data.long_market_value);
+        setPortfolioValue(response.data.portfolio_value);
+        setCash(response.data.cash);
+      }
+    });
+  }, []);
 
-        }
-    }
+  return (
+    <View>
+      <Text>Dashboard Screen</Text>
 
-    componentDidMount() {
-        console.log('fetch data from alpaca')
-
-        const api = alpacaApi()
-
-        api.getAccount().then((response) => {
-            console.log(response)
-
-            if (response.ok) {
-                this.setState({
-                    buying_power: response.data.buying_power,
-                    long_market_value: response.data.long_market_value,
-                    portfolio_value: response.data.portfolio_value,
-                    cash: response.data.cash
-                })
-            }
-        })
-    }
-
-    render() {
-        return <View>
-            <Text>Dashboard Screen</Text>
-
-            <View>
-                <Text>Buying Power</Text>
-                <Text>{this.state.buying_power}</Text>
-                <Text>Long Market Value</Text>
-                <Text>{this.state.long_market_value}</Text>
-                <Text>Portfolio Value</Text>
-                <Text>{this.state.portfolio_value}</Text>
-                <Text>Cash</Text>
-                <Text>{this.state.cash}</Text>
-            </View>
-        </View>
-    }
+      <View>
+        <Text>Buying Power</Text>
+        <Text>{buyingPower}</Text>
+        <Text>Long Market Value</Text>
+        <Text>{longMarket}</Text>
+        <Text>Portfolio Value</Text>
+        <Text>{portfolioValue}</Text>
+        <Text>Cash</Text>
+        <Text>{cash}</Text>
+      </View>
+    </View>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
