@@ -161,7 +161,7 @@ function InvestScreen({ navigation }) {
         <View style={styles.inputContainer}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <TouchableOpacity onPress={() => navigation.navigate('PriceInfo')}>
-              <CustomInputLabel text="Price" big info />
+              <CustomInputLabel text="Price per stock" big info />
             </TouchableOpacity>
             <Text style={[textStyles.bigRegular, { color: 'white' }]}>{lastStockPrice}</Text>
           </View>

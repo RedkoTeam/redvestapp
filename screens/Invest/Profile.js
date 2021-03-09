@@ -2,24 +2,13 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useContext } from 'react';
 import AuthContext from 'redvest/contexts/AuthContext';
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
-import investbtn from '../../assets/images/HomeScreen/investbtn.png';
-import playbtn from '../../assets/images/HomeScreen/playbtn.png';
-import cont from '../../assets/images/HomeScreen/reddollarcon.png';
-import AIone from '../../assets/images/Invest/step1/AIone.png';
-import AItwo from '../../assets/images/Invest/step1/AItwo.png';
-import MACD from '../../assets/images/Invest/step1/MACD.png';
-import RSI from '../../assets/images/Invest/step1/RSI.png';
-import DUAL from '../../assets/images/Invest/step1/DualMa.png';
 import pickStra from '../../assets/images/profile/TotalBalance.png';
 import settings from '../../assets/images/profile/settings.png';
 import cash from '../../assets/images/profile/Cashbalance.png';
 import as from '../../assets/images/profile/activestrat.png';
 import orders from '../../assets/images/profile/orders.png';
 import hist from '../../assets/images/profile/history.png';
-import Threema from '../../assets/images/Invest/step1/Threema.png';
 import bg from '../../assets/images/HomeScreen/bg.png';
-import loginbtn from '../../assets/images/HomeScreen/login.png';
-import signupbtn from '../../assets/images/HomeScreen/signup.png';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_pro from '../Navbar/Navbar_pro.js';
@@ -186,7 +175,7 @@ function Profile() {
             }}
           >
             <View>
-              <TouchableOpacity onPress={() => navigation.navigate('stepTwo')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                 <Image
                   source={cash}
                   style={{

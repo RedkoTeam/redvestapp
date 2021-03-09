@@ -13,6 +13,7 @@ import ActiveStrategies from "redvest/screens/Profile/ActiveStrategies";
 import orders from "redvest/screens/Profile/orders";
 import history from "redvest/screens/Profile/history";
 
+
 const AuthStack = createStackNavigator();
 
 function AccountStackNavigator() {
