@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useContext } from 'react';
 import AuthContext from 'redvest/contexts/AuthContext';
+import AlpacaAccountInfoContext from 'redvest/contexts/AlpacaAccountInfoContext';
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
 import pickStra from '../../assets/images/profile/TotalBalance.png';
 import settings from '../../assets/images/profile/settings.png';
@@ -86,6 +87,7 @@ enableScreens(false);
 
 function Profile() {
   const { singOutAsync } = useContext(AuthContext);
+  const {} = useContext(AlpacaAccountInfoContext);
   const navigation = useNavigation();
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],

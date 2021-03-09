@@ -1,12 +1,15 @@
 'use strict';
 import React from 'react';
-import { colors } from 'redvest/util/styles';
-import { LogBox, StatusBar } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
 import { AssetsProvider } from 'redvest/contexts/AssetsContext';
 import { DataProvider } from 'redvest/contexts/DataContext';
+import { AlpacaAccountInfoProvider } from 'redvest/contexts/AlpacaAccountInfoContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { colors } from 'redvest/util/styles';
+import { LogBox, StatusBar } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+
 import NavigationContainer from 'redvest/navigators/NavigationContainer';
 import {
   useFonts,
@@ -60,10 +63,12 @@ function App() {
     <AuthProvider>
       <AssetsProvider>
         <DataProvider>
-          <SafeAreaProvider>
-            <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
-            <NavigationContainer />
-          </SafeAreaProvider>
+          <AlpacaAccountInfoProvider>
+            <SafeAreaProvider>
+              <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
+              <NavigationContainer />
+            </SafeAreaProvider>
+          </AlpacaAccountInfoProvider>
         </DataProvider>
       </AssetsProvider>
     </AuthProvider>
