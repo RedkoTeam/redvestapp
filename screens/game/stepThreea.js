@@ -38,7 +38,7 @@ function stepThreea({ navigation, route }) {
     { label: "Daily", value: 0 },
     { label: "Weekly", value: 1 },
     { label: "Monthly", value: 2 },
-    { label: "Custom", value: 3 },
+    { label: "6-18 Months", value: 3 },
   ];
 
   function onPress(value, obj) {
