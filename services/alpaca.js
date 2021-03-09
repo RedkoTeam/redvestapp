@@ -3,7 +3,7 @@ import { ALPACA_ENDPOINT, ALPACA_API_CLIENT_KEY_ID, ALPACA_API_CLIENT_SECRET_KEY
 
 const alpacaApi = (baseURL = ALPACA_ENDPOINT) => {
   const api = apisauce.create({
-    baseURL: ALPACA_ENDPOINT,
+    baseURL,
     headers: {
       'APCA-API-KEY-ID': ALPACA_API_CLIENT_KEY_ID,
       'APCA-API-SECRET-KEY': ALPACA_API_CLIENT_SECRET_KEY,

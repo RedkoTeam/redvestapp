@@ -19,71 +19,50 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel,
 } from 'react-native-simple-radio-button';
-import { Searchbar } from 'react-native-paper';
 import alpacaApi from 'redvest/services/alpaca';
 
 enableScreens(false);
 
 function InvestScreen({ navigation }) {
+  const { stockTickers } = useContext(AssetsContext);
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(),
   });
-
-  const { stockTickers } = useContext(AssetsContext);
 
   var radio_props = [
     { label: 'Buy', value: 'buy' },
     { label: 'Sell', value: 'sell' },
   ];
 
-  function onPress(value, obj) {
-    setValueIndex(value);
-    setFrequency(obj['label']);
+  const [orderSide, setOrderSide] = useState('');
+  const [stockTicker, setStockTicker] = useState('');
+  const [lastStockPrice, setLastStockPrice] = useState('');
+  const [orderQuantity, setOrderQuantity] = useState(0);
+  const [orderType, setOrderType] = useState('');
+  const [timeInForce, setTimeInForce] = useState('');
+  const [stopLoss, setStopLoss] = useState(0);
+
+  const onOrderSideRadioPress = (obj) => {
+    setOrderSide(obj.value);
   }
 
-  const [stockTicker, setStockTicker] = useState('');
-  const [sPrice, setsPrice] = useState('');
-  const [sQty, setsQty] = useState(0);
-  const [oType, setoType] = useState('');
-  const [tForce, settForce] = useState('');
-  const [sLoss, setsLoss] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const onChangeSearch = (query) => setSearchQuery(query);
-
-  const [valueIndex, setValueIndex] = useState(0);
-  const [frequency, setFrequency] = useState('');
-
-  const onSelectedItemChange = (selectedItem) => {
-    setStockTicker(selectedItem);
+  const onSelectedStockTickerChange = (selectedItem) => {
+    setStockTicker(selectedItem[0]);
   };
 
-  const onSubmit = async (stockTicker, sQty, oType, tForce, sLoss) => {
+  const onOrderSubmit = async (stockTicker, orderQuantity, orderType, timeInForce, stopLoss) => {
     const api = await alpacaApi();
     api
-      .postOrder({ stockTicker, sQty, oType, tForce, sLoss })
-      .then((result) => console.log('order submitted', result));
-  };
-
-  const profileUpload = () => {
-    firebase
-      .firestore()
-      .collection('users')
-      .doc(firebase.auth().currentUser.uid)
-      .set(
-        {
-          stockTicker: sTicker,
-          stockPrice: sPrice,
-          stockQty: sQty,
-          orderType: oType,
-          timeForce: tForce,
-          stopLoss: sLoss,
-        },
-        { merge: true },
+      .postOrder(
+        JSON.stringify({
+          side: orderSide,
+          symbol: stockTicker,
+          qty: orderQuantity,
+          type: 'market',
+          time_in_force: 'day',
+        }),
       )
-      .then(() => {
-        navigation.navigate('');
-      });
+      .then((result) => console.log('order submitted', result));
   };
 
   return (
@@ -104,11 +83,11 @@ function InvestScreen({ navigation }) {
               <RadioButtonInput
                 obj={obj}
                 index={i}
-                isSelected={valueIndex === i}
-                onPress={() => onPress(i, obj)}
+                isSelected={orderSide === i}
+                onPress={() => onOrderSideRadioPress(obj)}
                 borderWidth={1}
                 buttonInnerColor={'#ffff'}
-                buttonOuterColor={valueIndex === i ? '#78AC43' : 'white'}
+                buttonOuterColor={orderSide === i ? colors.primary : 'white'}
                 buttonSize={15}
                 buttonOuterSize={25}
                 buttonStyle={{ marginTop: 18 }}
@@ -121,7 +100,7 @@ function InvestScreen({ navigation }) {
                 obj={obj}
                 index={i}
                 labelHorizontal={true}
-                onPress={onPress}
+                onPress={onOrderSideRadioPress}
                 labelStyle={{
                   fontSize: widthPercentageToDP(5),
                   color: 'white',
@@ -153,22 +132,22 @@ function InvestScreen({ navigation }) {
             hideTags
             single
             items={stockTickers}
+            displayKey="name"
             uniqueKey="symbol"
             //ref={(component) => {
             //  multiSelect = component;
             //}}
-            onSelectedItemsChange={onSelectedItemChange}
+            onSelectedItemsChange={onSelectedStockTickerChange}
+            selectedItems={[stockTicker]}
             //fixedHeight
-            selectedItems={stockTicker}
             selectText="Choose a Stock Ticker..."
             searchInputPlaceholderText="Search Stock Tickers..."
             tagRemoveIconColor="#CCC"
             tagBorderColor="#CCC"
             tagTextColor="#CCC"
+            itemTextColor="#000"
             selectedItemTextColor={colors.primary}
             selectedItemIconColor={colors.primary}
-            itemTextColor="#000"
-            displayKey="name"
             searchInputStyle={{ color: '#CCC', height: 50 }}
             styleDropdownMenuSubsection={{ height: '100%', borderRadius: 10 }}
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
@@ -191,7 +170,7 @@ function InvestScreen({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('QuantityInfo')}>
               <CustomInputLabel text="Quantity" big info />
             </TouchableOpacity>
-            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>{sQty} stocks</Text>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>{orderQuantity} stocks</Text>
           </View>
           <Slider
             maximumValue={100}
@@ -199,8 +178,8 @@ function InvestScreen({ navigation }) {
             minimumTrackTintColor="#78AC43"
             maximumTrackTintColor="#000000"
             step={1}
-            value={sQty}
-            onValueChange={(sQty) => setsQty(sQty)}
+            value={orderQuantity}
+            onValueChange={(orderQuantity) => setOrderQuantity(orderQuantity)}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -208,7 +187,7 @@ function InvestScreen({ navigation }) {
             <CustomInputLabel text="Order type" big info />
           </TouchableOpacity>
           <RNPickerSelect
-            onValueChange={(oType) => setoType(oType)}
+            onValueChange={(orderType) => setOrderType(orderType)}
             items={[
               { label: 'Limit', value: 'limit' },
               { label: 'Day', value: 'day' },
@@ -220,7 +199,7 @@ function InvestScreen({ navigation }) {
             <CustomInputLabel text="Time in force" big info />
           </TouchableOpacity>
           <RNPickerSelect
-            onValueChange={(tForce) => settForce(tForce)}
+            onValueChange={(timeInForce) => setTimeInForce(timeInForce)}
             items={[
               { label: 'Regular Trading | 9:30am - 4:00pm ET', value: 'day' },
               { label: 'Good Until Canceled', value: 'gtc' },
@@ -234,7 +213,7 @@ function InvestScreen({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
               <CustomInputLabel text="Stop loss" big info />
             </TouchableOpacity>
-            <Text style={[textStyles.bigRegular, { color: colors.redError }]}>%{sLoss}</Text>
+            <Text style={[textStyles.bigRegular, { color: colors.redError }]}>%{stopLoss}</Text>
           </View>
           <Slider
             maximumValue={100}
@@ -242,12 +221,12 @@ function InvestScreen({ navigation }) {
             minimumTrackTintColor="#EB5757"
             maximumTrackTintColor="#000000"
             step={1}
-            value={sLoss}
-            onValueChange={(sLoss) => setsLoss(sLoss)}
+            value={stopLoss}
+            onValueChange={(stopLoss) => setStopLoss(stopLoss)}
           />
         </View>
       </ScrollView>
-      <CustomButton primary text="Invest" onPress={onSubmit} />
+      <CustomButton primary text="Invest" onPress={onOrderSubmit} />
     </SafeAreaView>
   );
 }
