@@ -34,7 +34,8 @@ function InvestScreen({ navigation }) {
     { label: 'Sell', value: 'sell' },
   ];
 
-  const [orderSide, setOrderSide] = useState('');
+  const [orderSideRadioIndex, setOrderSideRadioIndex] = useState(0);
+  const [orderSide, setOrderSide] = useState('buy');
   const [stockTicker, setStockTicker] = useState('');
   const [lastStockPrice, setLastStockPrice] = useState('');
   const [orderQuantity, setOrderQuantity] = useState(0);
@@ -42,27 +43,27 @@ function InvestScreen({ navigation }) {
   const [timeInForce, setTimeInForce] = useState('');
   const [stopLoss, setStopLoss] = useState(0);
 
-  const onOrderSideRadioPress = (obj) => {
+  const onOrderSideRadioPress = (obj, index) => {
+    setOrderSideRadioIndex(index);
     setOrderSide(obj.value);
-  }
+  };
 
   const onSelectedStockTickerChange = (selectedItem) => {
     setStockTicker(selectedItem[0]);
   };
 
-  const onOrderSubmit = async (stockTicker, orderQuantity, orderType, timeInForce, stopLoss) => {
+  const onOrderSubmit = async () => {
     const api = await alpacaApi();
+    const requestBody = {
+      side: orderSide,
+      symbol: stockTicker,
+      qty: orderQuantity,
+      type: 'market',
+      time_in_force: 'day',
+    };
     api
-      .postOrder(
-        JSON.stringify({
-          side: orderSide,
-          symbol: stockTicker,
-          qty: orderQuantity,
-          type: 'market',
-          time_in_force: 'day',
-        }),
-      )
-      .then((result) => console.log('order submitted', result));
+      .postOrder(JSON.stringify(requestBody))
+      .then((result) => console.log('order submitted: ', result));
   };
 
   return (
@@ -83,11 +84,11 @@ function InvestScreen({ navigation }) {
               <RadioButtonInput
                 obj={obj}
                 index={i}
-                isSelected={orderSide === i}
-                onPress={() => onOrderSideRadioPress(obj)}
+                isSelected={orderSideRadioIndex === i}
+                onPress={() => onOrderSideRadioPress(obj, i)}
                 borderWidth={1}
                 buttonInnerColor={'#ffff'}
-                buttonOuterColor={orderSide === i ? colors.primary : 'white'}
+                buttonOuterColor={orderSideRadioIndex === i ? colors.primary : 'white'}
                 buttonSize={15}
                 buttonOuterSize={25}
                 buttonStyle={{ marginTop: 18 }}
@@ -171,7 +172,9 @@ function InvestScreen({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('QuantityInfo')}>
               <CustomInputLabel text="Quantity" big info />
             </TouchableOpacity>
-            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>{orderQuantity} stocks</Text>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>
+              {orderQuantity} stocks
+            </Text>
           </View>
           <Slider
             maximumValue={100}

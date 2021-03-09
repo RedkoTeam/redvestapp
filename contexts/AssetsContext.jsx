@@ -11,7 +11,6 @@ export function AssetsProvider({ children }) {
       const api = await alpacaApi();
       await api.getAssets().then((response) => setStockTickers(response.data));
     })();
-    console.log(stockTickers);
   }, []);
 
   return (
