@@ -18,15 +18,25 @@ const alpacaMarketData = (baseURL = ALPACA_MARKET_DATA_ENDPOINT) => {
   const getQuotes = (symbol, start, end) =>
     api.get(`v2/stocks/${symbol}/quotes?start=${rfc3339(start)}&end=${rfc3339(end)}`);
 
-  const getRecentQuote = async (symbol) => {
+  const getRecentQuote = (symbol) => {
     const start = new Date(new Date().setSeconds(new Date().getSeconds() - 50));
     const end = new Date(new Date().setSeconds(new Date().getSeconds() - 0));
-    const lastAskPrice = await getQuotes(symbol, start, end)
-      .then((result) => result.data?.quotes)
-      .then((quotes) => quotes[quotes?.length - 1]?.ap)
-      .then(console.log)
-      .catch(console.log);
-    return lastAskPrice > 0 ? lastAskPrice : 0;
+    return (
+      api
+        .get(`v2/stocks/${symbol}/quotes?start=${rfc3339(start)}&end=${rfc3339(end)}`)
+        //.then(console.log)
+        .then((result) => result.data?.quotes)
+        .then((quotes) => quotes[quotes.length - 1].ap)
+        .then((lastAskPriceString) => {
+          if (typeof lastAskPriceString !== 'undefined')
+            return Number.parseFloat(lastAskPriceString);
+        })
+        .then((lastAskPrice) => {
+          if (typeof lastAskPrice === 'number' && lastAskPrice > 0)
+            return `$${lastAskPrice.toFixed(2)}`;
+          else return 'N/A';
+        })
+    );
   };
 
   return {

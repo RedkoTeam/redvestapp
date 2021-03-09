@@ -38,7 +38,7 @@ function InvestScreen({ navigation }) {
   const [orderSideRadioIndex, setOrderSideRadioIndex] = useState(0);
   const [orderSide, setOrderSide] = useState('buy');
   const [stockTicker, setStockTicker] = useState('');
-  const [lastStockPrice, setLastStockPrice] = useState(0);
+  const [lastStockPrice, setLastStockPrice] = useState(`$${(0).toFixed(2)}`);
   const [orderQuantity, setOrderQuantity] = useState(0);
   const [orderType, setOrderType] = useState('');
   const [timeInForce, setTimeInForce] = useState('');
@@ -49,13 +49,14 @@ function InvestScreen({ navigation }) {
     setOrderSide(obj.value);
   };
 
-  const onSelectedStockTickerChange = async (selectedItem) => {
+  const onSelectedStockTickerChange = (selectedItem) => {
     setStockTicker(selectedItem[0]);
-    const recentQuote = await alpacaMarketData().getRecentQuote(stockTicker);
-    setLastStockPrice(recentQuote);
+    alpacaMarketData()
+      .getRecentQuote(stockTicker)
+      .then((lastAskPrice) => setLastStockPrice(lastAskPrice));
   };
 
-  const onOrderSubmit = async () => {
+  const onOrderSubmit = () => {
     const requestBody = {
       side: orderSide,
       symbol: stockTicker,
@@ -63,7 +64,7 @@ function InvestScreen({ navigation }) {
       type: 'market',
       time_in_force: 'day',
     };
-    await alpacaApi().postOrder(JSON.stringify(requestBody)).then(console.log);
+    alpacaApi().postOrder(JSON.stringify(requestBody)).then(console.log);
   };
 
   return (
@@ -162,9 +163,7 @@ function InvestScreen({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('PriceInfo')}>
               <CustomInputLabel text="Price" big info />
             </TouchableOpacity>
-            <Text style={[textStyles.bigRegular, { color: 'white' }]}>
-              ${lastStockPrice.toFixed(2)}
-            </Text>
+            <Text style={[textStyles.bigRegular, { color: 'white' }]}>{lastStockPrice}</Text>
           </View>
         </View>
         <View style={styles.inputContainer}>
