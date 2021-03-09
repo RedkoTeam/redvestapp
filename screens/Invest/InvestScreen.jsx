@@ -27,7 +27,7 @@ function InvestScreen({ navigation }) {
   const { control, handleSubmit, errors, reset, formState } = useForm({
     resolver: yupResolver(),
   });
-  
+
   const { stockTickers } = useContext(AssetsContext);
   const orderSidesRadioProps = [
     { label: 'Buy', value: 'buy' },
@@ -37,7 +37,7 @@ function InvestScreen({ navigation }) {
   const [orderSideRadioIndex, setOrderSideRadioIndex] = useState(0);
   const [orderSide, setOrderSide] = useState('buy');
   const [stockTicker, setStockTicker] = useState('');
-  const [lastStockPrice, setLastStockPrice] = useState('');
+  const [lastStockPrice, setLastStockPrice] = useState(0);
   const [orderQuantity, setOrderQuantity] = useState(0);
   const [orderType, setOrderType] = useState('');
   const [timeInForce, setTimeInForce] = useState('');
@@ -50,6 +50,7 @@ function InvestScreen({ navigation }) {
 
   const onSelectedStockTickerChange = (selectedItem) => {
     setStockTicker(selectedItem[0]);
+    setLastStockPrice(lastStockPrice + 1.2);
   };
 
   const onOrderSubmit = async () => {
@@ -61,7 +62,7 @@ function InvestScreen({ navigation }) {
       type: 'market',
       time_in_force: 'day',
     };
-    api
+    await api
       .postOrder(JSON.stringify(requestBody))
       .then((result) => console.log('order submitted: ', result));
   };
@@ -73,10 +74,7 @@ function InvestScreen({ navigation }) {
         <RadioForm style={{ height: '13%' }} formHorizontal={true} animation={true}>
           {/* To create radio buttons, loop through your array of options */}
           {orderSidesRadioProps.map((obj, i) => (
-            <RadioButton
-              labelHorizontal={true}
-              key={i}
-            >
+            <RadioButton labelHorizontal={true} key={i}>
               {/*  You can set RadioButtonLabel before RadioButtonInput */}
               <RadioButtonInput
                 obj={obj}
@@ -148,12 +146,12 @@ function InvestScreen({ navigation }) {
             selectedItemTextColor={colors.primary}
             selectedItemIconColor={colors.primary}
             searchInputStyle={{ color: '#CCC', height: 50 }}
-            styleDropdownMenuSubsection={{ height: '100%', borderRadius: 10 }}
+            styleDropdownMenuSubsection={{ borderRadius: 10 }}
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
             styleTextDropdown={{ paddingHorizontal: 10 }}
             styleTextDropdownSelected={{ paddingHorizontal: 10 }}
             flatListProps={{ nestedScrollEnabled: true }}
-            styleListContainer={{ maxHeight: 250 }}
+            styleListContainer={{ maxHeight: 240 }}
             nestedScrollEnabled={true}
             //styleSelectorContainer={{ marginBottom: 50 }}
             //styleRowList={{ borderColor: 'brown', borderWidth: 5, borderRadius: 50 }}
@@ -161,9 +159,14 @@ function InvestScreen({ navigation }) {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('PriceInfo')}>
-            <CustomInputLabel text="Price" big info />
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('PriceInfo')}>
+              <CustomInputLabel text="Price" big info />
+            </TouchableOpacity>
+            <Text style={[textStyles.bigRegular, { color: 'white' }]}>
+              ${lastStockPrice.toFixed(2)}
+            </Text>
+          </View>
         </View>
         <View style={styles.inputContainer}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
