@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import alpacaApi from 'redvest/services/alpaca';
+import alpacaApi from 'redvest/services/alpacaApi';
 
 const AssetsContext = React.createContext();
 
@@ -8,8 +8,9 @@ export function AssetsProvider({ children }) {
 
   useEffect(() => {
     (async () => {
-      const api = await alpacaApi();
-      await api.getAssets().then((response) => setStockTickers(response.data));
+      await alpacaApi()
+        .getAssets()
+        .then((response) => setStockTickers(response.data));
     })();
   }, []);
 

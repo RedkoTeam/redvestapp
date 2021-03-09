@@ -1,7 +1,7 @@
 import apisauce from 'apisauce';
-import { ALPACA_ENDPOINT, ALPACA_API_CLIENT_KEY_ID, ALPACA_API_CLIENT_SECRET_KEY } from '@env';
+import { ALPACA_API_ENDPOINT, ALPACA_API_CLIENT_KEY_ID, ALPACA_API_CLIENT_SECRET_KEY } from '@env';
 
-const alpacaApi = (baseURL = ALPACA_ENDPOINT) => {
+const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
   const api = apisauce.create({
     baseURL,
     headers: {

@@ -19,7 +19,8 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel,
 } from 'react-native-simple-radio-button';
-import alpacaApi from 'redvest/services/alpaca';
+import alpacaApi from 'redvest/services/alpacaApi';
+import alpacaMarketData from 'redvest/services/alpacaMarketData';
 
 enableScreens(false);
 
@@ -48,13 +49,13 @@ function InvestScreen({ navigation }) {
     setOrderSide(obj.value);
   };
 
-  const onSelectedStockTickerChange = (selectedItem) => {
+  const onSelectedStockTickerChange = async (selectedItem) => {
     setStockTicker(selectedItem[0]);
-    setLastStockPrice(lastStockPrice + 1.2);
+    const recentQuote = await alpacaMarketData().getRecentQuote(stockTicker);
+    setLastStockPrice(recentQuote);
   };
 
   const onOrderSubmit = async () => {
-    const api = await alpacaApi();
     const requestBody = {
       side: orderSide,
       symbol: stockTicker,
@@ -62,9 +63,7 @@ function InvestScreen({ navigation }) {
       type: 'market',
       time_in_force: 'day',
     };
-    await api
-      .postOrder(JSON.stringify(requestBody))
-      .then((result) => console.log('order submitted: ', result));
+    await alpacaApi().postOrder(JSON.stringify(requestBody)).then(console.log);
   };
 
   return (
