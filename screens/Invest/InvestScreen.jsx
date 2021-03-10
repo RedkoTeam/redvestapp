@@ -150,7 +150,7 @@ function InvestScreen({ navigation }) {
             searchInputStyle={{ color: '#CCC', height: 50 }}
             styleDropdownMenuSubsection={{ borderRadius: 10 }}
             styleInputGroup={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
-            styleTextDropdown={{ paddingHorizontal: 10 }}
+            styleTextDropdown={{ paddingHorizontal: 10}}
             styleTextDropdownSelected={{ paddingHorizontal: 10 }}
             flatListProps={{ nestedScrollEnabled: true }}
             styleListContainer={{ maxHeight: 240 }}

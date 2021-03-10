@@ -24,7 +24,7 @@ import CustomButton from 'redvest/components/CustomButton';
 
 
 const chartConfig = {
-  backgroundGradientFrom: '#1E2923',
+  backgroundGradientFrom: '#FFFFF',
   backgroundGradientFromOpacity: 0,
   backgroundGradientTo: '#08130D',
   backgroundGradientToOpacity: 0.5,
@@ -103,21 +103,23 @@ function Profile() {
             source={pickStra}
             style={{
               resizeMode: 'contain',
-              width: widthPercentageToDP(50),
+              width: widthPercentageToDP(40),
               height: heightPercentageToDP(10),
-              marginTop: 20,
-              marginLeft: '10%',
+              marginTop: 30,
+              marginLeft: '0%',
             }}
           />
+              <Text style={[styles.screenTitle, textStyles.hugeRegular, {marginLeft:'20%', marginTop:'16%', fontSize:actuatedNormalize (20)}]}>$ {portfolioValue}</Text>
+        
           <View
             style={{
-              flexDirection: 'row',
+
               width: '100%',
               justifyContent: 'space-between',
               padding: 25,
               marginTop: '20%',
               marginBottom: '10%',
-              right: '75%',
+              marginLeft:'-170%'
             }}
           >
             <LineChart
@@ -136,7 +138,8 @@ function Profile() {
               style={{
                 resizeMode: 'contain',
                 width: widthPercentageToDP(7),
-                height: heightPercentageToDP(16),
+                height: heightPercentageToDP(9),
+                
               }}
             />
           </TouchableOpacity>

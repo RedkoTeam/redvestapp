@@ -61,7 +61,7 @@ function HomeScreen() {
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "1%", marginTop:'1%'  }}>
       
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
-                <Text style={[textStyles.bigSemiBold, { color: '#78AC43',position:'absolute',marginTop:'20%', marginLeft:'40%', fontSize: actuatedNormalize(18) }] }>$ {portfolioValue}</Text>
+                <Text style={[textStyles.bigSemiBold, { color: '#78AC43',position:'absolute',marginTop:heightPercentageToDP(7), marginLeft:'40%', fontSize: actuatedNormalize(18) }] }>$ {portfolioValue}</Text>
                     <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(90), height:heightPercentageToDP(20)}}/>
             
                   </TouchableOpacity>

@@ -17,6 +17,7 @@ import {
   Dimensions,
   Platform,
   Image,
+  ScrollView
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -55,6 +56,10 @@ function SignUpScreen({ navigation }) {
         minHeight: Math.round(Dimensions.get('window').height / 2),
       }}
     >
+      <ScrollView
+          style={{ height: '200%', flex: 1 }}
+          contentContainerStyle={{ alignItems: 'center' }}
+        >
             <View
           style={{
             flexDirection: "row",
@@ -120,15 +125,16 @@ function SignUpScreen({ navigation }) {
           onPress={async () => await signInWithGoogleAsync(onSignUpSuccess, onSignUpFailure)}
         />
 
-        <View style={styles.bottomButtons}>
-          <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
+        <View style={styles.bottomButtons, {marginTop:'5%' }}>
+          <Text style={[textStyles.smallRegular, { color: colors.offWhite}]}>
             Already have an account?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>SIGN IN</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
+            <Text style={[textStyles.bigRegular, { color: colors.primary }]}>          SIGN IN</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
+      </ScrollView>
     </SafeAreaView>
   );
 }
