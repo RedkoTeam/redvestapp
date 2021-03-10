@@ -44,6 +44,7 @@ function InvestScreen({ navigation }) {
   const [timeInForce, setTimeInForce] = useState('');
   const [stopLoss, setStopLoss] = useState(0);
   const [stopLossPercentage, setStopLossPercentage] = useState(0);
+  const [limitPrice, setLimitPrice] = useState(0);
 
   const onOrderSideRadioPress = (obj, index) => {
     setOrderSideRadioIndex(index);
@@ -224,8 +225,19 @@ function InvestScreen({ navigation }) {
                 const priceNumber = Number.parseFloat(priceString);
                 const stopPrice = (priceNumber * stopLossPercentage) / 100;
                 setStopLossPercentage(stopLossPercentage);
-                setStopLoss(stopPrice);
+                setStopLoss(stopPrice) 
+
+ 
+
+
+
+            
               }}
+
+
+              
+
+              
             />
           </View>
         )}

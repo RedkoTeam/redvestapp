@@ -1,6 +1,7 @@
 import {useNavigation} from "@react-navigation/native";
-import React, {useEffect} from "react";
+import React, { useEffect, useContext } from 'react';
 import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
+import AlpacaAccountInfoContext from 'redvest/contexts/AlpacaAccountInfoContext';
 import investbtn from "../../assets/images/HomeScreen/investbtn.png"
 import cont from "../../assets/images/HomeScreen/reddollarcon.png"
 import bg from "../../assets/images/HomeScreen/bg.png"
@@ -19,9 +20,17 @@ import NavBar from "../Navbar/Navbar.js";
 
 function HomeScreen() {
     
-    const navigation = useNavigation();
+  const {
+    portfolioValue,
+  } = useContext(AlpacaAccountInfoContext)
+  const accountTotal = portfolioValue/1000000
+  console.log(accountTotal)
+  const navigation = useNavigation();
     useEffect(()=>{
         let mounted = true;
+
+
+
         
     })
     return (
@@ -43,7 +52,9 @@ function HomeScreen() {
           fillStyle={{}}
           backgroundStyle={{backgroundColor: '#78AC43', borderRadius: 2}}
           style={{ width: widthPercentageToDP(67), height:15, position: 'absolute', marginTop:heightPercentageToDP(15), marginLeft:widthPercentageToDP(13), backgroundColor: '#FFFFFF',padding:widthPercentageToDP(1)}}
-          progress={0.5}
+          progress={accountTotal}
+          
+
         />
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "1%", marginTop:'1%'  }}>
       
