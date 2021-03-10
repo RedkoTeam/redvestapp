@@ -192,6 +192,7 @@ function InvestScreen({ navigation }) {
           </TouchableOpacity>
           <RNPickerSelect
             onValueChange={(orderType) => setOrderType(orderType)}
+            textInputProps={{ style: { color: colors.offWhite } }}
             items={[
               { label: 'Market', value: 'market' },
               { label: 'Limit', value: 'limit' },
@@ -207,7 +208,9 @@ function InvestScreen({ navigation }) {
               <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
                 <CustomInputLabel text="Stop loss" big info />
               </TouchableOpacity>
-              <Text style={[textStyles.bigRegular, { color: colors.redError }]}>%{stopLossPercentage}</Text>
+              <Text style={[textStyles.bigRegular, { color: colors.redError }]}>
+                %{stopLossPercentage}
+              </Text>
             </View>
             <Slider
               maximumValue={100}
@@ -233,6 +236,7 @@ function InvestScreen({ navigation }) {
           </TouchableOpacity>
           <RNPickerSelect
             onValueChange={(timeInForce) => setTimeInForce(timeInForce)}
+            textInputProps={{ style: { color: colors.offWhite } }}
             items={[
               { label: 'Regular Trading | 9:30am - 4:00pm ET', value: 'day' },
               { label: 'Good Until Canceled', value: 'gtc' },
