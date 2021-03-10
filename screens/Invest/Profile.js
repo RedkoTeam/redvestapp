@@ -49,6 +49,8 @@ function Profile() {
     portfolioEquity,
   } = useContext(AlpacaAccountInfoContext);
 
+ // const rPortfolioEquity = { 
+   // return rPortfolioEquity = portfolioEquity.toFixed(2)}
 
   const months = [
     'January',
@@ -139,7 +141,7 @@ function Profile() {
                 resizeMode: 'contain',
                 width: widthPercentageToDP(7),
                 height: heightPercentageToDP(9),
-                
+
               }}
             />
           </TouchableOpacity>
