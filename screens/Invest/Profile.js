@@ -19,56 +19,7 @@ import { Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import CustomButton from 'redvest/components/CustomButton';
 
-{
-  /*class DashboardScreen extends React.Component {
 
-  static navigationOptions = {
-      title: 'Dashboard'
-  }
-
-  constructor(props) {
-      super(props)
-
-      this.state = {
-          buying_power: 0,
-          cash: 0,
-          long_market_value: 0,
-          portfolio_value: 0,
-      }
-  }
-
-  componentDidMount() {
-      console.log('fetch data from alpaca')
-
-      const api = alpacaApi()
-
-      api.getAccount().then((response) => {
-          console.log(response)
-
-          if (response.ok) {
-              this.setState({
-                  buying_power: response.data.buying_power,
-                  long_market_value: response.data.long_market_value,
-                  portfolio_value: response.data.portfolio_value,
-                  cash: response.data.cash
-              })
-          }
-      })
-  }            <View>
-                <Text>Buying Power</Text>
-                <Text>{this.state.buying_power}</Text>
-                <Text>Long Market Value</Text>
-                <Text>{this.state.long_market_value}</Text>
-                <Text>Portfolio Value</Text>
-                <Text>{this.state.portfolio_value}</Text>
-                <Text>Cash</Text>
-                <Text>{this.state.cash}</Text>
-            </View>
-
-
-
-*/
-}
 
 const chartConfig = {
   backgroundGradientFrom: '#1E2923',
@@ -191,7 +142,7 @@ function Profile() {
           style={{ height: '200%', flex: 1 }}
           contentContainerStyle={{ alignItems: 'center' }}
         >
-          <CustomButton primary onPress={singOutAsync} text="Sign Out" />
+         
           <View
             style={{
               flex: 0.03,
@@ -208,7 +159,7 @@ function Profile() {
                   source={cashBalance}
                   style={{
                     resizeMode: 'contain',
-                    width: widthPercentageToDP(40),
+                    width: widthPercentageToDP(55),
                     height: heightPercentageToDP(8),
                   }}
                 />
@@ -249,6 +200,7 @@ function Profile() {
                   }}
                 />
               </TouchableOpacity>
+              <CustomButton primary onPress={singOutAsync} text="Sign Out" />
             </View>
           </View>
         </ScrollView>

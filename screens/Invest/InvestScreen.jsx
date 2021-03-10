@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import AssetsContext from 'redvest/contexts/AssetsContext';
-import { TouchableOpacity, View, ScrollView, StyleSheet, Text } from 'react-native';
+import { TouchableOpacity, View, ScrollView, StyleSheet, Text,TextInput } from 'react-native';
 import { Dimensions } from 'react-native';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import { enableScreens } from 'react-native-screens';
@@ -225,22 +225,79 @@ function InvestScreen({ navigation }) {
                 const priceNumber = Number.parseFloat(priceString);
                 const stopPrice = (priceNumber * stopLossPercentage) / 100;
                 setStopLossPercentage(stopLossPercentage);
-                setStopLoss(stopPrice) 
+                setStopLoss(stopPrice)}}/>
+                
+          </View>
+        ) 
+        }
 
- 
-
-
-
-            
-              }}
-
-
+        {    orderType === 'limit' && (
+          <View style={styles.inputContainer}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <CustomInputLabel text="Limit Price" big info />
+              </TouchableOpacity>
+              <Text style={[textStyles.bigRegular, { color:"#78AC43"  }]}>
+                ${limitPrice}
+              </Text>
+            </View>
+      
+              <TextInput 
+                               label="Gender"
+                               placeholder="Enter limit price here"
+                               placeholderTextColor='#DCDCDC'
+                               color="#DCDCDC"
+                               fontSize = '18'
+                               onChangeText={limitPrice => setLimitPrice(limitPrice)}
+                    />
               
-
-              
-            />
           </View>
         )}
+          {    orderType === 'stop_limit' && (
+          <View style={styles.inputContainer}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <CustomInputLabel text="Limit Price" big info />
+              </TouchableOpacity>
+              <Text style={[textStyles.bigRegular, { color:"#78AC43"  }]}>
+                ${limitPrice}
+              </Text>
+            </View>
+            <TextInput style={{marginBottom:'10%'}}
+                               label="Gender"
+                               placeholder="Enter limit price here"
+                               placeholderTextColor='#DCDCDC'
+                               color="#DCDCDC"
+                               fontSize = '18'
+                               onChangeText={limitPrice => setLimitPrice(limitPrice)}
+                    />
+
+                  
+              
+              <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
+                <CustomInputLabel text="Stop loss" big info />
+              </TouchableOpacity>
+              <Text style={[textStyles.bigRegular, { color: colors.redError }]}>
+                %{stopLossPercentage}
+              </Text>
+
+            <Slider
+            
+              maximumValue={100}
+              minimumValue={0}
+              minimumTrackTintColor="#EB5757"
+              maximumTrackTintColor="#000000"
+              step={1}
+              value={stopLossPercentage}
+              onValueChange={(stopLossPercentage) => {
+                const priceString = lastStockPrice.replace('$', '');
+                const priceNumber = Number.parseFloat(priceString);
+                const stopPrice = (priceNumber * stopLossPercentage) / 100;
+                setStopLossPercentage(stopLossPercentage);
+                setStopLoss(stopPrice)}}/>
+          </View>
+        )}
+
 
         <View style={styles.inputContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('TimeInForceInfo')}>
@@ -255,6 +312,9 @@ function InvestScreen({ navigation }) {
               { label: 'Immediate Or Cancel', value: 'ioc' },
               { label: 'Fill or Kill', value: 'fok' },
             ]}
+            
+
+
           />
         </View>
       </ScrollView>
