@@ -43,6 +43,7 @@ function InvestScreen({ navigation }) {
   const [orderType, setOrderType] = useState('');
   const [timeInForce, setTimeInForce] = useState('');
   const [stopLoss, setStopLoss] = useState(0);
+  const [stopLossPercentage, setStopLossPercentage] = useState(0);
 
   const onOrderSideRadioPress = (obj, index) => {
     setOrderSideRadioIndex(index);
@@ -195,9 +196,37 @@ function InvestScreen({ navigation }) {
               { label: 'Market', value: 'market' },
               { label: 'Limit', value: 'limit' },
               { label: 'Stop', value: 'stop' },
+              { label: 'Stop Limit', value: 'stop_limit' },
             ]}
           />
         </View>
+
+        {orderType === 'stop' && (
+          <View style={styles.inputContainer}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
+                <CustomInputLabel text="Stop loss" big info />
+              </TouchableOpacity>
+              <Text style={[textStyles.bigRegular, { color: colors.redError }]}>%{stopLossPercentage}</Text>
+            </View>
+            <Slider
+              maximumValue={100}
+              minimumValue={0}
+              minimumTrackTintColor="#EB5757"
+              maximumTrackTintColor="#000000"
+              step={1}
+              value={stopLossPercentage}
+              onValueChange={(stopLossPercentage) => {
+                const priceString = lastStockPrice.replace('$', '');
+                const priceNumber = Number.parseFloat(priceString);
+                const stopPrice = (priceNumber * stopLossPercentage) / 100;
+                setStopLossPercentage(stopLossPercentage);
+                setStopLoss(stopPrice);
+              }}
+            />
+          </View>
+        )}
+
         <View style={styles.inputContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('TimeInForceInfo')}>
             <CustomInputLabel text="Time in force" big info />
@@ -210,23 +239,6 @@ function InvestScreen({ navigation }) {
               { label: 'Immediate Or Cancel', value: 'ioc' },
               { label: 'Fill or Kill', value: 'fok' },
             ]}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TouchableOpacity onPress={() => navigation.navigate('StopLossInfo')}>
-              <CustomInputLabel text="Stop loss" big info />
-            </TouchableOpacity>
-            <Text style={[textStyles.bigRegular, { color: colors.redError }]}>%{stopLoss}</Text>
-          </View>
-          <Slider
-            maximumValue={100}
-            minimumValue={0}
-            minimumTrackTintColor="#EB5757"
-            maximumTrackTintColor="#000000"
-            step={1}
-            value={stopLoss}
-            onValueChange={(stopLoss) => setStopLoss(stopLoss)}
           />
         </View>
       </ScrollView>
