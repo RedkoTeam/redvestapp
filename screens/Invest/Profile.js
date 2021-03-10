@@ -117,16 +117,17 @@ function Profile() {
               padding: 25,
               marginTop: '20%',
               marginBottom: '10%',
-              right: '80%',
+              right: '75%',
             }}
           >
             <LineChart
               data={data}
-              width={screenWidth}
+              width={screenWidth*0.85}
               height={256}
-              verticalLabelRotation={30}
+              verticalLabelRotation={90}
               chartConfig={chartConfig}
               bezier
+              
             />
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>
