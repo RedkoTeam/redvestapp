@@ -5,7 +5,7 @@ import AlpacaAccountInfoContext from 'redvest/contexts/AlpacaAccountInfoContext'
 import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
 import pickStra from '../../assets/images/profile/TotalBalance.png';
 import settings from '../../assets/images/profile/settings.png';
-import cash from '../../assets/images/profile/Cashbalance.png';
+import cashBalance from '../../assets/images/profile/Cashbalance.png';
 import as from '../../assets/images/profile/activestrat.png';
 import orders from '../../assets/images/profile/orders.png';
 import hist from '../../assets/images/profile/history.png';
@@ -87,13 +87,39 @@ enableScreens(false);
 
 function Profile() {
   const { singOutAsync } = useContext(AuthContext);
-  const {} = useContext(AlpacaAccountInfoContext);
+  const {
+    buyingPower,
+    cash,
+    longMarketValue,
+    portfolioValue,
+    portfolioTimestamp,
+    portfolioEquity,
+  } = useContext(AlpacaAccountInfoContext);
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
   const navigation = useNavigation();
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: portfolioTimestamp.map((timestamp) => {
+      const monthIndex = new Date(timestamp).getMonth();
+      return months[monthIndex];
+    }),
     datasets: [
       {
-        data: [20, 45, 28, 80, 99, 123],
+        data: portfolioEquity,
         color: (opacity = 1) => `rgba(118, 159, 35, ${opacity})`, // optional
         strokeWidth: 4, // optional
       },
@@ -179,7 +205,7 @@ function Profile() {
             <View>
               <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                 <Image
-                  source={cash}
+                  source={cashBalance}
                   style={{
                     resizeMode: 'contain',
                     width: widthPercentageToDP(40),

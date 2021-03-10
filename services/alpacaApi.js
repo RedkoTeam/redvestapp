@@ -12,6 +12,7 @@ const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
   });
 
   const getAccount = () => api.get('v2/account');
+  const getPortfolioHistory = () => api.get('v2/account/portfolio/history');
   const getPositions = () => api.get('v2/positions');
   const getAssets = () => api.get('v2/assets?status=active');
   const getOrders = () => api.get('v2/orders');
@@ -19,6 +20,7 @@ const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
 
   return {
     getAccount,
+    getPortfolioHistory,
     getPositions,
     getAssets,
     getOrders,

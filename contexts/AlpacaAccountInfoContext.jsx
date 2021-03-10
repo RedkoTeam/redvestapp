@@ -8,20 +8,25 @@ export function AlpacaAccountInfoProvider({ children }) {
   const [cash, setCash] = useState(0);
   const [longMarketValue, setLongMarketValue] = useState(0);
   const [portfolioValue, setPortfolioValue] = useState(0);
+  const [portfolioTimestamp, setPortfolioTimestamp] = useState([]);
+  const [portfolioEquity, setPortfolioEquity] = useState([]);
 
   useEffect(() => {
-    console.log('fetch data from alpaca');
-    alpacaApi()
-      .getAccount()
-      .then((response) => {
-        console.log(response);
-        if (response.ok) {
-          setBuyingPower(response.data.buying_power);
-          setLongMarketValue(response.data.long_market_value);
-          setPortfolioValue(response.data.portfolio_value);
-          setCash(response.data.cash);
-        }
-      });
+    const api = alpacaApi();
+    api.getAccount().then((response) => {
+      if (response.ok) {
+        setBuyingPower(response.data.buying_power);
+        setLongMarketValue(response.data.long_market_value);
+        setPortfolioValue(response.data.portfolio_value);
+        setCash(response.data.cash);
+      }
+    });
+    api.getPortfolioHistory().then((response) => {
+      if (response.ok) {
+        setPortfolioTimestamp(response.data.timestamp);
+        setPortfolioEquity(response.data.equity);
+      }
+    });
   }, []);
 
   return (
@@ -31,6 +36,8 @@ export function AlpacaAccountInfoProvider({ children }) {
         cash,
         longMarketValue,
         portfolioValue,
+        portfolioTimestamp,
+        portfolioEquity,
       }}
     >
       {children}
