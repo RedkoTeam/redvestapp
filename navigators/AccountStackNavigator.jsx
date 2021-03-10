@@ -13,6 +13,7 @@ import ActiveStrategies from 'redvest/screens/Profile/ActiveStrategies';
 import orders from 'redvest/screens/Profile/orders';
 import history from 'redvest/screens/Profile/history';
 import Dashboard from 'redvest/screens/invest/dashboard';
+import AccountInfo from 'redvest/screens/invest/AccountInfo';
 
 const AuthStack = createStackNavigator();
 
@@ -47,6 +48,7 @@ function AccountStackNavigator() {
               title: 'Reset your password',
             }}
           />
+               
         </>
       ) : (
         <>
@@ -72,6 +74,14 @@ function AccountStackNavigator() {
             options={{
               headerLeft: () => <BackChevron />,
               title: 'Orders',
+            }}
+          />
+           <AuthStack.Screen
+            name="AccountInfo"
+            component={AccountInfo}
+            options={{
+              headerLeft: () => <BackChevron />,
+              title: 'Account Info',
             }}
           />
           <AuthStack.Screen
