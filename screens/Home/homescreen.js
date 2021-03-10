@@ -1,6 +1,6 @@
 import {useNavigation} from "@react-navigation/native";
 import React, { useEffect, useContext } from 'react';
-import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView} from "react-native";
+import {Image, ImageBackground, Linking, TouchableOpacity, View,ScrollView,Text} from "react-native";
 import AlpacaAccountInfoContext from 'redvest/contexts/AlpacaAccountInfoContext';
 import investbtn from "../../assets/images/HomeScreen/investbtn.png"
 import cont from "../../assets/images/HomeScreen/reddollarcon.png"
@@ -11,6 +11,7 @@ import premium1 from "../../assets/images/HomeScreen/aio.png"
 import premium2 from "../../assets/images/HomeScreen/ait.png"
 import signupbtn from "../../assets/images/HomeScreen/signup.png"
 import { Dimensions } from 'react-native';
+import { textStyles, colors } from 'redvest/util/styles';
 import { ProgressBar, Colors } from 'react-native-paper';
 import {widthPercentageToDP,heightPercentageToDP,} from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
@@ -47,6 +48,7 @@ function HomeScreen() {
                     <Image source={loginbtn} style={{resizeMode:'contain',width:widthPercentageToDP(30), height:heightPercentageToDP(5)}}/>
                   </TouchableOpacity>
                 </View>
+                
                 <ProgressBar
                 color={Colors.green500}
           fillStyle={{}}
@@ -59,6 +61,7 @@ function HomeScreen() {
                 <View style={{  flex: 0.03, flexDirection: 'row', width: '100%', justifyContent: 'center', padding: 15, marginBottom:  "1%", marginTop:'1%'  }}>
       
                 <TouchableOpacity onPress={() => navigation.navigate('')}>
+                <Text style={[textStyles.bigSemiBold, { color: '#78AC43',position:'absolute',marginTop:'20%', marginLeft:'40%', fontSize: actuatedNormalize(18) }] }>$ {portfolioValue}</Text>
                     <Image source={cont} style={{resizeMode:'contain',width:widthPercentageToDP(90), height:heightPercentageToDP(20)}}/>
             
                   </TouchableOpacity>
