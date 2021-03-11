@@ -66,10 +66,8 @@ function InvestScreen({ navigation }) {
       type: orderType,
       time_in_force: timeInForce,
     };
-    const requestBodyType;
-    if (requestBody.type === 'market') {
-      requestBodyType = { ...requestBody };
-    } else if (requestBody.type === 'limit') {
+    const requestBodyType = { ...requestBody };
+    if (requestBody.type === 'limit') {
       requestBodyType = { ...requestBody, limit_price: limitPrice };
     } else if (requestBody.type === 'stop') {
       requestBodyType = { ...requestBody, stop_loss: stopLoss };
