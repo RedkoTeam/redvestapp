@@ -1,23 +1,32 @@
-import { textStyles, colors } from 'redvest/util/styles';
-import { heightPercentageToDP, widthPercentageToDP } from 'redvest/util/scaler';
+import { textStyles, colors } from "redvest/util/styles";
+import { heightPercentageToDP, widthPercentageToDP } from "redvest/util/scaler";
 
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-function CustomInputLabel({ text, optional = false, info = false, big = false }) {
+function CustomInputLabel({
+  text,
+  optional = false,
+  info = false,
+  big = false,
+  hugeFont = false,
+}) {
   return (
     <View style={[styles.labelContainer, !big && styles.marginOffset]}>
       <Text
-        style={
+        style={[
           big
             ? [styles.bigLabel, textStyles.bigMedium]
-            : [styles.smallLabel, textStyles.smallRegular]
-        }
+            : [styles.smallLabel, textStyles.smallRegular],
+          hugeFont ? styles.bigFont : null,
+        ]}
       >
         {text}
       </Text>
-      {optional && <Text style={[textStyles.smallRegular, styles.optional]}>optional</Text>}
+      {optional && (
+        <Text style={[textStyles.smallRegular, styles.optional]}>optional</Text>
+      )}
       {info && (
         <Ionicons
           name="ios-information-circle"
@@ -32,14 +41,17 @@ function CustomInputLabel({ text, optional = false, info = false, big = false })
 
 const styles = StyleSheet.create({
   labelContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   smallLabel: {
     color: colors.primary,
   },
   bigLabel: {
     color: colors.offWhite,
+  },
+  bigFont: {
+    fontSize: 25,
   },
   optional: {
     color: colors.darkGrey,

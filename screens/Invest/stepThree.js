@@ -114,6 +114,9 @@ function stepThree() {
                   marginLeft: "-5%",
                 }}
               >
+                <TouchableOpacity
+                onPress={() => navigation.navigate("stepThreea")}
+              >
                 <Image
                   source={aapl}
                   style={{
@@ -123,6 +126,7 @@ function stepThree() {
                     marginTop: heightPercentageToDP(0),
                   }}
                 />
+                </TouchableOpacity>
                 <Image
                   source={snap}
                   style={{

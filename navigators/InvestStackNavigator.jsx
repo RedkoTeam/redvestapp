@@ -10,7 +10,7 @@ import QuantityInfoScreen from "redvest/screens/info/QuantityInfoScreen";
 import OrderTypeInfoScreen from "redvest/screens/info/OrderTypeInfoScreen";
 import TimeInForceInfoScreen from "redvest/screens/info/TimeInForceInfoScreen";
 import StopLossInfoScreen from "redvest/screens/info/StopLossInfoScreen";
-
+import OrderConfirmation from "redvest/screens/Invest/OrderConfirm";
 const InvestStack = createStackNavigator();
 
 function InvestStackNavigator() {
@@ -67,6 +67,14 @@ function InvestStackNavigator() {
         options={{
           headerLeft: () => <BackChevron />,
           title: "Stop loss info",
+        }}
+      />
+      <InvestStack.Screen
+        name="OrderConfirmation"
+        component={OrderConfirmation}
+        options={{
+          headerLeft: () => <BackChevron />,
+          title: "Order Confirmation",
         }}
       />
     </InvestStack.Navigator>

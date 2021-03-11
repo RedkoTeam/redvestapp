@@ -16,6 +16,8 @@ import {
   StyleSheet,
   Dimensions,
   Platform,
+  Image,
+  ScrollView
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -27,6 +29,7 @@ import Spacer from 'redvest/components/Spacer';
 import HorizontalRule from 'redvest/components/HorizontalRule';
 import { EmailInput, PasswordInput } from 'redvest/components/CustomTextInput';
 import CustomButton from 'redvest/components/CustomButton';
+import title from "../../assets/images/signup/SignIn.png";
 
 function SignInScreen({ navigation }) {
   const { signInWithEmailAsync, signInWithFacebook, signInWithGoogleAsync } = useContext(
@@ -53,6 +56,31 @@ function SignInScreen({ navigation }) {
         minHeight: Math.round(Dimensions.get('window').height / 2),
       }}
     >
+         <ScrollView
+          style={{ height: '200%', flex: 1 }}
+          contentContainerStyle={{ alignItems: 'center' }}
+        >
+              <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            padding: 10,
+            marginTop: 5,
+          }}
+        >
+        
+          <Image
+            source={title}
+            style={{
+              resizeMode: "contain",
+              width: widthPercentageToDP(25),
+              height: heightPercentageToDP(6),
+              marginTop: "10%",
+              left: "20%",
+            }}
+          />
+        </View>
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'position'}
         keyboardVerticalOffset={-240}
@@ -95,15 +123,16 @@ function SignInScreen({ navigation }) {
           onPress={async () => await signInWithGoogleAsync(onSignInSuccess, onSignInFailure)}
         />
 
-        <View style={styles.buttomButtons}>
+        <View style={styles.buttomButtons, {marginTop:'5%' }}>
           <Text style={[textStyles.smallRegular, { color: colors.offWhite }]}>
             Don't have an account yet?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')}>
             <Text style={[textStyles.bigRegular, { color: colors.primary }]}>CREATE ACCOUNT</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
+      </ScrollView>
     </SafeAreaView>
   );
 }

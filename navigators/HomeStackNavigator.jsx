@@ -8,6 +8,8 @@ import macd from "redvest/screens/Profile/macd";
 import dualma from "redvest/screens/Profile/dualma";
 import threema from "redvest/screens/Profile/threema";
 import rsi from "redvest/screens/Profile/rsi";
+import SignInScreen from "redvest/screens/auth/SignInScreen";
+import SignUpScreen from "redvest/screens/auth/SignUpScreen";
 
 const HomeStack = createStackNavigator();
 
@@ -21,6 +23,8 @@ function HomeStackNavigator() {
       <HomeStack.Screen name="rsi" component={rsi} />
       <HomeStack.Screen name="dualma" component={dualma} />
       <HomeStack.Screen name="threema" component={threema} />
+      <HomeStack.Screen name="SignUpScreen" component={SignUpScreen} />
+      <HomeStack.Screen name="SignInScreen" component={SignInScreen} />
     </HomeStack.Navigator>
   );
 }

@@ -13,6 +13,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@alpacahq/alpaca-trade-api": "^1.4.2",
     "@expo-google-fonts/fira-sans": "^0.1.0",
     "@expo-google-fonts/poppins": "^0.1.0",
     "@expo/vector-icons": "^12.0.0",
@@ -36,7 +37,7 @@
     "expo-splash-screen": "~0.8.1",
     "expo-status-bar": "~1.0.3",
     "expo-web-browser": "~8.6.0",
-    "firebase": "^8.2.6",
+    "firebase": "^8.2.10",
     "install": "^0.13.0",
     "material-ui-icons": "^1.0.0-beta.36",
     "npm": "^7.6.0",
@@ -48,6 +49,7 @@
     "react-native-chart-kit": "^6.10.1",
     "react-native-dotenv": "^2.5.3",
     "react-native-gesture-handler": "~1.8.0",
+    "react-native-multiple-select": "^0.5.6",
     "react-native-paper": "^4.7.1",
     "react-native-picker-select": "^8.0.4",
     "react-native-safe-area-context": "3.1.9",
@@ -64,5 +66,17 @@
     "jest-expo": "~40.0.0",
     "typescript": "~4.0.0"
   },
-  "private": true
+  "private": true,
+  "description": "",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedkoTeam/redvestapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RedkoTeam/redvestapp/issues"
+  },
+  "homepage": "https://github.com/RedkoTeam/redvestapp#readme"
 }

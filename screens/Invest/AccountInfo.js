@@ -3,13 +3,13 @@ import React, { useEffect, useContext } from 'react';
 import AuthContext from 'redvest/contexts/AuthContext';
 import AlpacaAccountInfoContext from 'redvest/contexts/AlpacaAccountInfoContext';
 import { Image, ImageBackground, StyleSheet, TouchableOpacity, View, ScrollView, Text } from 'react-native';
-import pickStra from '../../assets/images/profile/TotalBalance.png';
+import pickStra from '../../assets/images/profile/AccountSummary.png';
 import { textStyles, colors } from 'redvest/util/styles';
 import settings from '../../assets/images/profile/settings.png';
-import cashBalance from '../../assets/images/profile/Cashbalance.png';
-import as from '../../assets/images/profile/activestrat.png';
-import orders from '../../assets/images/profile/orders.png';
-import hist from '../../assets/images/profile/history.png';
+import cashBalance from '../../assets/images/profile/Cash_Balance.png';
+import bp from '../../assets/images/profile/bp.png';
+import lmv from '../../assets/images/profile/lmv.png';
+import pv from '../../assets/images/profile/pv.png';
 import bg from '../../assets/images/HomeScreen/bg.png';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import { actuatedNormalize } from '../../util/fontScaler';
@@ -19,12 +19,12 @@ import { Dimensions } from 'react-native';
 //import alpacaApi from '../services/alpaca'
 import { LineChart } from 'react-native-chart-kit';
 import CustomButton from 'redvest/components/CustomButton';
-
+import back from "../../assets/images/Invest/step3a/back.png";
 
 
 
 const chartConfig = {
-  backgroundGradientFrom: '#FFFFF',
+  backgroundGradientFrom: '#1E2923',
   backgroundGradientFromOpacity: 0,
   backgroundGradientTo: '#08130D',
   backgroundGradientToOpacity: 0.5,
@@ -38,7 +38,7 @@ const screenWidth = Dimensions.get('window').width;
 
 enableScreens(false);
 
-function Profile() {
+function AccountInfo() {
   const { singOutAsync } = useContext(AuthContext);
   const {
     buyingPower,
@@ -49,39 +49,11 @@ function Profile() {
     portfolioEquity,
   } = useContext(AlpacaAccountInfoContext);
 
- // const rPortfolioEquity = { 
-   // return rPortfolioEquity = portfolioEquity.toFixed(2)}
 
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+ 
 
   const navigation = useNavigation();
-  const data = {
-    labels: portfolioTimestamp.map((timestamp) => {
-      const monthIndex = new Date(timestamp).getMonth();
-      return months[monthIndex];
-    }),
-    datasets: [
-      {
-        data: portfolioEquity,
-        color: (opacity = 1) => `rgba(118, 159, 35, ${opacity})`, // optional
-        strokeWidth: 4, // optional
-      },
-    ],
-    //legend: [""] // optional
-  };
+  
   useEffect(() => {
     let mounted = true;
   });
@@ -91,66 +63,49 @@ function Profile() {
         source={bg}
         style={{ width: widthPercentageToDP(100), height: heightPercentageToDP(100) }}
       >
-        <View
+   
+   <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
-            justifyContent: 'space-between',
-            padding: 25,
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            padding: 10,
             marginTop: 5,
-            marginBottom: '-15%',
           }}
         >
-          <Image
-            source={pickStra}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Profile")}
             style={{
-              resizeMode: 'contain',
-              width: widthPercentageToDP(40),
-              height: heightPercentageToDP(10),
-              marginTop: 30,
-              marginLeft: '0%',
-            }}
-          />
-              <Text style={[styles.screenTitle, textStyles.hugeRegular, {marginLeft:'20%', marginTop:'16%', fontSize:actuatedNormalize (20)}]}>$ {portfolioValue}</Text>
-        
-          <View
-            style={{
-
-              width: '100%',
-              justifyContent: 'space-between',
-              padding: 25,
-              marginTop: '20%',
-              marginBottom: '10%',
-              marginLeft:'-170%'
+              left: widthPercentageToDP(3),
+              top: heightPercentageToDP(3),
             }}
           >
-            <LineChart
-              data={data}
-              width={screenWidth*0.85}
-              height={256}
-              verticalLabelRotation={90}
-              chartConfig={chartConfig}
-              bezier
-              
-            />
-          </View>
-          <TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>
             <Image
-              source={settings}
+              source={back}
               style={{
-                resizeMode: 'contain',
-                width: widthPercentageToDP(7),
-                height: heightPercentageToDP(9),
-
+                width: widthPercentageToDP("3"),
+                height: heightPercentageToDP("3"),
+                resizeMode: "contain",
               }}
             />
           </TouchableOpacity>
+          <Image
+            source={pickStra}
+            style={{
+              resizeMode: "contain",
+              width: widthPercentageToDP(80),
+              height: heightPercentageToDP(10),
+              marginTop: "15%",
+              left: "-20%",
+            }}
+          />
         </View>
 
         <ScrollView
           style={{ height: '200%', flex: 1 }}
           contentContainerStyle={{ alignItems: 'center' }}
         >
+          
          
           <View
             style={{
@@ -164,55 +119,64 @@ function Profile() {
           >
             <View style={{
             flexDirection: 'row'}}>
-              <TouchableOpacity onPress={() => navigation.navigate('AccountInfo')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                 <Image
                   source={cashBalance}
                   style={{
                     resizeMode: 'contain',
-                    width: widthPercentageToDP(85),
+                    width: widthPercentageToDP(35),
                     height: heightPercentageToDP(7),
                   }}
                 />
               </TouchableOpacity>
-             
+              <Text style={[styles.screenTitle, textStyles.bigRegular, {marginLeft:'30%', marginTop:'5%', fontSize:actuatedNormalize (15)}]}>$ {cashBalance}</Text>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('ActiveStrategies')}>
+            <View style={{
+            flexDirection: 'row'}}>
+              <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                 <Image
-                  source={as}
+                  source={bp}
                   style={{
                     resizeMode: 'contain',
-                    width: widthPercentageToDP(85),
+                    width: widthPercentageToDP(35),
                     height: heightPercentageToDP(7),
                   }}
                 />
               </TouchableOpacity>
+              <Text style={[styles.screenTitle, textStyles.bigRegular, {marginLeft:'30%', marginTop:'5%', fontSize:actuatedNormalize (15)}]}>$ {buyingPower}</Text>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('orders')}>
+            <View style={{
+            flexDirection: 'row'}}>
+              <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                 <Image
-                  source={orders}
+                  source={lmv}
                   style={{
                     resizeMode: 'contain',
-                    width: widthPercentageToDP(85),
+                    width: widthPercentageToDP(45),
                     height: heightPercentageToDP(7),
                   }}
                 />
               </TouchableOpacity>
+              <Text style={[styles.screenTitle, textStyles.bigRegular, {marginLeft:'19%', marginTop:'5%', fontSize:actuatedNormalize (15)}]}>$ {longMarketValue}</Text>
             </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('history')}>
+
+            <View style={{
+            flexDirection: 'row'}}>
+              <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                 <Image
-                  source={hist}
+                  source={pv}
                   style={{
                     resizeMode: 'contain',
-                    width: widthPercentageToDP(85),
+                    width: widthPercentageToDP(35),
                     height: heightPercentageToDP(7),
                   }}
                 />
               </TouchableOpacity>
-              <CustomButton primary onPress={singOutAsync} text="Sign Out" />
+              <Text style={[styles.screenTitle, textStyles.bigRegular, {marginLeft:'30%', marginTop:'5%', fontSize:actuatedNormalize (15)}]}>$ {portfolioValue}</Text>
             </View>
+
+            
+           
           </View>
         </ScrollView>
       </ImageBackground>
@@ -242,4 +206,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default AccountInfo;
