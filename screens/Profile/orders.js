@@ -78,7 +78,7 @@ function history() {
                   {capitalize(order.side)}
                 </Text>
                 <Text style={[textStyles.normalRegular, { color: colors.offWhite }]}>
-                  {`${order.qty} stocks of ${order.symbol} at $${order.filled_at}`}
+                  {`${order.qty} stocks of ${order.symbol} at $${order.filled_avg_price}`}
                 </Text>
               </View>
               <TouchableOpacity onPress={() => console.log('3 dots pressed')}>
