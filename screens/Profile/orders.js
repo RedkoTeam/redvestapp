@@ -16,7 +16,6 @@ import hist from '../../assets/images/profile/orderstab.png';
 import bg from '../../assets/images/HomeScreen/bg.png';
 import buy from 'redvest/assets/images/orders/buy.png';
 import sell from 'redvest/assets/images/orders/sell.png';
-import profit from 'redvest/assets/images/orders/profit.png';
 import vertical3dots from 'redvest/assets/images/vertical-3dots.png';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import { textStyles, colors } from 'redvest/util/styles';
@@ -104,11 +103,12 @@ const styles = StyleSheet.create({
     width: '90%',
     borderRadius: 30,
     backgroundColor: '#1F1C1B',
+    marginBottom: 18,
   },
   orderCardIcon: {
     resizeMode: 'contain',
     height: '55%',
-    width: '20%'
+    width: '20%',
   },
   orderCardDots: {
     resizeMode: 'contain',
