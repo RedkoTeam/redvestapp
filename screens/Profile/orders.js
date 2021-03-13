@@ -17,17 +17,18 @@ import bg from '../../assets/images/HomeScreen/bg.png';
 import buy from 'redvest/assets/images/orders/buy.png';
 import sell from 'redvest/assets/images/orders/sell.png';
 import profit from 'redvest/assets/images/orders/profit.png';
+import vertical3dots from 'redvest/assets/images/vertical-3dots.png';
 import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
 import { textStyles, colors } from 'redvest/util/styles';
 import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_pro from '../Navbar/Navbar_pro.js';
 import { enableScreens } from 'react-native-screens';
+import capitalize from 'redvest/util/capitalize';
 
 enableScreens(false);
 
 function history() {
   const { orders } = useContext(OrdersContext);
-  console.log(orders);
   const navigation = useNavigation();
   useEffect(() => {
     let mounted = true;
@@ -69,13 +70,22 @@ function history() {
         </View>
 
         <ScrollView style={{ height: '200%' }} contentContainerStyle={{ alignItems: 'center' }}>
-          <View style={styles.orderCard}>
-            <Image source={buy} style={styles.orderCardIcon} />
-            <View>
-              <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>Buy</Text>
-              <Text style={[textStyles.normalRegular, { color: colors.offWhite }]}>100 stocks of APPL at $200</Text>
+          {orders.map((order) => (
+            <View style={styles.orderCard}>
+              <Image source={order.side === 'buy' ? buy : sell} style={styles.orderCardIcon} />
+              <View>
+                <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>
+                  {capitalize(order.side)}
+                </Text>
+                <Text style={[textStyles.normalRegular, { color: colors.offWhite }]}>
+                  {`${order.qty} stocks of ${order.symbol} at $${order.filled_at}`}
+                </Text>
+              </View>
+              <TouchableOpacity onPress={() => console.log('3 dots pressed')}>
+                <Image source={vertical3dots} style={styles.orderCardDots} />
+              </TouchableOpacity>
             </View>
-          </View>
+          ))}
         </ScrollView>
       </ImageBackground>
       <NavBar_pro />
@@ -87,6 +97,9 @@ const styles = StyleSheet.create({
   orderCard: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: '5%',
+    paddingRight: '7%',
     height: 100,
     width: '90%',
     borderRadius: 30,
@@ -95,6 +108,11 @@ const styles = StyleSheet.create({
   orderCardIcon: {
     resizeMode: 'contain',
     height: '55%',
+    width: '20%'
+  },
+  orderCardDots: {
+    resizeMode: 'contain',
+    height: '20%',
   },
 });
 
