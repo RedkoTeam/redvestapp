@@ -2,6 +2,7 @@
 import React from 'react';
 import { AuthProvider } from 'redvest/contexts/AuthContext';
 import { AssetsProvider } from 'redvest/contexts/AssetsContext';
+import { OrdersProvider } from 'redvest/contexts/OrdersContext';
 import { DataProvider } from 'redvest/contexts/DataContext';
 import { AlpacaAccountInfoProvider } from 'redvest/contexts/AlpacaAccountInfoContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -64,10 +65,12 @@ function App() {
       <AssetsProvider>
         <DataProvider>
           <AlpacaAccountInfoProvider>
-            <SafeAreaProvider>
-              <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
-              <NavigationContainer />
-            </SafeAreaProvider>
+            <OrdersProvider>
+              <SafeAreaProvider>
+                <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
+                <NavigationContainer />
+              </SafeAreaProvider>
+            </OrdersProvider>
           </AlpacaAccountInfoProvider>
         </DataProvider>
       </AssetsProvider>
