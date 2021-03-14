@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import OrdersContext from 'redvest/contexts/OrdersContext';
 import {
   Image,
@@ -23,12 +23,14 @@ import { actuatedNormalize } from '../../util/fontScaler';
 import NavBar_pro from '../Navbar/Navbar_pro.js';
 import { enableScreens } from 'react-native-screens';
 import capitalize from 'redvest/util/capitalize';
+import alpacaApi from 'redvest/services/alpacaApi';
 
 enableScreens(false);
 
 function history() {
   const { orders } = useContext(OrdersContext);
   const navigation = useNavigation();
+  const [cardOptions, setCardOptions] = useState(false);
   useEffect(() => {
     let mounted = true;
   });
@@ -70,20 +72,42 @@ function history() {
 
         <ScrollView style={{ height: '200%' }} contentContainerStyle={{ alignItems: 'center' }}>
           {orders.map((order) => (
-            <View style={styles.orderCard}>
-              <Image source={order.side === 'buy' ? buy : sell} style={styles.orderCardIcon} />
-              <View>
-                <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>
-                  {capitalize(order.side)}
-                </Text>
-                <Text style={[textStyles.normalRegular, { color: colors.offWhite }]}>
-                  {`${order.qty} stocks of ${order.symbol} at $${order.filled_avg_price}`}
-                </Text>
+            <>
+              <View style={styles.orderCard}>
+                <Image source={order.side === 'buy' ? buy : sell} style={styles.orderCardIcon} />
+                <View>
+                  <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>
+                    {capitalize(order.side)}
+                  </Text>
+                  <Text style={[textStyles.normalRegular, { color: colors.offWhite }]}>
+                    {`${order.qty} stocks of ${order.symbol} at $${order.filled_avg_price}`}
+                  </Text>
+                </View>
+                <TouchableOpacity onPress={() => setCardOptions(!cardOptions)}>
+                  <Image source={vertical3dots} style={styles.orderCardDots} />
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity onPress={() => console.log('3 dots pressed')}>
-                <Image source={vertical3dots} style={styles.orderCardDots} />
-              </TouchableOpacity>
-            </View>
+              {cardOptions && (
+                <View style={styles.orderCardOptions}>
+                  <TouchableOpacity
+                    style={[styles.orderOption, { backgroundColor: colors.redError }]}
+                    onPress={() => alpacaApi().cancelOrder(order.id)}
+                  >
+                    <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>
+                      Cancel Order
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.orderOption, { backgroundColor: colors.primary }]}
+                    onPress={() => setCardOptions(false)}
+                  >
+                    <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>
+                      Keep Order
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+            </>
           ))}
         </ScrollView>
       </ImageBackground>
@@ -113,6 +137,25 @@ const styles = StyleSheet.create({
   orderCardDots: {
     resizeMode: 'contain',
     height: '20%',
+  },
+  orderCardOptions: {
+    flexDirection: 'row',
+    //alignItems: 'center',
+    justifyContent: 'space-between',
+    //paddingLeft: '5%',
+    //paddingRight: '7%',
+    //height: 100,
+    width: '90%',
+    borderRadius: 30,
+    //backgroundColor: '#1F1C1B',
+    marginBottom: 25,
+  },
+  orderOption: {
+    borderRadius: 30,
+    width: '47%',
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

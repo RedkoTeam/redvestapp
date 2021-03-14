@@ -29,7 +29,6 @@ enableScreens(false);
 
 function history() {
   const { positions } = useContext(PositionsContext);
-  console.log(positions);
   const navigation = useNavigation();
   useEffect(() => {
     let mounted = true;
