@@ -127,10 +127,10 @@ export function AuthProvider({ children }) {
   const exchangeAlpacaToken = (url) => {
     console.log('url:', url);
     if (!url) return;
+    const redirectUrl = 'alpacamobile://oauth';
+    const grantType = 'authorization_code';
     const code = getAlpacaCode(url);
-    const config = `grant_type=authorization_code&redirect_uri=alpacamobile://oauth&code=${code}`;
-
-    //props.alpacaExchangeToken(config);
+    const config = `grant_type=${grantType}&redirect_uri=${redirectUrl}&code=${code}`;
     alpacaApi().alpacaExchangeToken(config);
   };
 
@@ -141,12 +141,12 @@ export function AuthProvider({ children }) {
   };
 
   const alpacaAuthStart = async () => {
-    clientId = ALPACA_AUTH_CLIENT_ID;
-    clientSecret = ALPACA_AUTH_CLIENT_SECRET;
-    authorizationEndpoint = ALPACA_AUTH_ENDPOINT;
-    redirectUrl = 'alpacamobile://oauth';
-    responseType = 'code';
-    tokenEndpoint = ALPACA_TOKEN_ENDPOINT;
+    const clientId = ALPACA_AUTH_CLIENT_ID;
+    const clientSecret = ALPACA_AUTH_CLIENT_SECRET;
+    const authorizationEndpoint = ALPACA_AUTH_ENDPOINT;
+    const redirectUrl = 'alpacamobile://oauth';
+    const responseType = 'code';
+    const tokenEndpoint = ALPACA_TOKEN_ENDPOINT;
     // const authConfig = {
     //     issuer: authorizationEndpoint,
     //     clientId,
@@ -171,6 +171,7 @@ export function AuthProvider({ children }) {
     //     console.log('auth error', error);
     // }
     let webOAuthUrl = `${authorizationEndpoint}?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=${responseType}`;
+    console.log(webOAuthUrl);
     if (Platform.OS === 'android') {
       CustomTabs.openURL(webOAuthUrl, {
         forceCloseOnRedirection: true,
