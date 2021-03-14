@@ -91,7 +91,11 @@ function history() {
                 <View style={styles.orderCardOptions}>
                   <TouchableOpacity
                     style={[styles.orderOption, { backgroundColor: colors.redError }]}
-                    onPress={() => alpacaApi().cancelOrder(order.id)}
+                    onPress={() =>
+                      alpacaApi()
+                        .cancelOrder(order.id)
+                        .then(() => setCardOptions(false))
+                    }
                   >
                     <Text style={[textStyles.normalSemiBold, { color: colors.offWhite }]}>
                       Cancel Order
