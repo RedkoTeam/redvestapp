@@ -22,7 +22,7 @@ const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
   const getAssets = () => api.get('v2/assets?status=active');
   const getOrders = () => api.get('v2/orders');
   const postOrder = (data) => api.post('v2/orders', data);
-  const cancelOrder = (order_id) => api.post(`v2/orders/${order_id}`);
+  const cancelOrder = (order_id) => api.delete(`v2/orders/${order_id}`);
   const alpacaExchangeToken = (params) => authApi.post(ALPACA_TOKEN_ENDPOINT, params);
 
   return {
