@@ -6,6 +6,16 @@ import firebase from 'firebase';
 import * as GoogleSignIn from 'expo-google-sign-in';
 import * as Segment from 'expo-analytics-segment';
 
+import { CustomTabs } from 'react-native-custom-tabs';
+import { Platform, NativeModules } from 'react-native';
+import {
+  ALPACA_AUTH_CLIENT_ID,
+  ALPACA_AUTH_CLIENT_SECRET,
+  ALPACA_AUTH_ENDPOINT,
+  ALPACA_TOKEN_ENDPOINT,
+} from '@env';
+import alpacaApi from 'redvest/services/alpacaApi';
+
 const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
@@ -114,6 +124,77 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const exchangeAlpacaToken = (url) => {
+    console.log('url:', url);
+    if (!url) return;
+    const code = getAlpacaCode(url);
+    const config = `grant_type=authorization_code&redirect_uri=alpacamobile://oauth&code=${code}`;
+
+    //props.alpacaExchangeToken(config);
+    alpacaApi().alpacaExchangeToken(config);
+  };
+
+  const getAlpacaCode = (url) => {
+    let codeIndex = url.indexOf('code');
+    let code = url.slice(codeIndex + 5);
+    return code;
+  };
+
+  const alpacaAuthStart = async () => {
+    clientId = ALPACA_AUTH_CLIENT_ID;
+    clientSecret = ALPACA_AUTH_CLIENT_SECRET;
+    authorizationEndpoint = ALPACA_AUTH_ENDPOINT;
+    redirectUrl = 'alpacamobile://oauth';
+    responseType = 'code';
+    tokenEndpoint = ALPACA_TOKEN_ENDPOINT;
+    // const authConfig = {
+    //     issuer: authorizationEndpoint,
+    //     clientId,
+    //     clientSecret,
+    //     redirectUrl,
+    //     serviceConfiguration: {
+    //         authorizationEndpoint,
+    //         tokenEndpoint,
+    //     },
+    //     customHeaders: {
+    //         token: {
+    //             'Authorization': 'Basic ' + base64.encode(`${config.AUTH_CLIENT_ID}:${config.AUTH_CLIENT_SECRET}`),
+    //         },
+    //     },
+    // };
+    // console.log("authConfig:", authConfig);
+
+    // try {
+    //     const result = await authorize(authConfig);
+    //     console.log('auth result', result);
+    // } catch (error) {
+    //     console.log('auth error', error);
+    // }
+    let webOAuthUrl = `${authorizationEndpoint}?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=${responseType}`;
+    if (Platform.OS === 'android') {
+      CustomTabs.openURL(webOAuthUrl, {
+        forceCloseOnRedirection: true,
+      })
+        .then((launched) => {
+          console.log(`Launched custom tabs: ${launched}`);
+        })
+        .catch((err) => {
+          console.error('custom tab error:' + err);
+        });
+    } else {
+      NativeModules.AlpacaOAuth.AuthStart(webOAuthUrl)
+        .then((url) => {
+          console.log('auth result', url);
+          if (url) {
+            exchangeAlpacaToken(url);
+          }
+        })
+        .catch((error) => {
+          console.log('native auth error:', error);
+        });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -124,6 +205,7 @@ export function AuthProvider({ children }) {
         passwordResetEmailAsync,
         signInWithFacebook,
         signInWithGoogleAsync,
+        alpacaAuthStart,
       }}
     >
       {children}

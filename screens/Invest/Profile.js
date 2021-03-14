@@ -39,7 +39,7 @@ const screenWidth = Dimensions.get('window').width;
 enableScreens(false);
 
 function Profile() {
-  const { singOutAsync } = useContext(AuthContext);
+  const { singOutAsync, alpacaAuthStart } = useContext(AuthContext);
   const {
     buyingPower,
     cash,
@@ -134,7 +134,8 @@ function Profile() {
               
             />
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>
+          {/*<TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>*/}
+          <TouchableOpacity onPress={alpacaAuthStart}>
             <Image
               source={settings}
               style={{

@@ -1,5 +1,10 @@
 import apisauce from 'apisauce';
-import { ALPACA_API_ENDPOINT, ALPACA_API_CLIENT_KEY_ID, ALPACA_API_CLIENT_SECRET_KEY } from '@env';
+import {
+  ALPACA_API_ENDPOINT,
+  ALPACA_API_CLIENT_KEY_ID,
+  ALPACA_API_CLIENT_SECRET_KEY,
+  ALPACA_TOKEN_ENDPOINT,
+} from '@env';
 
 const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
   const api = apisauce.create({
@@ -17,6 +22,7 @@ const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
   const getAssets = () => api.get('v2/assets?status=active');
   const getOrders = () => api.get('v2/orders');
   const postOrder = (data) => api.post('v2/orders', data);
+  const alpacaExchangeToken = (params) => authApi.post(config.ALPACA_TOKEN_ENDPOINT, params);
 
   return {
     getAccount,
@@ -25,6 +31,7 @@ const alpacaApi = (baseURL = ALPACA_API_ENDPOINT) => {
     getAssets,
     getOrders,
     postOrder,
+    alpacaExchangeToken,
   };
 };
 
