@@ -44,7 +44,7 @@ const screenWidth = Dimensions.get("window").width;
 enableScreens(false);
 
 function Profile() {
-  const { singOutAsync } = useContext(AuthContext);
+  const { singOutAsync, alpacaAuthStart } = useContext(AuthContext);
   const {
     buyingPower,
     cash,
@@ -116,6 +116,17 @@ function Profile() {
               marginBottom: "-15%",
             }}
           >
+            <LineChart
+              data={data}
+              width={screenWidth * 0.85}
+              height={256}
+              verticalLabelRotation={90}
+              chartConfig={chartConfig}
+              bezier
+            />
+          </View>
+          {/*<TouchableOpacity onPress={() => navigation.navigate('SubscriptionScreen')}>*/}
+          <TouchableOpacity onPress={alpacaAuthStart}>
             <Image
               source={pickStra}
               style={{
