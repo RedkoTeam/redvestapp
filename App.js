@@ -1,25 +1,25 @@
-'use strict';
-import React from 'react';
-import { AuthProvider } from 'redvest/contexts/AuthContext';
-import { AssetsProvider } from 'redvest/contexts/AssetsContext';
-import { DataProvider } from 'redvest/contexts/DataContext';
-import { AlpacaAccountInfoProvider } from 'redvest/contexts/AlpacaAccountInfoContext';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+"use strict";
+import React, { useState, useEffect, useRef } from "react";
+import { AuthProvider } from "redvest/contexts/AuthContext";
+import { AssetsProvider } from "redvest/contexts/AssetsContext";
+import { DataProvider } from "redvest/contexts/DataContext";
+import { AlpacaAccountInfoProvider } from "redvest/contexts/AlpacaAccountInfoContext";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { colors } from 'redvest/util/styles';
-import { LogBox, StatusBar } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
+import { colors } from "redvest/util/styles";
+import { LogBox, StatusBar, Platform, Button } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
 
-import NavigationContainer from 'redvest/navigators/NavigationContainer';
+import NavigationContainer from "redvest/navigators/NavigationContainer";
 import {
   useFonts,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
   Poppins_700Bold,
-} from '@expo-google-fonts/poppins';
+} from "@expo-google-fonts/poppins";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -29,7 +29,9 @@ import {
   MESSAGING_SENDER_ID,
   APP_ID,
   MEASUREMENT_ID,
-} from '@env';
+} from "@env";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
 
 const FIREBASE_CONFIG = {
   apiKey: API_KEY,
@@ -42,22 +44,117 @@ const FIREBASE_CONFIG = {
   measurementId: MEASUREMENT_ID,
 };
 
-!firebase.apps.length ? firebase.initializeApp(FIREBASE_CONFIG) : firebase.app();
+!firebase.apps.length
+  ? firebase.initializeApp(FIREBASE_CONFIG)
+  : firebase.app();
 
 SplashScreen.preventAutoHideAsync().catch(() =>
   LogBox.ignoreLogs([
-    'Unhandled promise rejection: Error: Native splash screen is already hidden.',
-  ]),
+    "Unhandled promise rejection: Error: Native splash screen is already hidden.",
+  ])
 );
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 function App() {
+  // useEffect(() => {
+  //   registerForPushNotificationsAsync().then((token) =>
+  //     setExpoPushToken(token)
+  //   );
+
+  //   // This listener is fired whenever a notification is received while the app is foregrounded
+  //   notificationListener.current = Notifications.addNotificationReceivedListener(
+  //     (notification) => {
+  //       setNotification(notification);
+  //     }
+  //   );
+
+  //   // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+  //   responseListener.current = Notifications.addNotificationResponseReceivedListener(
+  //     (response) => {
+  //       console.log(response);
+  //     }
+  //   );
+
+  //   return () => {
+  //     Notifications.removeNotificationSubscription(
+  //       notificationListener.current
+  //     );
+  //     Notifications.removeNotificationSubscription(responseListener.current);
+  //   };
+  // }, []);
+
+  async function sendPushNotification(expoPushToken) {
+    const message = {
+      to: expoPushToken,
+      sound: "default",
+      title: "Original Title",
+      body: "And here is the body!",
+      data: { someData: "goes here" },
+    };
+
+    await fetch("https://exp.host/--/api/v2/push/send", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Accept-encoding": "gzip, deflate",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
+  }
+
+  async function registerForPushNotificationsAsync() {
+    let token;
+    if (Constants.isDevice) {
+      const {
+        status: existingStatus,
+      } = await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+      if (finalStatus !== "granted") {
+        alert("Failed to get push token for push notification!");
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+    } else {
+      alert("Must use physical device for Push Notifications");
+    }
+
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: "#FF231F7C",
+      });
+    }
+
+    return token;
+  }
+
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_600SemiBold,
     Poppins_700Bold,
   });
-  if (!fontsLoaded) return null;
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <AuthProvider>
@@ -65,7 +162,11 @@ function App() {
         <DataProvider>
           <AlpacaAccountInfoProvider>
             <SafeAreaProvider>
-              <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
+              <StatusBar
+                barStyle={"light-content"}
+                backgroundColor={colors.darkBackground}
+              />
+
               <NavigationContainer />
             </SafeAreaProvider>
           </AlpacaAccountInfoProvider>

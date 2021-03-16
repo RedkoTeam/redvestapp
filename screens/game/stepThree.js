@@ -38,21 +38,22 @@ function stepThree({ navigation, route }) {
   });
 
   function selectedStock(stock) {
-    const oldStocks = stocks;
-    oldStocks.push(stock);
-    setStocs(() => [...oldStocks]);
-  }
-
-  function choosingStocksCompleted() {
     navigation.navigate("stepThreea", {
       strategy: route.params.strategy,
       portfolio: route.params.portfolio,
-      stocks: stocks,
+      stocks: stock,
+    });
+  }
+
+  function chooseStock() {
+    navigation.navigate("StockTickerGame", {
+      strategy: route.params.strategy,
+      portfolio: route.params.portfolio,
     });
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -60,44 +61,27 @@ function stepThree({ navigation, route }) {
           height: heightPercentageToDP(100),
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between",
-            padding: 10,
-            marginTop: 5,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("stepTwo")}
+        <ScrollView>
+          <View
             style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(3),
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+              marginTop: widthPercentageToDP(7),
             }}
           >
             <Image
-              source={back}
+              source={title}
               style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
                 resizeMode: "contain",
+                width: widthPercentageToDP(80),
+                height: heightPercentageToDP(10),
+
+                marginBottom: "0%",
               }}
             />
-          </TouchableOpacity>
-          <Image
-            source={title}
-            style={{
-              resizeMode: "contain",
-              width: widthPercentageToDP(80),
-              height: heightPercentageToDP(15),
-              marginTop: "10%",
-              left: "-20%",
-            }}
-          />
-        </View>
+          </View>
 
-        <ScrollView style={{ height: "200%" }}>
           <View
             style={{
               flex: 0.03,
@@ -245,8 +229,8 @@ function stepThree({ navigation, route }) {
                     }}
                   />
                 </TouchableOpacity>
-                
-                <TouchableOpacity onPress={() => selectedStock("pick")}>
+
+                <TouchableOpacity onPress={() => chooseStock()}>
                   <Image
                     source={pick}
                     style={{
@@ -258,13 +242,13 @@ function stepThree({ navigation, route }) {
                   />
                 </TouchableOpacity>
               </View>
-            </View> 
+            </View>
             <View
               style={{
                 paddingBottom: "5%",
               }}
-            > 
-            {/*
+            >
+              {/*
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={cashRes}
@@ -291,19 +275,6 @@ function stepThree({ navigation, route }) {
                   }}
                 />
               </TouchableOpacity> */}
-            </View>
-
-            <View>
-              <TouchableOpacity onPress={choosingStocksCompleted}>
-                <Image
-                  source={next}
-                  style={{
-                    resizeMode: "contain",
-                    width: widthPercentageToDP(85),
-                    height: heightPercentageToDP(11),
-                  }}
-                />
-              </TouchableOpacity>
             </View>
           </View>
         </ScrollView>

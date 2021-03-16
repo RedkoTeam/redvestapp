@@ -84,7 +84,6 @@ function InvestScreen({ navigation }) {
 
   const invest = async () => {
     console.log(await alpacaApi().getAccount());
-    //console.log("hello");
   };
 
   return (

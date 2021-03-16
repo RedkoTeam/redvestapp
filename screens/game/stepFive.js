@@ -38,11 +38,11 @@ function stepFive({ navigation, route }) {
 
   function invest() {
     firebaseDB.child("selections").push(route.params);
-    // navigation.navigate("stepFiveA")
+    navigation.navigate("stepFiveA", route.params);
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -54,35 +54,18 @@ function stepFive({ navigation, route }) {
           style={{
             flexDirection: "row",
             width: "100%",
-            justifyContent: "space-between",
-            padding: 10,
-            marginTop: 5,
+            justifyContent: "center",
+            marginTop: widthPercentageToDP(7),
           }}
         >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("stepFour")}
-            style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(3),
-            }}
-          >
-            <Image
-              source={back}
-              style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
-                resizeMode: "contain",
-              }}
-            />
-          </TouchableOpacity>
           <Image
             source={title}
             style={{
               resizeMode: "contain",
-              width: widthPercentageToDP(50),
-              height: heightPercentageToDP(15),
-              marginTop: "0%",
-              left: "-70%",
+              width: widthPercentageToDP(80),
+              height: heightPercentageToDP(10),
+
+              marginBottom: "0%",
             }}
           />
         </View>
@@ -127,7 +110,7 @@ function stepFive({ navigation, route }) {
               source={line}
               style={{
                 resizeMode: "contain",
-                width: widthPercentageToDP(85),
+                width: widthPercentageToDP(80),
                 height: heightPercentageToDP(1),
               }}
             />
@@ -142,11 +125,13 @@ function stepFive({ navigation, route }) {
                   }}
                 />
               </TouchableOpacity>
+
               <Text
                 style={{
                   position: "absolute",
                   alignSelf: "center",
 
+                  //paddingLeft: 170,
                   marginLeft: "50%",
                   fontSize: 20,
                   color: "white",
@@ -159,7 +144,7 @@ function stepFive({ navigation, route }) {
               source={line}
               style={{
                 resizeMode: "contain",
-                width: widthPercentageToDP(85),
+                width: widthPercentageToDP(80),
                 height: heightPercentageToDP(1),
               }}
             />
@@ -169,16 +154,18 @@ function stepFive({ navigation, route }) {
                   source={freq}
                   style={{
                     resizeMode: "contain",
-                    width: widthPercentageToDP(27),
+                    width: widthPercentageToDP(23),
                     height: heightPercentageToDP(5),
                   }}
                 />
               </TouchableOpacity>
+
               <Text
                 style={{
                   position: "absolute",
                   alignSelf: "center",
 
+                  //paddingLeft: 170,
                   marginLeft: "50%",
                   fontSize: 20,
                   color: "white",
@@ -187,11 +174,12 @@ function stepFive({ navigation, route }) {
                 {frequency}
               </Text>
             </View>
+
             <Image
               source={line}
               style={{
                 resizeMode: "contain",
-                width: widthPercentageToDP(85),
+                width: widthPercentageToDP(80),
                 height: heightPercentageToDP(1),
               }}
             />
@@ -202,15 +190,17 @@ function stepFive({ navigation, route }) {
                   style={{
                     resizeMode: "contain",
                     width: widthPercentageToDP(23),
-                    height: heightPercentageToDP(3),
+                    height: heightPercentageToDP(5),
                   }}
                 />
               </TouchableOpacity>
+
               <Text
                 style={{
                   position: "absolute",
                   alignSelf: "center",
 
+                  //paddingLeft: 170,
                   marginLeft: "50%",
                   fontSize: 20,
                   color: "white",
@@ -219,11 +209,12 @@ function stepFive({ navigation, route }) {
                 ${amount}
               </Text>
             </View>
+
             <Image
               source={line}
               style={{
                 resizeMode: "contain",
-                width: widthPercentageToDP(85),
+                width: widthPercentageToDP(80),
                 height: heightPercentageToDP(1),
               }}
             />
@@ -234,15 +225,17 @@ function stepFive({ navigation, route }) {
                   style={{
                     resizeMode: "contain",
                     width: widthPercentageToDP(23),
-                    height: heightPercentageToDP(3),
+                    height: heightPercentageToDP(5),
                   }}
                 />
               </TouchableOpacity>
+
               <Text
                 style={{
                   position: "absolute",
                   alignSelf: "center",
 
+                  //paddingLeft: 170,
                   marginLeft: "50%",
                   fontSize: 20,
                   color: "white",

@@ -1,21 +1,28 @@
-import React, { useEffect, useContext } from 'react';
-import GameContext from 'redvest/contexts/GameContext';
-import { Image, ImageBackground, Linking, TouchableOpacity, View, ScrollView } from 'react-native';
-import AIone from '../../assets/images/Invest/step1/AIone.png';
-import AItwo from '../../assets/images/Invest/step1/AItwo.png';
-import MACD from '../../assets/images/Invest/step1/MACD.png';
-import RSI from '../../assets/images/Invest/step1/RSI.png';
-import DUAL from '../../assets/images/Invest/step1/DualMa.png';
-import pickStra from '../../assets/images/Invest/step1/pickStra.png';
-import Threema from '../../assets/images/Invest/step1/Threema.png';
-import bg from '../../assets/images/HomeScreen/bg.png';
-import { widthPercentageToDP, heightPercentageToDP } from '../../util/scaler';
-import { enableScreens } from 'react-native-screens';
-import back from '../../assets/images/Invest/step3a/back.png';
-import NavBar_game from '../Navbar/Navbar_game';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { SCHEMA } from 'redvest/schema/gameSchema';
+import React, { useEffect, useContext } from "react";
+import GameContext from "redvest/contexts/GameContext";
+import {
+  Image,
+  ImageBackground,
+  Linking,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from "react-native";
+import AIone from "../../assets/images/Invest/step1/AIone.png";
+import AItwo from "../../assets/images/Invest/step1/AItwo.png";
+import MACD from "../../assets/images/Invest/step1/MACD.png";
+import RSI from "../../assets/images/Invest/step1/RSI.png";
+import DUAL from "../../assets/images/Invest/step1/DualMa.png";
+import pickStra from "../../assets/images/Invest/step1/pickStra.png";
+import Threema from "../../assets/images/Invest/step1/Threema.png";
+import bg from "../../assets/images/HomeScreen/bg.png";
+import { widthPercentageToDP, heightPercentageToDP } from "../../util/scaler";
+import { enableScreens } from "react-native-screens";
+import back from "../../assets/images/Invest/step3a/back.png";
+import NavBar_game from "../Navbar/Navbar_game";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SCHEMA } from "redvest/schema/gameSchema";
 
 enableScreens(false);
 
@@ -27,7 +34,7 @@ function stepOne({ navigation }) {
   });
   const onSubmit = (data) => {
     updateFormData(data);
-    navigation.navigate('');
+    navigation.navigate("");
   };
 
   useEffect(() => {
@@ -37,50 +44,52 @@ function stepOne({ navigation }) {
   function macSelected() {}
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
           width: widthPercentageToDP(100),
           height: heightPercentageToDP(100),
+          overflow: "hidden",
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "center",
-            marginTop: widthPercentageToDP(7),
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("main")}
+        <ScrollView contentContainerStyle={{ flexGrow: 2 }}>
+          <View
             style={{
-              left: widthPercentageToDP(-7),
-              top: heightPercentageToDP(3),
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+              marginTop: widthPercentageToDP(7),
             }}
           >
-            <Image
-              source={back}
+            {/* <TouchableOpacity
+              onPress={() => navigation.navigate("main")}
               style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
+                left: widthPercentageToDP(-7),
+                top: heightPercentageToDP(3),
+              }}
+            >
+              <Image
+                source={back}
+                style={{
+                  width: widthPercentageToDP("3"),
+                  height: heightPercentageToDP("3"),
+                  resizeMode: "contain",
+                }}
+              />
+            </TouchableOpacity> */}
+            <Image
+              source={pickStra}
+              style={{
                 resizeMode: "contain",
+                width: widthPercentageToDP(80),
+                height: heightPercentageToDP(10),
+
+                marginBottom: "0%",
               }}
             />
-          </TouchableOpacity>
-          <Image
-            source={pickStra}
-            style={{
-              resizeMode: "contain",
-              width: widthPercentageToDP(80),
-              height: heightPercentageToDP(10),
-              marginTop: "10%",
-              marginBottom: "0%",
-            }}
-          />
-        </View>
-        <ScrollView style={{ height: "100%" }}>
+          </View>
+
           <View
             style={{
               flex: 1,

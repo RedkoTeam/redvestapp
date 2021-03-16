@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import alpacaApi from 'redvest/services/alpacaApi';
+import React, { useEffect, useState } from "react";
+import alpacaApi from "redvest/services/alpacaApi";
 
 const AlpacaAccountInfoContext = React.createContext();
 

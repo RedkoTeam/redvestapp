@@ -30,7 +30,7 @@ enableScreens(false);
 
 function stepThreea({ navigation, route }) {
   const [valueIndex, setValueIndex] = useState(0);
-  const [frequency, setFrequency] = useState("");
+  const [frequency, setFrequency] = useState("Daily");
   useEffect(() => {
     let mounted = true;
   });
@@ -56,7 +56,7 @@ function stepThreea({ navigation, route }) {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -68,35 +68,18 @@ function stepThreea({ navigation, route }) {
           style={{
             flexDirection: "row",
             width: "100%",
-            justifyContent: "space-between",
-            padding: 10,
-            marginTop: 5,
+            justifyContent: "center",
+            marginTop: widthPercentageToDP(7),
           }}
         >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("stepThree")}
-            style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(3),
-            }}
-          >
-            <Image
-              source={back}
-              style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
-                resizeMode: "contain",
-              }}
-            />
-          </TouchableOpacity>
           <Image
             source={title}
             style={{
               resizeMode: "contain",
               width: widthPercentageToDP(80),
-              height: heightPercentageToDP(15),
-              marginTop: "10%",
-              left: "-20%",
+              height: heightPercentageToDP(10),
+
+              marginBottom: "0%",
             }}
           />
         </View>

@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Text,
 } from "react-native";
-import back from "../../assets/images/Invest/step4/back.png";
 import freq from "../../assets/images/Invest/step5/Frequency.png";
 import con from "../../assets/images/Invest/step5/Conta.png";
+import Amount from "../../assets/images/Invest/step5/Amount.png";
+
 import Stoploss from "../../assets/images/Invest/step5/Stoploss.png";
 import primary from "../../assets/images/Invest/step5/primary.png";
 import stra from "../../assets/images/Invest/step5/strategy.png";
@@ -25,13 +27,14 @@ import { SCHEMA } from "redvest/schema/gameSchema";
 
 enableScreens(false);
 
-function stepFiveA({ navigation }) {
+function stepFiveA({ navigation, route }) {
+  const { strategy, portfolio, frequency, stopLoss, amount } = route.params;
   useEffect(() => {
     let mounted = true;
   });
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{backgroundColor:'black', flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -39,43 +42,27 @@ function stepFiveA({ navigation }) {
           height: heightPercentageToDP(100),
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between",
-            padding: 10,
-            marginTop: 5,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("stepThreea")}
+        <ScrollView>
+          <View
             style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(3),
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+              marginTop: widthPercentageToDP(7),
             }}
           >
             <Image
-              source={back}
+              source={con}
               style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
                 resizeMode: "contain",
+                width: widthPercentageToDP(80),
+                height: heightPercentageToDP(10),
+
+                marginBottom: "0%",
               }}
             />
-          </TouchableOpacity>
-          <Image
-            source={con}
-            style={{
-              resizeMode: "contain",
-              width: widthPercentageToDP(50),
-              height: heightPercentageToDP(15),
-              marginTop: "0%",
-              left: "-70%",
-            }}
-          />
-        </View>
-        <ScrollView style={{ height: "200%" }}>
+          </View>
+
           <View
             style={{
               flex: 0.03,
@@ -86,7 +73,7 @@ function stepFiveA({ navigation }) {
               marginLeft: "3%",
             }}
           >
-            <View>
+            <View style={{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={stra}
@@ -97,6 +84,20 @@ function stepFiveA({ navigation }) {
                   }}
                 />
               </TouchableOpacity>
+
+              <Text
+                style={{
+                  position: "absolute",
+                  alignSelf: "center",
+
+                  //paddingLeft: 170,
+                  marginLeft: "50%",
+                  fontSize: 20,
+                  color: "white",
+                }}
+              >
+                {strategy}
+              </Text>
             </View>
             <Image
               source={line}
@@ -106,7 +107,7 @@ function stepFiveA({ navigation }) {
                 height: heightPercentageToDP(1),
               }}
             />
-            <View>
+            <View style={{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={port}
@@ -117,6 +118,20 @@ function stepFiveA({ navigation }) {
                   }}
                 />
               </TouchableOpacity>
+
+              <Text
+                style={{
+                  position: "absolute",
+                  alignSelf: "center",
+
+                  //paddingLeft: 170,
+                  marginLeft: "50%",
+                  fontSize: 20,
+                  color: "white",
+                }}
+              >
+                {portfolio}
+              </Text>
             </View>
             <Image
               source={line}
@@ -126,18 +141,33 @@ function stepFiveA({ navigation }) {
                 height: heightPercentageToDP(1),
               }}
             />
-            <View>
+            <View style={{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={freq}
                   style={{
                     resizeMode: "contain",
-                    width: widthPercentageToDP(27),
+                    width: widthPercentageToDP(23),
                     height: heightPercentageToDP(5),
                   }}
                 />
               </TouchableOpacity>
+
+              <Text
+                style={{
+                  position: "absolute",
+                  alignSelf: "center",
+
+                  //paddingLeft: 170,
+                  marginLeft: "50%",
+                  fontSize: 20,
+                  color: "white",
+                }}
+              >
+                {frequency}
+              </Text>
             </View>
+
             <Image
               source={line}
               style={{
@@ -146,17 +176,66 @@ function stepFiveA({ navigation }) {
                 height: heightPercentageToDP(1),
               }}
             />
-            <View>
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity onPress={() => navigation.navigate("")}>
+                <Image
+                  source={Amount}
+                  style={{
+                    resizeMode: "contain",
+                    width: widthPercentageToDP(23),
+                    height: heightPercentageToDP(5),
+                  }}
+                />
+              </TouchableOpacity>
+
+              <Text
+                style={{
+                  position: "absolute",
+                  alignSelf: "center",
+
+                  //paddingLeft: 170,
+                  marginLeft: "50%",
+                  fontSize: 20,
+                  color: "white",
+                }}
+              >
+                ${amount}
+              </Text>
+            </View>
+
+            <Image
+              source={line}
+              style={{
+                resizeMode: "contain",
+                width: widthPercentageToDP(80),
+                height: heightPercentageToDP(1),
+              }}
+            />
+            <View style={{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => navigation.navigate("")}>
                 <Image
                   source={Stoploss}
                   style={{
                     resizeMode: "contain",
                     width: widthPercentageToDP(23),
-                    height: heightPercentageToDP(3),
+                    height: heightPercentageToDP(5),
                   }}
                 />
               </TouchableOpacity>
+
+              <Text
+                style={{
+                  position: "absolute",
+                  alignSelf: "center",
+
+                  //paddingLeft: 170,
+                  marginLeft: "50%",
+                  fontSize: 20,
+                  color: "white",
+                }}
+              >
+                {stopLoss}%
+              </Text>
             </View>
 
             <View>

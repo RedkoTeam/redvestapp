@@ -32,7 +32,7 @@ function threema() {
     let mounted = true;
   });
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -48,23 +48,6 @@ function threema() {
             right: "5%",
           }}
         >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("HomeScreen")}
-            style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(0),
-            }}
-          >
-            <Image
-              source={back}
-              style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
-                resizeMode: "contain",
-              }}
-            />
-          </TouchableOpacity>
-
           <Image
             source={hist}
             style={{

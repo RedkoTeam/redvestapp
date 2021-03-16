@@ -35,7 +35,7 @@ function stepTwo({ navigation, route }) {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -43,43 +43,27 @@ function stepTwo({ navigation, route }) {
           height: heightPercentageToDP(100),
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between",
-            padding: 10,
-            marginTop: 5,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("stepOne")}
+        <ScrollView>
+          <View
             style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(3),
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+              marginTop: widthPercentageToDP(7),
             }}
           >
             <Image
-              source={back}
+              source={title}
               style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
                 resizeMode: "contain",
+                width: widthPercentageToDP(80),
+                height: heightPercentageToDP(10),
+
+                marginBottom: "0%",
               }}
             />
-          </TouchableOpacity>
-          <Image
-            source={title}
-            style={{
-              resizeMode: "contain",
-              width: widthPercentageToDP(80),
-              height: heightPercentageToDP(15),
-              marginTop: "10%",
-              left: "-20%",
-            }}
-          />
-        </View>
-        <ScrollView style={{ height: "200%" }}>
+          </View>
+
           <View
             style={{
               flex: 0.03,

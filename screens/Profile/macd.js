@@ -26,7 +26,6 @@ function macd() {
   useEffect(() => {
     let mounted = true;
   });
-  
 
   function macdSelected() {
     navigation.navigate("stepTwo", {
@@ -35,7 +34,7 @@ function macd() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <ImageBackground
         source={bg}
         style={{
@@ -51,22 +50,6 @@ function macd() {
             right: "5%",
           }}
         >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("HomeScreen")}
-            style={{
-              left: widthPercentageToDP(3),
-              top: heightPercentageToDP(0),
-            }}
-          >
-            <Image
-              source={back}
-              style={{
-                width: widthPercentageToDP("3"),
-                height: heightPercentageToDP("3"),
-                resizeMode: "contain",
-              }}
-            />
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("orders")}>
             <Image
               source={hist}
