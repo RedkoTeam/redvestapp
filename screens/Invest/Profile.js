@@ -137,52 +137,52 @@ function Profile() {
                 marginLeft: "0%",
               }}
             />
-            <Text
-              style={[
-                styles.screenTitle,
-                textStyles.hugeRegular,
-                {
-                  marginLeft: "20%",
-                  marginTop: "16%",
-                  fontSize: actuatedNormalize(20),
-                },
-              ]}
-            >
-              $ {portfolioValueString}
-            </Text>
+          </TouchableOpacity>
+          <Text
+            style={[
+              styles.screenTitle,
+              textStyles.hugeRegular,
+              {
+                marginLeft: "20%",
+                marginTop: "16%",
+                fontSize: actuatedNormalize(20),
+              },
+            ]}
+          >
+            $ {portfolioValueString}
+          </Text>
 
-            <View
-              style={{
-                width: "100%",
-                justifyContent: "space-between",
-                padding: 25,
-                marginTop: "20%",
-                marginBottom: "10%",
-                marginLeft: "-170%",
-              }}
-            >
-              <LineChart
-                data={data}
-                width={screenWidth * 0.85}
-                height={256}
-                verticalLabelRotation={90}
-                chartConfig={chartConfig}
-                bezier
-              />
-            </View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("SubscriptionScreen")}
-            >
-              <Image
-                source={settings}
-                style={{
-                  resizeMode: "contain",
-                  width: widthPercentageToDP(7),
-                  height: heightPercentageToDP(9),
-                }}
-              />
-            </TouchableOpacity>
+          <View
+            style={{
+              width: "100%",
+              justifyContent: "space-between",
+              padding: 25,
+              marginTop: "20%",
+              marginBottom: "10%",
+              marginLeft: "-170%",
+            }}
+          >
+            <LineChart
+              data={data}
+              width={screenWidth * 0.85}
+              height={256}
+              verticalLabelRotation={90}
+              chartConfig={chartConfig}
+              bezier
+            />
           </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("SubscriptionScreen")}
+          >
+            <Image
+              source={settings}
+              style={{
+                resizeMode: "contain",
+                width: widthPercentageToDP(7),
+                height: heightPercentageToDP(9),
+              }}
+            />
+          </TouchableOpacity>
 
           <View
             style={{

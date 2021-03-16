@@ -1,18 +1,18 @@
-'use strict';
-import React from 'react';
-import { AuthProvider } from 'redvest/contexts/AuthContext';
-import { AssetsProvider } from 'redvest/contexts/AssetsContext';
-import { OrdersProvider } from 'redvest/contexts/OrdersContext';
-import { PositionsProvider } from 'redvest/contexts/PositionsContext';
-import { DataProvider } from 'redvest/contexts/DataContext';
-import { AlpacaAccountInfoProvider } from 'redvest/contexts/AlpacaAccountInfoContext';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+"use strict";
+import React, { useState, useRef } from "react";
+import { AuthProvider } from "redvest/contexts/AuthContext";
+import { AssetsProvider } from "redvest/contexts/AssetsContext";
+import { OrdersProvider } from "redvest/contexts/OrdersContext";
+import { PositionsProvider } from "redvest/contexts/PositionsContext";
+import { DataProvider } from "redvest/contexts/DataContext";
+import { AlpacaAccountInfoProvider } from "redvest/contexts/AlpacaAccountInfoContext";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { colors } from 'redvest/util/styles';
-import { LogBox, StatusBar } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
+import { colors } from "redvest/util/styles";
+import { LogBox, StatusBar } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
 
-import NavigationContainer from 'redvest/navigators/NavigationContainer';
+import NavigationContainer from "redvest/navigators/NavigationContainer";
 import {
   useFonts,
   Poppins_400Regular,
@@ -166,7 +166,10 @@ function App() {
             <PositionsProvider>
               <OrdersProvider>
                 <SafeAreaProvider>
-                  <StatusBar barStyle={'light-content'} backgroundColor={colors.darkBackground} />
+                  <StatusBar
+                    barStyle={"light-content"}
+                    backgroundColor={colors.darkBackground}
+                  />
                   <NavigationContainer />
                 </SafeAreaProvider>
               </OrdersProvider>
